@@ -6,7 +6,7 @@
 # wayfinder:generate` and Filament publishes assets, so both toolchains must be
 # present. Produces: vendor/, public/ (compiled assets + static + storage link).
 ###############################################################################
-FROM php:8.3-cli-bookworm AS builder
+FROM php:8.4-cli-bookworm AS builder
 
 # PHP extensions (mlocati installer resolves apt deps automatically)
 COPY --from=mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/local/bin/
@@ -49,7 +49,7 @@ RUN npm run build
 ###############################################################################
 # Stage 2 — app (PHP-FPM runtime)
 ###############################################################################
-FROM php:8.3-fpm-alpine AS app
+FROM php:8.4-fpm-alpine AS app
 
 COPY --from=mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions pdo_mysql gd intl zip bcmath exif pcntl opcache redis \

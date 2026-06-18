@@ -5,7 +5,7 @@ Production stack, all containerized:
 | Service     | Image / build           | Role                                              |
 |-------------|-------------------------|---------------------------------------------------|
 | `nginx`     | `nginx` target          | TLS termination, static files, reverse proxy      |
-| `app`       | `app` target (php-fpm)  | Laravel application (PHP 8.3)                      |
+| `app`       | `app` target (php-fpm)  | Laravel application (PHP 8.4)                      |
 | `queue`     | `app` image             | `php artisan queue:work` (Redis queue)            |
 | `scheduler` | `app` image             | `php artisan schedule:work` (hourly coupon import)|
 | `mysql`     | `mysql:8.0`             | Primary database                                  |
@@ -16,7 +16,7 @@ The image is built in three stages (`Dockerfile`):
 1. **builder** — PHP + Composer + Node together (the Vite build calls `php artisan
    wayfinder:generate`, and Filament publishes assets), produces `vendor/` and
    compiled `public/`.
-2. **app** — slim `php:8.3-fpm-alpine` runtime with the built artifacts.
+2. **app** — slim `php:8.4-fpm-alpine` runtime with the built artifacts.
 3. **nginx** — `nginx:alpine` with the compiled `public/` baked in.
 
 User uploads (store logos, blog covers) live on the `public` disk
