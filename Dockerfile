@@ -41,7 +41,7 @@ RUN composer dump-autoload --optimize --no-dev \
  && php artisan key:generate --no-interaction \
  && php artisan package:discover --ansi \
  && php artisan filament:upgrade \
- && php artisan storage:link
+ && php artisan storage:link --relative
 
 # Compile front-end assets (wayfinder generates TS helpers from artisan routes)
 RUN npm run build
