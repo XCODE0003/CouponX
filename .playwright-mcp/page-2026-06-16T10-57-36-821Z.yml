@@ -1,0 +1,195 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - link "CouponX Deals" [ref=e5] [cursor=pointer]:
+      - /url: http://127.0.0.1:8805/admin
+      - generic [ref=e6]: CouponX Deals
+    - button "Меню пользователя" [ref=e10] [cursor=pointer]:
+      - img "Аватар Admin" [ref=e11]
+  - generic [ref=e12]:
+    - complementary [ref=e14]:
+      - navigation [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - list [ref=e18]:
+              - listitem [ref=e19]:
+                - link "Инфопанель" [ref=e20] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin
+                  - img [ref=e21]
+                  - generic [ref=e23]: Инфопанель
+          - listitem [ref=e24]:
+            - generic [ref=e25] [cursor=pointer]:
+              - generic [ref=e26]: Каталог
+              - button "Каталог" [expanded] [ref=e27]:
+                - img [ref=e28]
+            - list [ref=e30]:
+              - listitem [ref=e31]:
+                - link "Категории" [ref=e32] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/categories
+                  - img [ref=e33]
+                  - generic [ref=e35]: Категории
+              - listitem [ref=e36]:
+                - link "Купоны" [ref=e37] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/coupons
+                  - img [ref=e38]
+                  - generic [ref=e40]: Купоны
+              - listitem [ref=e41]:
+                - link "Магазины" [ref=e42] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/stores
+                  - img [ref=e43]
+                  - generic [ref=e45]: Магазины
+          - listitem [ref=e46]:
+            - generic [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: Контент
+              - button "Контент" [expanded] [ref=e49]:
+                - img [ref=e50]
+            - list [ref=e52]:
+              - listitem [ref=e53]:
+                - link "Блог" [ref=e54] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/blog-posts
+                  - img [ref=e55]
+                  - generic [ref=e57]: Блог
+          - listitem [ref=e58]:
+            - generic [ref=e59] [cursor=pointer]:
+              - generic [ref=e60]: Маркетинг
+              - button "Маркетинг" [expanded] [ref=e61]:
+                - img [ref=e62]
+            - list [ref=e64]:
+              - listitem [ref=e65]:
+                - link "Партнёрские сети" [ref=e66] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/affiliate-networks
+                  - img [ref=e67]
+                  - generic [ref=e69]: Партнёрские сети
+              - listitem [ref=e70]:
+                - link "Подписчики" [ref=e71] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/newsletter-subscribers
+                  - img [ref=e72]
+                  - generic [ref=e74]: Подписчики
+          - listitem [ref=e75]:
+            - generic [ref=e76] [cursor=pointer]:
+              - generic [ref=e77]: Система
+              - button "Система" [expanded] [ref=e78]:
+                - img [ref=e79]
+            - list [ref=e81]:
+              - listitem [ref=e82]:
+                - link "Пользователи" [ref=e83] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/users
+                  - img [ref=e84]
+                  - generic [ref=e86]: Пользователи
+    - main [ref=e88]:
+      - generic [ref=e90]:
+        - generic [ref=e92]:
+          - navigation [ref=e93]:
+            - list [ref=e94]:
+              - listitem [ref=e95]:
+                - link "Купоны" [ref=e96] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8805/admin/coupons
+              - listitem [ref=e97]:
+                - img [ref=e98]
+                - generic [ref=e100]: Создать
+          - heading "Создать Купон" [level=1] [ref=e101]
+        - generic [ref=e107]:
+          - generic [ref=e111]:
+            - generic [ref=e115]:
+              - heading "Купон" [level=2] [ref=e118]
+              - generic [ref=e120]:
+                - generic [ref=e123]:
+                  - generic [ref=e127]:
+                    - text: Магазин
+                    - superscript [ref=e128]: "*"
+                  - button "Выбрать вариант" [ref=e135] [cursor=pointer]:
+                    - generic [ref=e137]: Выбрать вариант
+                - generic [ref=e140]:
+                  - generic [ref=e144]:
+                    - text: Тип
+                    - superscript [ref=e145]: "*"
+                  - combobox "Тип*" [ref=e149]:
+                    - option "Выбрать вариант"
+                    - option "Промокод" [selected]
+                    - option "Скидка"
+                    - option "Акция"
+                - generic [ref=e152]:
+                  - generic [ref=e156]:
+                    - text: Промокод
+                    - superscript [ref=e157]: "*"
+                  - generic [ref=e158]:
+                    - textbox "Промокод*" [ref=e161]
+                    - generic [ref=e165]: Обязательно для купонов с промокодом
+                - generic [ref=e168]:
+                  - generic [ref=e172]: URL назначения (необязательно)
+                  - generic [ref=e173]:
+                    - textbox "URL назначения (необязательно)" [ref=e176]
+                    - generic [ref=e180]: Конкретная целевая страница; по умолчанию используется партнёрская ссылка магазина
+            - generic [ref=e183]:
+              - tablist "Translations" [ref=e184]:
+                - tab "English" [ref=e185] [cursor=pointer]:
+                  - generic [ref=e186]: English
+                - tab "Русский" [ref=e187] [cursor=pointer]:
+                  - generic [ref=e188]: Русский
+              - tabpanel "Заголовок* Описание Условия" [ref=e189]:
+                - generic [ref=e190]:
+                  - generic [ref=e193]:
+                    - generic [ref=e197]:
+                      - text: Заголовок
+                      - superscript [ref=e198]: "*"
+                    - textbox "Заголовок*" [ref=e202]
+                  - generic [ref=e205]:
+                    - generic [ref=e209]: Описание
+                    - textbox "Описание" [ref=e214]
+                  - generic [ref=e217]:
+                    - generic [ref=e221]: Условия
+                    - textbox "Условия" [ref=e226]
+            - generic [ref=e230]:
+              - heading "Скидка и сроки" [level=2] [ref=e233]
+              - generic [ref=e235]:
+                - generic [ref=e238]:
+                  - generic [ref=e242]: Тип скидки
+                  - button "Выбрать вариант" [ref=e249] [cursor=pointer]:
+                    - generic [ref=e251]: Выбрать вариант
+                - generic [ref=e254]:
+                  - generic [ref=e258]: Размер скидки
+                  - spinbutton "Размер скидки" [ref=e262]
+                - generic [ref=e265]:
+                  - generic [ref=e269]: Использовано
+                  - spinbutton "Использовано" [ref=e273]: "0"
+                - generic [ref=e276]:
+                  - generic [ref=e280]: Начало
+                  - textbox "Начало" [ref=e284]
+                - generic [ref=e287]:
+                  - generic [ref=e291]: Истекает
+                  - textbox "Истекает" [ref=e295]
+                - generic [ref=e298]:
+                  - generic [ref=e302]: Позиция
+                  - spinbutton "Позиция" [ref=e306]: "0"
+            - generic [ref=e310]:
+              - heading "Категории и статус" [level=2] [ref=e313]
+              - generic [ref=e315]:
+                - generic [ref=e318]:
+                  - generic [ref=e322]: Категории
+                  - button "Выбрать вариант" [ref=e329] [cursor=pointer]:
+                    - generic [ref=e331]: Выбрать вариант
+                - generic [ref=e334]:
+                  - generic [ref=e338]:
+                    - text: Статус
+                    - superscript [ref=e339]: "*"
+                  - combobox "Статус*" [ref=e343]:
+                    - option "Выбрать вариант"
+                    - option "Активен" [selected]
+                    - option "Истёк"
+                    - option "Черновик"
+                    - option "В архиве"
+                - generic [ref=e346]:
+                  - generic [ref=e350]: Рекомендуемый
+                  - switch "Рекомендуемый" [ref=e352] [cursor=pointer]
+                - generic [ref=e355]:
+                  - generic [ref=e359]: Эксклюзив
+                  - switch "Эксклюзив" [ref=e361] [cursor=pointer]
+                - generic [ref=e364]:
+                  - generic [ref=e368]: Проверен
+                  - switch "Проверен" [ref=e370] [cursor=pointer]
+          - generic [ref=e375]:
+            - button "Создать" [ref=e376] [cursor=pointer]:
+              - generic [ref=e377]: Создать
+            - button "Создать и Создать еще" [ref=e378] [cursor=pointer]
+            - button "Отмена" [ref=e379] [cursor=pointer]
+  - generic:
+    - status

@@ -1,0 +1,36 @@
+[ 2067218ms] [WARNING] [Vue warn]: Failed to resolve component: Partners
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <Home errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <PublicLayout errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <Inertia initialPage= {component: public/Home, props: Object, url: /ru, version: 0f985c8aa0355701bace6d747fe8a739, sharedProps: Array(11)} initialComponent= {__name: Home, props: Object, setup: , __hmrId: 013701f7, render: } resolveComponent=fn<resolveComponent>  ... > 
+  at <App> @ http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1763
+[ 2082271ms] [WARNING] [Vue warn]: Unhandled error during execution of setup function 
+  at <Home errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <PublicLayout errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <Inertia initialPage= {component: public/Home, props: Object, url: /ru, version: 0f985c8aa0355701bace6d747fe8a739, sharedProps: Array(11)} initialComponent= {__name: Home, props: Object, setup: , __hmrId: 013701f7, render: } resolveComponent=fn<resolveComponent>  ... > 
+  at <App> @ http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1763
+[ 2082272ms] [WARNING] [Vue warn]: Unhandled error during execution of scheduler flush 
+  at <Home errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <PublicLayout errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <Inertia initialPage= {component: public/Home, props: Object, url: /ru, version: 0f985c8aa0355701bace6d747fe8a739, sharedProps: Array(11)} initialComponent= {__name: Home, props: Object, setup: , __hmrId: 013701f7, render: } resolveComponent=fn<resolveComponent>  ... > 
+  at <App> @ http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1763
+[ 2082318ms] ReferenceError: Zap is not defined
+    at setup (http://[::1]:5173/Users/nikita/Documents/projects/promocode/resources/js/pages/public/Home.vue?t=1781358046807:38:11)
+    at callWithErrorHandling (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1901:17)
+    at setupStatefulComponent (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:6761:23)
+    at setupComponent (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:6737:35)
+    at mountComponent (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5529:3)
+    at processComponent (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5519:8)
+    at patch (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5314:28)
+    at patchKeyedChildren (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5785:41)
+    at patchChildren (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5685:54)
+    at processFragment (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:5514:10)
+[ 2089346ms] [WARNING] [Vue warn]: Unhandled error during execution of scheduler flush 
+  at <Home errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <PublicLayout errors= {} name="Laravel" auth= {user: null}  ... > 
+  at <Inertia initialPage= {component: public/Home, props: Object, url: /ru, version: 0f985c8aa0355701bace6d747fe8a739, sharedProps: Array(11)} initialComponent= {__name: Home, props: Object, setup: , __hmrId: 013701f7, render: } resolveComponent=fn<resolveComponent>  ... > 
+  at <App> @ http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1763
+[ 2089356ms] TypeError: Cannot read properties of null (reading 'flags')
+    at http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:2153:23
+    at callWithErrorHandling (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1901:31)
+    at flushJobs (http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:2050:5)

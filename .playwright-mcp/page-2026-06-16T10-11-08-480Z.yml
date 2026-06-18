@@ -1,0 +1,512 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "CouponX Deals" [ref=e6] [cursor=pointer]:
+        - /url: /ru
+        - img "CouponX Deals" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Магазины" [ref=e9] [cursor=pointer]:
+          - /url: /ru/stores
+        - link "Категории" [ref=e10] [cursor=pointer]:
+          - /url: /ru/categories
+        - link "Блог" [ref=e11] [cursor=pointer]:
+          - /url: /ru/blog
+      - search [ref=e13]:
+        - img
+        - searchbox "Поиск магазинов и промокодов..." [ref=e14]
+      - button "ru" [ref=e17]:
+        - img [ref=e18]
+        - generic [ref=e21]: ru
+        - img [ref=e22]
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - img [ref=e30]
+            - text: Экономьте больше каждый раз.
+          - heading "Лучшие промокоды и скидки в одном месте" [level=1] [ref=e33]
+          - paragraph [ref=e34]: CouponX Deals помогает находить проверенные промокоды, эксклюзивные скидки и лучшие предложения в любимых магазинах.
+          - generic [ref=e35]:
+            - link "Смотреть скидки" [ref=e36] [cursor=pointer]:
+              - /url: /ru/stores
+              - text: Смотреть скидки
+              - img [ref=e37]
+            - link "Как это работает" [ref=e39] [cursor=pointer]:
+              - /url: /ru/categories
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - img [ref=e42]
+              - text: Проверенные купоны
+            - generic [ref=e45]:
+              - img [ref=e46]
+              - text: Без регистрации
+            - generic [ref=e48]:
+              - img [ref=e49]
+              - text: Всегда актуально
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - heading "Горячие предложения" [level=2] [ref=e57]:
+              - img [ref=e58]
+              - text: Горячие предложения
+            - link "Смотреть все" [ref=e60] [cursor=pointer]:
+              - /url: /ru/stores
+          - list [ref=e61]:
+            - listitem [ref=e62]:
+              - generic [ref=e64]: A
+              - generic [ref=e65]:
+                - generic [ref=e66]: АКЦИЯ
+                - paragraph [ref=e67]: Скидка до 70% на избранные товары
+                - paragraph [ref=e68]: Распродажа на тысячи товаров. Скидки до 70% на электронику, одежду, товары для дома и не только.
+              - button "Получить скидку" [ref=e70]:
+                - text: Получить скидку
+                - img [ref=e71]
+            - listitem [ref=e75]:
+              - generic [ref=e77]: S
+              - generic [ref=e78]:
+                - generic [ref=e79]: ПРОМОКОД
+                - paragraph [ref=e80]: 15% на всё
+                - paragraph [ref=e81]: Скидка 15% на весь ассортимент по этому коду.
+              - generic [ref=e82]:
+                - button "SHEIN15" [ref=e83]:
+                  - generic [ref=e84]: SHEIN15
+                  - img [ref=e85]
+                - button "Показать код" [ref=e88]:
+                  - text: Показать код
+                  - img [ref=e89]
+            - listitem [ref=e93]:
+              - generic [ref=e95]: "N"
+              - generic [ref=e96]:
+                - generic [ref=e97]: ПРОМОКОД
+                - paragraph [ref=e98]: Дополнительно 20% на избранные модели
+                - paragraph [ref=e99]: Используйте код при оформлении заказа и получите дополнительные 20% на избранные модели.
+              - generic [ref=e100]:
+                - button "SAVE20" [ref=e101]:
+                  - generic [ref=e102]: SAVE20
+                  - img [ref=e103]
+                - button "Показать код" [ref=e106]:
+                  - text: Показать код
+                  - img [ref=e107]
+            - listitem [ref=e111]:
+              - generic [ref=e113]: A
+              - generic [ref=e114]:
+                - generic [ref=e115]: ПРОМОКОД
+                - paragraph [ref=e116]: Скидка 500₽ от 3000₽
+                - paragraph [ref=e117]: Скопируйте промокод и получите скидку 500 рублей при заказе от 3000 рублей на AliExpress.
+              - generic [ref=e118]:
+                - button "ALIX500" [ref=e119]:
+                  - generic [ref=e120]: ALIX500
+                  - img [ref=e121]
+                - button "Показать код" [ref=e124]:
+                  - text: Показать код
+                  - img [ref=e125]
+          - generic [ref=e129]:
+            - img [ref=e131]
+            - generic [ref=e134]:
+              - paragraph [ref=e135]: Не пропустите лучшие скидки!
+              - paragraph [ref=e136]: Подпишитесь и получайте эксклюзивные промокоды первыми.
+            - link "Подписаться" [ref=e137] [cursor=pointer]:
+              - /url: "#newsletter"
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - paragraph [ref=e140]: Нам доверяют покупатели по всему миру
+          - heading "Наши партнёры" [level=2] [ref=e141]
+          - paragraph [ref=e142]: Мы работаем с самыми популярными магазинами, чтобы у вас всегда были лучшие предложения.
+        - generic [ref=e143]:
+          - link "Amazon" [ref=e144] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/amazon
+            - generic [ref=e145]: Amazon
+          - link "AliExpress" [ref=e146] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/aliexpress
+            - generic [ref=e147]: AliExpress
+          - link "Nike" [ref=e148] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/nike
+            - generic [ref=e149]: Nike
+          - link "eBay" [ref=e150] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/ebay
+            - generic [ref=e151]: eBay
+          - link "iHerb" [ref=e152] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/iherb
+            - generic [ref=e153]: iHerb
+          - link "Booking.com" [ref=e154] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/booking
+            - generic [ref=e155]: Booking.com
+          - link "SHEIN" [ref=e156] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/ru/store/shein
+            - generic [ref=e157]: SHEIN
+        - link "Все магазины" [ref=e159] [cursor=pointer]:
+          - /url: /ru/stores
+          - text: Все магазины
+          - img [ref=e160]
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - paragraph [ref=e165]: Популярные магазины
+            - heading "Лучшие магазины" [level=2] [ref=e166]
+          - link "Смотреть все" [ref=e167] [cursor=pointer]:
+            - /url: /ru/stores
+        - generic [ref=e168]:
+          - 'link "A Amazon up to 7% 4.7 купонов: 2" [ref=e169] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/amazon
+            - generic [ref=e171]: A
+            - generic [ref=e172]:
+              - heading "Amazon" [level=3] [ref=e173]
+              - paragraph [ref=e174]: up to 7%
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - img [ref=e177]
+                - text: "4.7"
+              - generic [ref=e179]: "купонов: 2"
+          - 'link "A AliExpress up to 5% 4.6 купонов: 4" [ref=e180] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/aliexpress
+            - generic [ref=e182]: A
+            - generic [ref=e183]:
+              - heading "AliExpress" [level=3] [ref=e184]
+              - paragraph [ref=e185]: up to 5%
+            - generic [ref=e186]:
+              - generic [ref=e187]:
+                - img [ref=e188]
+                - text: "4.6"
+              - generic [ref=e190]: "купонов: 4"
+          - 'link "N Nike up to 6% 4.8 купонов: 1" [ref=e191] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/nike
+            - generic [ref=e193]: "N"
+            - generic [ref=e194]:
+              - heading "Nike" [level=3] [ref=e195]
+              - paragraph [ref=e196]: up to 6%
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - img [ref=e199]
+                - text: "4.8"
+              - generic [ref=e201]: "купонов: 1"
+          - 'link "E eBay up to 4% 4.5 купонов: 1" [ref=e202] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/ebay
+            - generic [ref=e204]: E
+            - generic [ref=e205]:
+              - heading "eBay" [level=3] [ref=e206]
+              - paragraph [ref=e207]: up to 4%
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - text: "4.5"
+              - generic [ref=e212]: "купонов: 1"
+          - 'link "I iHerb up to 3% 4.7 купонов: 1" [ref=e213] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/iherb
+            - generic [ref=e215]: I
+            - generic [ref=e216]:
+              - heading "iHerb" [level=3] [ref=e217]
+              - paragraph [ref=e218]: up to 3%
+            - generic [ref=e219]:
+              - generic [ref=e220]:
+                - img [ref=e221]
+                - text: "4.7"
+              - generic [ref=e223]: "купонов: 1"
+          - 'link "B Booking.com up to 4% 4.6 купонов: 1" [ref=e224] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/booking
+            - generic [ref=e226]: B
+            - generic [ref=e227]:
+              - heading "Booking.com" [level=3] [ref=e228]
+              - paragraph [ref=e229]: up to 4%
+            - generic [ref=e230]:
+              - generic [ref=e231]:
+                - img [ref=e232]
+                - text: "4.6"
+              - generic [ref=e234]: "купонов: 1"
+          - 'link "S SHEIN up to 8% 4.3 купонов: 1" [ref=e235] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/store/shein
+            - generic [ref=e237]: S
+            - generic [ref=e238]:
+              - heading "SHEIN" [level=3] [ref=e239]
+              - paragraph [ref=e240]: up to 8%
+            - generic [ref=e241]:
+              - generic [ref=e242]:
+                - img [ref=e243]
+                - text: "4.3"
+              - generic [ref=e245]: "купонов: 1"
+      - generic [ref=e246]:
+        - generic [ref=e248]:
+          - paragraph [ref=e249]: Лучшие купоны
+          - heading "Лучшие купоны сегодня" [level=2] [ref=e250]
+        - generic [ref=e251]:
+          - article [ref=e252]:
+            - generic [ref=e254]: A
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: АКЦИЯ
+                - link "AliExpress" [ref=e258] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/aliexpress
+              - heading "Скидка до 70% на избранные товары" [level=3] [ref=e259]
+              - paragraph [ref=e260]: Распродажа на тысячи товаров. Скидки до 70% на электронику, одежду, товары для дома и не только.
+              - generic [ref=e261]:
+                - generic [ref=e262]:
+                  - img [ref=e263]
+                  - text: Проверено
+                - generic [ref=e266]:
+                  - img [ref=e267]
+                  - text: Истекает через 18 дней
+                - generic [ref=e270]: Использовали 3421 раз
+            - button "Получить скидку" [ref=e272]:
+              - text: Получить скидку
+              - img [ref=e273]
+          - article [ref=e277]:
+            - generic [ref=e279]: S
+            - generic [ref=e280]:
+              - generic [ref=e281]:
+                - generic [ref=e282]: ПРОМОКОД
+                - link "SHEIN" [ref=e283] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/shein
+              - heading "15% на всё" [level=3] [ref=e284]
+              - paragraph [ref=e285]: Скидка 15% на весь ассортимент по этому коду.
+              - generic [ref=e286]:
+                - generic [ref=e287]:
+                  - img [ref=e288]
+                  - text: Проверено
+                - generic [ref=e291]:
+                  - img [ref=e292]
+                  - text: Истекает через 5 дней
+                - generic [ref=e295]: Использовали 1500 раз
+            - generic [ref=e296]:
+              - button "SHEIN15" [ref=e297]:
+                - generic [ref=e298]: SHEIN15
+                - img [ref=e299]
+              - button "Показать код" [ref=e302]:
+                - text: Показать код
+                - img [ref=e303]
+          - article [ref=e307]:
+            - generic [ref=e309]: "N"
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: ПРОМОКОД
+                - link "Nike" [ref=e313] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/nike
+              - heading "Дополнительно 20% на избранные модели" [level=3] [ref=e314]
+              - paragraph [ref=e315]: Используйте код при оформлении заказа и получите дополнительные 20% на избранные модели.
+              - generic [ref=e316]:
+                - generic [ref=e317]:
+                  - img [ref=e318]
+                  - text: Проверено
+                - generic [ref=e321]:
+                  - img [ref=e322]
+                  - text: Истекает через 8 дней
+                - generic [ref=e325]: Использовали 1254 раз
+            - generic [ref=e326]:
+              - button "SAVE20" [ref=e327]:
+                - generic [ref=e328]: SAVE20
+                - img [ref=e329]
+              - button "Показать код" [ref=e332]:
+                - text: Показать код
+                - img [ref=e333]
+          - article [ref=e337]:
+            - generic [ref=e339]: A
+            - generic [ref=e340]:
+              - generic [ref=e341]:
+                - generic [ref=e342]: ПРОМОКОД
+                - link "AliExpress" [ref=e343] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/aliexpress
+              - heading "Скидка 500₽ от 3000₽" [level=3] [ref=e344]
+              - paragraph [ref=e345]: Скопируйте промокод и получите скидку 500 рублей при заказе от 3000 рублей на AliExpress.
+              - generic [ref=e346]:
+                - generic [ref=e347]:
+                  - img [ref=e348]
+                  - text: Проверено
+                - generic [ref=e351]:
+                  - img [ref=e352]
+                  - text: Истекает через 1 дней
+                - generic [ref=e355]: Использовали 1254 раз
+            - generic [ref=e356]:
+              - button "ALIX500" [ref=e357]:
+                - generic [ref=e358]: ALIX500
+                - img [ref=e359]
+              - button "Показать код" [ref=e362]:
+                - text: Показать код
+                - img [ref=e363]
+          - article [ref=e367]:
+            - generic [ref=e369]: A
+            - generic [ref=e370]:
+              - generic [ref=e371]:
+                - generic [ref=e372]: ПРОМОКОД
+                - link "Amazon" [ref=e373] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/amazon
+              - heading "Бесплатная доставка от $25" [level=3] [ref=e374]
+              - paragraph [ref=e375]: Бесплатная доставка для заказов от $25.
+              - generic [ref=e376]:
+                - generic [ref=e377]:
+                  - img [ref=e378]
+                  - text: Проверено
+                - generic [ref=e381]: Использовали 842 раз
+            - generic [ref=e382]:
+              - button "FREESHIP" [ref=e383]:
+                - generic [ref=e384]: FREESHIP
+                - img [ref=e385]
+              - button "Показать код" [ref=e388]:
+                - text: Показать код
+                - img [ref=e389]
+          - article [ref=e393]:
+            - generic [ref=e395]: B
+            - generic [ref=e396]:
+              - generic [ref=e397]:
+                - generic [ref=e398]: СКИДКА
+                - link "Booking.com" [ref=e399] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/booking
+              - heading "Скидки до 40% на проживание" [level=3] [ref=e400]
+              - paragraph [ref=e401]: Экономьте на отелях с ограниченными по времени предложениями.
+              - generic [ref=e402]:
+                - generic [ref=e403]:
+                  - img [ref=e404]
+                  - text: Проверено
+                - generic [ref=e407]: Использовали 760 раз
+            - button "Получить скидку" [ref=e409]:
+              - text: Получить скидку
+              - img [ref=e410]
+          - article [ref=e414]:
+            - generic [ref=e416]: A
+            - generic [ref=e417]:
+              - generic [ref=e418]:
+                - generic [ref=e419]: СКИДКА
+                - link "Amazon" [ref=e420] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/amazon
+              - heading "Скидки до 50% на электронику" [level=3] [ref=e421]
+              - paragraph [ref=e422]: Ежедневные скидки на электронику.
+              - generic [ref=e423]:
+                - generic [ref=e424]:
+                  - img [ref=e425]
+                  - text: Проверено
+                - generic [ref=e428]: Использовали 1290 раз
+            - button "Получить скидку" [ref=e430]:
+              - text: Получить скидку
+              - img [ref=e431]
+          - article [ref=e435]:
+            - generic [ref=e437]: A
+            - generic [ref=e438]:
+              - generic [ref=e439]:
+                - generic [ref=e440]: ПРОМОКОД
+                - link "AliExpress" [ref=e441] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/aliexpress
+              - heading "Скидка 800₽ от 5000₽" [level=3] [ref=e442]
+              - paragraph [ref=e443]: Примените промокод и получите скидку 800 рублей при заказе от 5000 рублей.
+              - generic [ref=e444]:
+                - generic [ref=e445]:
+                  - img [ref=e446]
+                  - text: Проверено
+                - generic [ref=e449]:
+                  - img [ref=e450]
+                  - text: Истекает через 3 дней
+                - generic [ref=e453]: Использовали 982 раз
+            - generic [ref=e454]:
+              - button "ALIX800" [ref=e455]:
+                - generic [ref=e456]: ALIX800
+                - img [ref=e457]
+              - button "Показать код" [ref=e460]:
+                - text: Показать код
+                - img [ref=e461]
+      - generic [ref=e465]:
+        - heading "Популярные категории" [level=2] [ref=e466]
+        - generic [ref=e467]:
+          - 'link "Электроника магазинов: 3" [ref=e468] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/electronics
+            - img [ref=e470]
+            - generic [ref=e472]: Электроника
+            - generic [ref=e473]: "магазинов: 3"
+          - 'link "Одежда и обувь магазинов: 4" [ref=e474] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/fashion
+            - img [ref=e476]
+            - generic [ref=e478]: Одежда и обувь
+            - generic [ref=e479]: "магазинов: 4"
+          - 'link "Дом и сад магазинов: 3" [ref=e480] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/home-garden
+            - img [ref=e482]
+            - generic [ref=e485]: Дом и сад
+            - generic [ref=e486]: "магазинов: 3"
+          - 'link "Красота и здоровье магазинов: 3" [ref=e487] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/beauty
+            - img [ref=e489]
+            - generic [ref=e492]: Красота и здоровье
+            - generic [ref=e493]: "магазинов: 3"
+          - 'link "Путешествия магазинов: 1" [ref=e494] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/travel
+            - img [ref=e496]
+            - generic [ref=e498]: Путешествия
+            - generic [ref=e499]: "магазинов: 1"
+          - 'link "Автотовары магазинов: 1" [ref=e500] [cursor=pointer]':
+            - /url: http://127.0.0.1:8804/ru/category/auto
+            - img [ref=e502]
+            - generic [ref=e506]: Автотовары
+            - generic [ref=e507]: "магазинов: 1"
+      - generic [ref=e510]:
+        - generic [ref=e511]:
+          - img [ref=e513]
+          - generic [ref=e516]:
+            - heading "Не пропустите выгодные предложения" [level=2] [ref=e517]
+            - paragraph [ref=e518]: Подпишитесь и получайте лучшие скидки и промокоды прямо на почту.
+        - generic [ref=e519]:
+          - generic [ref=e520]:
+            - textbox "Введите ваш email" [ref=e521]
+            - button "Подписаться" [ref=e522]
+          - paragraph [ref=e523]: Без спама. Отписаться можно в любой момент.
+  - contentinfo [ref=e524]:
+    - generic [ref=e525]:
+      - generic [ref=e526]:
+        - img "CouponX Deals" [ref=e527]
+        - paragraph [ref=e528]: Лучшие купоны и скидки магазинов со всего мира. Экономьте больше с CouponX Deals.
+        - generic [ref=e529]:
+          - link "X" [ref=e530] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e531]
+          - link "Telegram" [ref=e534] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e535]
+          - link "Chat" [ref=e538] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e539]
+          - link "RSS" [ref=e541] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e542]
+      - generic [ref=e546]:
+        - heading "Компания" [level=3] [ref=e547]
+        - list [ref=e548]:
+          - listitem [ref=e549]:
+            - link "О нас" [ref=e550] [cursor=pointer]:
+              - /url: /ru/about
+          - listitem [ref=e551]:
+            - link "Контакты" [ref=e552] [cursor=pointer]:
+              - /url: /ru/contact
+          - listitem [ref=e553]:
+            - link "Политика конфиденциальности" [ref=e554] [cursor=pointer]:
+              - /url: /ru/privacy
+          - listitem [ref=e555]:
+            - link "Правила использования" [ref=e556] [cursor=pointer]:
+              - /url: /ru/terms
+      - generic [ref=e557]:
+        - heading "Помощь" [level=3] [ref=e558]
+        - list [ref=e559]:
+          - listitem [ref=e560]:
+            - link "Как это работает" [ref=e561] [cursor=pointer]:
+              - /url: /ru/how-it-works
+          - listitem [ref=e562]:
+            - link "Вопросы и ответы" [ref=e563] [cursor=pointer]:
+              - /url: /ru/faq
+          - listitem [ref=e564]:
+            - link "Поиск" [ref=e565] [cursor=pointer]:
+              - /url: /ru/search
+          - listitem [ref=e566]:
+            - link "Карта сайта" [ref=e567] [cursor=pointer]:
+              - /url: /ru/sitemap
+      - generic [ref=e568]:
+        - heading "Категории" [level=3] [ref=e569]
+        - list [ref=e570]:
+          - listitem [ref=e571]:
+            - link "Электроника" [ref=e572] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/electronics
+          - listitem [ref=e573]:
+            - link "Одежда и обувь" [ref=e574] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/fashion
+          - listitem [ref=e575]:
+            - link "Дом и сад" [ref=e576] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/home-garden
+          - listitem [ref=e577]:
+            - link "Красота и здоровье" [ref=e578] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/beauty
+          - listitem [ref=e579]:
+            - link "Путешествия" [ref=e580] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/travel
+    - generic [ref=e581]: © 2026 CouponX Deals. Все права защищены.

@@ -1,0 +1,218 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "CouponX Deals" [ref=e6] [cursor=pointer]:
+        - /url: /ru
+        - generic [ref=e7]: CouponX
+        - generic [ref=e8]: Deals
+      - navigation [ref=e9]:
+        - link "Магазины" [ref=e10] [cursor=pointer]:
+          - /url: /ru/stores
+        - link "Категории" [ref=e11] [cursor=pointer]:
+          - /url: /ru/categories
+        - link "Блог" [ref=e12] [cursor=pointer]:
+          - /url: /ru/blog
+      - search [ref=e14]:
+        - img
+        - searchbox "Поиск магазинов и промокодов..." [ref=e15]
+      - button "ru" [ref=e18]:
+        - img [ref=e19]
+        - generic [ref=e22]: ru
+        - img [ref=e23]
+  - main [ref=e25]:
+    - generic [ref=e27]:
+      - navigation "Breadcrumb" [ref=e28]:
+        - link "Главная" [ref=e29] [cursor=pointer]:
+          - /url: /ru
+        - img [ref=e30]
+        - link "Магазины" [ref=e32] [cursor=pointer]:
+          - /url: /ru/stores
+        - img [ref=e33]
+        - generic [ref=e35]: Nike
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e40]: "N"
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - heading "Nike" [level=1] [ref=e43]
+              - generic [ref=e44]:
+                - img [ref=e45]
+                - text: "4.8"
+              - generic [ref=e47]: Отлично
+            - paragraph [ref=e48]: Официальный магазин обуви, одежды и спортивной экипировки.
+            - generic [ref=e49]:
+              - generic [ref=e50]:
+                - img [ref=e51]
+                - text: Кэшбэк с покупок
+              - generic [ref=e54]:
+                - img [ref=e55]
+                - text: Проверенные промокоды
+              - generic [ref=e58]:
+                - img [ref=e59]
+                - text: Без скрытых условий
+        - generic [ref=e62]:
+          - link "Перейти в магазин" [ref=e63] [cursor=pointer]:
+            - /url: http://127.0.0.1:8804/go/nike
+            - text: Перейти в магазин
+            - img [ref=e64]
+          - paragraph [ref=e66]: up to 6%
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - button "Все купоны 1" [ref=e70]:
+              - text: Все купоны
+              - generic [ref=e71]: "1"
+            - button "Промокоды 1" [ref=e72]:
+              - text: Промокоды
+              - generic [ref=e73]: "1"
+          - heading "Лучшие промокоды Nike" [level=2] [ref=e74]
+          - paragraph [ref=e75]: Выберите лучший промокод и сэкономьте на покупках.
+          - article [ref=e77]:
+            - img [ref=e79]
+            - generic [ref=e82]:
+              - generic [ref=e84]: ПРОМОКОД
+              - heading "Дополнительно 20% на избранные модели" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Используйте код при оформлении заказа и получите дополнительные 20% на избранные модели.
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - img [ref=e89]
+                  - text: Проверено
+                - generic [ref=e92]:
+                  - img [ref=e93]
+                  - text: Истекает через 8 дней
+                - generic [ref=e96]: Использовали 1254 раз
+            - generic [ref=e97]:
+              - button "SAVE20" [ref=e98]:
+                - generic [ref=e99]: SAVE20
+                - img [ref=e100]
+              - button "Показать код" [ref=e103]:
+                - text: Показать код
+                - img [ref=e104]
+        - complementary [ref=e108]:
+          - generic [ref=e109]:
+            - heading "О магазине" [level=3] [ref=e110]
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - term [ref=e113]: Тип кэшбэка
+                - definition [ref=e114]: percent
+              - generic [ref=e115]:
+                - term [ref=e116]: Средний кэшбэк
+                - definition [ref=e117]: up to 6%
+              - generic [ref=e118]:
+                - term [ref=e119]: Поддерживаемые страны
+                - definition [ref=e120]: US, RU
+            - link "Перейти в магазин" [ref=e121] [cursor=pointer]:
+              - /url: http://127.0.0.1:8804/go/nike
+              - text: Перейти в магазин
+              - img [ref=e122]
+          - generic [ref=e124]:
+            - heading "Категории магазина" [level=3] [ref=e125]
+            - list [ref=e126]:
+              - listitem [ref=e127]:
+                - link "Одежда и обувь" [ref=e128] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/category/fashion
+                  - generic [ref=e129]: Одежда и обувь
+          - generic [ref=e130]:
+            - heading "Похожие магазины" [level=3] [ref=e131]
+            - list [ref=e132]:
+              - listitem [ref=e133]:
+                - link "A Amazon up to 7%" [ref=e134] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/amazon
+                  - generic [ref=e136]: A
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: Amazon
+                    - text: up to 7%
+              - listitem [ref=e139]:
+                - link "A AliExpress up to 5%" [ref=e140] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/aliexpress
+                  - generic [ref=e142]: A
+                  - generic [ref=e143]:
+                    - generic [ref=e144]: AliExpress
+                    - text: up to 5%
+              - listitem [ref=e145]:
+                - link "S SHEIN up to 8%" [ref=e146] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8804/ru/store/shein
+                  - generic [ref=e148]: S
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: SHEIN
+                    - text: up to 8%
+      - generic [ref=e153]:
+        - generic [ref=e154]:
+          - img [ref=e156]
+          - generic [ref=e159]:
+            - heading "Не пропустите выгодные предложения" [level=2] [ref=e160]
+            - paragraph [ref=e161]: Подпишитесь и получайте лучшие скидки и промокоды прямо на почту.
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - textbox "Введите ваш email" [ref=e164]
+            - button "Подписаться" [ref=e165]
+          - paragraph [ref=e166]: Без спама. Отписаться можно в любой момент.
+  - contentinfo [ref=e167]:
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]: CouponX
+          - generic [ref=e172]: Deals
+        - paragraph [ref=e173]: Лучшие купоны и скидки магазинов со всего мира. Экономьте больше с CouponX Deals.
+        - generic [ref=e174]:
+          - link "X" [ref=e175] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e176]
+          - link "Telegram" [ref=e179] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e180]
+          - link "Chat" [ref=e183] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e184]
+          - link "RSS" [ref=e186] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e187]
+      - generic [ref=e191]:
+        - heading "Компания" [level=3] [ref=e192]
+        - list [ref=e193]:
+          - listitem [ref=e194]:
+            - link "О нас" [ref=e195] [cursor=pointer]:
+              - /url: /ru/about
+          - listitem [ref=e196]:
+            - link "Контакты" [ref=e197] [cursor=pointer]:
+              - /url: /ru/contact
+          - listitem [ref=e198]:
+            - link "Политика конфиденциальности" [ref=e199] [cursor=pointer]:
+              - /url: /ru/privacy
+          - listitem [ref=e200]:
+            - link "Правила использования" [ref=e201] [cursor=pointer]:
+              - /url: /ru/terms
+      - generic [ref=e202]:
+        - heading "Помощь" [level=3] [ref=e203]
+        - list [ref=e204]:
+          - listitem [ref=e205]:
+            - link "Как это работает" [ref=e206] [cursor=pointer]:
+              - /url: /ru/how-it-works
+          - listitem [ref=e207]:
+            - link "Вопросы и ответы" [ref=e208] [cursor=pointer]:
+              - /url: /ru/faq
+          - listitem [ref=e209]:
+            - link "Поиск" [ref=e210] [cursor=pointer]:
+              - /url: /ru/search
+          - listitem [ref=e211]:
+            - link "Карта сайта" [ref=e212] [cursor=pointer]:
+              - /url: /ru/sitemap
+      - generic [ref=e213]:
+        - heading "Категории" [level=3] [ref=e214]
+        - list [ref=e215]:
+          - listitem [ref=e216]:
+            - link "Электроника" [ref=e217] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/electronics
+          - listitem [ref=e218]:
+            - link "Одежда и обувь" [ref=e219] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/fashion
+          - listitem [ref=e220]:
+            - link "Дом и сад" [ref=e221] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/home-garden
+          - listitem [ref=e222]:
+            - link "Красота и здоровье" [ref=e223] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/beauty
+          - listitem [ref=e224]:
+            - link "Путешествия" [ref=e225] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/ru/category/travel
+    - generic [ref=e226]: © 2026 CouponX Deals. Все права защищены.

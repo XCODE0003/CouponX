@@ -1,0 +1,128 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "CouponX Deals" [ref=e6] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=e7]: CouponX
+        - generic [ref=e8]: Deals
+      - navigation [ref=e9]:
+        - link "Stores" [ref=e10] [cursor=pointer]:
+          - /url: /en/stores
+        - link "Categories" [ref=e11] [cursor=pointer]:
+          - /url: /en/categories
+        - link "Blog" [ref=e12] [cursor=pointer]:
+          - /url: /en/blog
+      - search [ref=e14]:
+        - img
+        - searchbox "Search stores or coupons..." [ref=e15]
+      - button "en" [ref=e18]:
+        - img [ref=e19]
+        - generic [ref=e22]: en
+        - img [ref=e23]
+  - main [ref=e25]:
+    - generic [ref=e27]:
+      - navigation "Breadcrumb" [ref=e28]:
+        - link "Home" [ref=e29] [cursor=pointer]:
+          - /url: /en
+        - img [ref=e30]
+        - generic [ref=e32]: How It Works
+      - generic [ref=e33]:
+        - heading "How It Works" [level=1] [ref=e34]
+        - paragraph [ref=e35]: Save in three simple steps.
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: "1"
+          - heading "Find a store or coupon" [level=2] [ref=e40]
+          - paragraph [ref=e41]: Browse top stores, categories, or search for the brand you love.
+        - generic [ref=e43]:
+          - generic [ref=e44]: "2"
+          - heading "Reveal the code" [level=2] [ref=e45]
+          - paragraph [ref=e46]: Click "Show code" — we copy it and open the store in a new tab.
+        - generic [ref=e48]:
+          - generic [ref=e49]: "3"
+          - heading "Apply at checkout" [level=2] [ref=e50]
+          - paragraph [ref=e51]: Paste the code at the store checkout and enjoy your discount.
+      - link "Explore Deals" [ref=e53] [cursor=pointer]:
+        - /url: /en/stores
+        - text: Explore Deals
+        - img [ref=e54]
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - img [ref=e61]
+          - generic [ref=e64]:
+            - heading "Never Miss a Deal" [level=2] [ref=e65]
+            - paragraph [ref=e66]: Subscribe to get the best deals and promo codes delivered straight to your inbox.
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - textbox "Enter your email" [ref=e69]
+            - button "Subscribe" [ref=e70]
+          - paragraph [ref=e71]: No spam. Unsubscribe anytime.
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: CouponX
+          - generic [ref=e77]: Deals
+        - paragraph [ref=e78]: Find the best coupons and deals from top stores worldwide. Save more with CouponX Deals.
+        - generic [ref=e79]:
+          - link "X" [ref=e80] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e81]
+          - link "Telegram" [ref=e84] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e85]
+          - link "Chat" [ref=e88] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e89]
+          - link "RSS" [ref=e91] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e92]
+      - generic [ref=e96]:
+        - heading "Company" [level=3] [ref=e97]
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "About Us" [ref=e100] [cursor=pointer]:
+              - /url: /en/about
+          - listitem [ref=e101]:
+            - link "Contact" [ref=e102] [cursor=pointer]:
+              - /url: /en/contact
+          - listitem [ref=e103]:
+            - link "Privacy Policy" [ref=e104] [cursor=pointer]:
+              - /url: /en/privacy
+          - listitem [ref=e105]:
+            - link "Terms of Service" [ref=e106] [cursor=pointer]:
+              - /url: /en/terms
+      - generic [ref=e107]:
+        - heading "Help" [level=3] [ref=e108]
+        - list [ref=e109]:
+          - listitem [ref=e110]:
+            - link "How It Works" [ref=e111] [cursor=pointer]:
+              - /url: /en/how-it-works
+          - listitem [ref=e112]:
+            - link "FAQ" [ref=e113] [cursor=pointer]:
+              - /url: /en/faq
+          - listitem [ref=e114]:
+            - link "Search" [ref=e115] [cursor=pointer]:
+              - /url: /en/search
+          - listitem [ref=e116]:
+            - link "Sitemap" [ref=e117] [cursor=pointer]:
+              - /url: /en/sitemap
+      - generic [ref=e118]:
+        - heading "Categories" [level=3] [ref=e119]
+        - list [ref=e120]:
+          - listitem [ref=e121]:
+            - link "Electronics" [ref=e122] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/en/category/electronics
+          - listitem [ref=e123]:
+            - link "Fashion" [ref=e124] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/en/category/fashion
+          - listitem [ref=e125]:
+            - link "Home & Garden" [ref=e126] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/en/category/home-garden
+          - listitem [ref=e127]:
+            - link "Beauty & Health" [ref=e128] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/en/category/beauty
+          - listitem [ref=e129]:
+            - link "Travel" [ref=e130] [cursor=pointer]:
+              - /url: http://127.0.0.1:8001/en/category/travel
+    - generic [ref=e131]: © 2026 CouponX Deals. All rights reserved.

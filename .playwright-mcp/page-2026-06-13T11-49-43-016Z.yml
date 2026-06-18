@@ -1,0 +1,510 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "CouponX Deals" [ref=e6] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=e7]: CouponX
+        - generic [ref=e8]: Deals
+      - navigation [ref=e9]:
+        - link "Stores" [ref=e10] [cursor=pointer]:
+          - /url: /en/stores
+        - link "Categories" [ref=e11] [cursor=pointer]:
+          - /url: /en/categories
+        - link "Blog" [ref=e12] [cursor=pointer]:
+          - /url: /en/blog
+      - search [ref=e14]:
+        - img
+        - searchbox "Search stores or coupons..." [ref=e15]
+      - button "en" [ref=e18]:
+        - img [ref=e19]
+        - generic [ref=e22]: en
+        - img [ref=e23]
+  - main [ref=e25]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - text: Save more. Every time.
+        - heading "The Best Promo Codes & Deals in One Place" [level=1] [ref=e33]
+        - paragraph [ref=e34]: CouponX Deals helps you find verified promo codes, exclusive discounts, and the best deals at your favorite stores.
+        - generic [ref=e35]:
+          - link "Explore Deals" [ref=e36] [cursor=pointer]:
+            - /url: /en/stores
+            - text: Explore Deals
+            - img [ref=e37]
+          - link "How It Works" [ref=e39] [cursor=pointer]:
+            - /url: /en/categories
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - img [ref=e42]
+            - text: Verified Coupons
+          - generic [ref=e45]:
+            - img [ref=e46]
+            - text: No Registration
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - text: Always Up to Date
+      - generic [ref=e53]:
+        - paragraph [ref=e54]: Browse Top Stores
+        - generic [ref=e55]:
+          - link "A Amazon up to 7% 4.7 2 coupons" [ref=e56] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/amazon
+            - generic [ref=e58]: A
+            - generic [ref=e59]:
+              - heading "Amazon" [level=3] [ref=e60]
+              - paragraph [ref=e61]: up to 7%
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - img [ref=e64]
+                - text: "4.7"
+              - generic [ref=e66]: 2 coupons
+          - link "A AliExpress up to 5% 4.6 5 coupons" [ref=e67] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/aliexpress
+            - generic [ref=e69]: A
+            - generic [ref=e70]:
+              - heading "AliExpress" [level=3] [ref=e71]
+              - paragraph [ref=e72]: up to 5%
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - img [ref=e75]
+                - text: "4.6"
+              - generic [ref=e77]: 5 coupons
+          - link "N Nike up to 9% 4.8 1 coupons" [ref=e78] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/nike
+            - generic [ref=e80]: "N"
+            - generic [ref=e81]:
+              - heading "Nike" [level=3] [ref=e82]
+              - paragraph [ref=e83]: up to 9%
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - text: "4.8"
+              - generic [ref=e88]: 1 coupons
+          - link "E eBay up to 4% 4.5 1 coupons" [ref=e89] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/ebay
+            - generic [ref=e91]: E
+            - generic [ref=e92]:
+              - heading "eBay" [level=3] [ref=e93]
+              - paragraph [ref=e94]: up to 4%
+            - generic [ref=e95]:
+              - generic [ref=e96]:
+                - img [ref=e97]
+                - text: "4.5"
+              - generic [ref=e99]: 1 coupons
+          - link "I iHerb up to 3% 4.7 1 coupons" [ref=e100] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/iherb
+            - generic [ref=e102]: I
+            - generic [ref=e103]:
+              - heading "iHerb" [level=3] [ref=e104]
+              - paragraph [ref=e105]: up to 3%
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - img [ref=e108]
+                - text: "4.7"
+              - generic [ref=e110]: 1 coupons
+          - link "B Booking.com up to 4% 4.6 1 coupons" [ref=e111] [cursor=pointer]:
+            - /url: http://127.0.0.1:8799/en/store/booking
+            - generic [ref=e113]: B
+            - generic [ref=e114]:
+              - heading "Booking.com" [level=3] [ref=e115]
+              - paragraph [ref=e116]: up to 4%
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - img [ref=e119]
+                - text: "4.6"
+              - generic [ref=e121]: 1 coupons
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - paragraph [ref=e125]: Why choose CouponX
+        - heading "Shopping Smarter with CouponX" [level=2] [ref=e126]
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - img [ref=e130]
+          - heading "Verified Promo Codes" [level=3] [ref=e133]
+          - paragraph [ref=e134]: We manually test and verify every code, so you can shop with confidence.
+        - generic [ref=e135]:
+          - img [ref=e137]
+          - heading "Exclusive Deals" [level=3] [ref=e139]
+          - paragraph [ref=e140]: Access exclusive offers and discounts you won't find anywhere else.
+        - generic [ref=e141]:
+          - img [ref=e143]
+          - heading "Global Coverage" [level=3] [ref=e146]
+          - paragraph [ref=e147]: Find deals from top stores around the world, in your language and region.
+        - generic [ref=e148]:
+          - img [ref=e150]
+          - heading "Safe & Secure" [level=3] [ref=e152]
+          - paragraph [ref=e153]: Your safety is our priority. We never share your data or redirect you to unsafe websites.
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - paragraph [ref=e157]: Popular Stores
+          - heading "Browse Top Stores" [level=2] [ref=e158]
+        - link "View all" [ref=e159] [cursor=pointer]:
+          - /url: /en/stores
+      - generic [ref=e160]:
+        - link "A Amazon up to 7% 4.7 2 coupons" [ref=e161] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/amazon
+          - generic [ref=e163]: A
+          - generic [ref=e164]:
+            - heading "Amazon" [level=3] [ref=e165]
+            - paragraph [ref=e166]: up to 7%
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - img [ref=e169]
+              - text: "4.7"
+            - generic [ref=e171]: 2 coupons
+        - link "A AliExpress up to 5% 4.6 5 coupons" [ref=e172] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/aliexpress
+          - generic [ref=e174]: A
+          - generic [ref=e175]:
+            - heading "AliExpress" [level=3] [ref=e176]
+            - paragraph [ref=e177]: up to 5%
+          - generic [ref=e178]:
+            - generic [ref=e179]:
+              - img [ref=e180]
+              - text: "4.6"
+            - generic [ref=e182]: 5 coupons
+        - link "N Nike up to 9% 4.8 1 coupons" [ref=e183] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/nike
+          - generic [ref=e185]: "N"
+          - generic [ref=e186]:
+            - heading "Nike" [level=3] [ref=e187]
+            - paragraph [ref=e188]: up to 9%
+          - generic [ref=e189]:
+            - generic [ref=e190]:
+              - img [ref=e191]
+              - text: "4.8"
+            - generic [ref=e193]: 1 coupons
+        - link "E eBay up to 4% 4.5 1 coupons" [ref=e194] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/ebay
+          - generic [ref=e196]: E
+          - generic [ref=e197]:
+            - heading "eBay" [level=3] [ref=e198]
+            - paragraph [ref=e199]: up to 4%
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - img [ref=e202]
+              - text: "4.5"
+            - generic [ref=e204]: 1 coupons
+        - link "I iHerb up to 3% 4.7 1 coupons" [ref=e205] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/iherb
+          - generic [ref=e207]: I
+          - generic [ref=e208]:
+            - heading "iHerb" [level=3] [ref=e209]
+            - paragraph [ref=e210]: up to 3%
+          - generic [ref=e211]:
+            - generic [ref=e212]:
+              - img [ref=e213]
+              - text: "4.7"
+            - generic [ref=e215]: 1 coupons
+        - link "B Booking.com up to 4% 4.6 1 coupons" [ref=e216] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/booking
+          - generic [ref=e218]: B
+          - generic [ref=e219]:
+            - heading "Booking.com" [level=3] [ref=e220]
+            - paragraph [ref=e221]: up to 4%
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - img [ref=e224]
+              - text: "4.6"
+            - generic [ref=e226]: 1 coupons
+        - link "S SHEIN up to 8% 4.3 1 coupons" [ref=e227] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/store/shein
+          - generic [ref=e229]: S
+          - generic [ref=e230]:
+            - heading "SHEIN" [level=3] [ref=e231]
+            - paragraph [ref=e232]: up to 8%
+          - generic [ref=e233]:
+            - generic [ref=e234]:
+              - img [ref=e235]
+              - text: "4.3"
+            - generic [ref=e237]: 1 coupons
+    - generic [ref=e238]:
+      - generic [ref=e240]:
+        - paragraph [ref=e241]: Top Coupons
+        - heading "Today's Best Coupons" [level=2] [ref=e242]
+      - generic [ref=e243]:
+        - article [ref=e244]:
+          - generic [ref=e246]: A
+          - generic [ref=e247]:
+            - generic [ref=e248]:
+              - generic [ref=e249]: SALE
+              - link "AliExpress" [ref=e250] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/aliexpress
+            - heading "Up to 70% Off Selected Items" [level=3] [ref=e251]
+            - paragraph [ref=e252]: Sale on thousands of products. Up to 70% off electronics, clothing, home goods and more.
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - img [ref=e255]
+                - text: Verified
+              - generic [ref=e258]:
+                - img [ref=e259]
+                - text: Expires in 19 days
+              - generic [ref=e262]: Used 3421 times
+          - button "Get Deal" [ref=e264]:
+            - text: Get Deal
+            - img [ref=e265]
+        - article [ref=e269]:
+          - generic [ref=e271]: S
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]: CODE
+              - link "SHEIN" [ref=e275] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/shein
+            - heading "15% Off Everything" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Sitewide 15% off with this code.
+            - generic [ref=e278]:
+              - generic [ref=e279]:
+                - img [ref=e280]
+                - text: Verified
+              - generic [ref=e283]:
+                - img [ref=e284]
+                - text: Expires in 6 days
+              - generic [ref=e287]: Used 1500 times
+          - generic [ref=e288]:
+            - button "SHEIN15" [ref=e289]:
+              - generic [ref=e290]: SHEIN15
+              - img [ref=e291]
+            - button "Show code" [ref=e294]:
+              - text: Show code
+              - img [ref=e295]
+        - article [ref=e299]:
+          - generic [ref=e301]: "N"
+          - generic [ref=e302]:
+            - generic [ref=e303]:
+              - generic [ref=e304]: CODE
+              - link "Nike" [ref=e305] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/nike
+            - heading "Extra 20% Off Select Styles" [level=3] [ref=e306]
+            - paragraph [ref=e307]: Use this code at checkout to get extra 20% off on select styles.
+            - generic [ref=e308]:
+              - generic [ref=e309]:
+                - img [ref=e310]
+                - text: Verified
+              - generic [ref=e313]:
+                - img [ref=e314]
+                - text: Expires in 9 days
+              - generic [ref=e317]: Used 1254 times
+          - generic [ref=e318]:
+            - button "SAVE20" [ref=e319]:
+              - generic [ref=e320]: SAVE20
+              - img [ref=e321]
+            - button "Show code" [ref=e324]:
+              - text: Show code
+              - img [ref=e325]
+        - article [ref=e329]:
+          - generic [ref=e331]: A
+          - generic [ref=e332]:
+            - generic [ref=e333]:
+              - generic [ref=e334]: CODE
+              - link "AliExpress" [ref=e335] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/aliexpress
+            - heading "500₽ Off Orders Over 3000₽" [level=3] [ref=e336]
+            - paragraph [ref=e337]: Copy the code and get 500 rubles off orders over 3000 rubles.
+            - generic [ref=e338]:
+              - generic [ref=e339]:
+                - img [ref=e340]
+                - text: Verified
+              - generic [ref=e343]:
+                - img [ref=e344]
+                - text: Expires in 2 days
+              - generic [ref=e347]: Used 1254 times
+          - generic [ref=e348]:
+            - button "ALIX500" [ref=e349]:
+              - generic [ref=e350]: ALIX500
+              - img [ref=e351]
+            - button "Show code" [ref=e354]:
+              - text: Show code
+              - img [ref=e355]
+        - article [ref=e359]:
+          - generic [ref=e361]: A
+          - generic [ref=e362]:
+            - generic [ref=e363]:
+              - generic [ref=e364]: CODE
+              - link "Amazon" [ref=e365] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/amazon
+            - heading "Free Shipping on Orders $25+" [level=3] [ref=e366]
+            - paragraph [ref=e367]: Use this code to get free shipping on all orders over $25.
+            - generic [ref=e368]:
+              - generic [ref=e369]:
+                - img [ref=e370]
+                - text: Verified
+              - generic [ref=e373]: Used 842 times
+          - generic [ref=e374]:
+            - button "FREESHIP" [ref=e375]:
+              - generic [ref=e376]: FREESHIP
+              - img [ref=e377]
+            - button "Show code" [ref=e380]:
+              - text: Show code
+              - img [ref=e381]
+        - article [ref=e385]:
+          - generic [ref=e387]: B
+          - generic [ref=e388]:
+            - generic [ref=e389]:
+              - generic [ref=e390]: DEAL
+              - link "Booking.com" [ref=e391] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/booking
+            - heading "Up to 40% Off Stays" [level=3] [ref=e392]
+            - paragraph [ref=e393]: Save on hotels with limited-time deals.
+            - generic [ref=e394]:
+              - generic [ref=e395]:
+                - img [ref=e396]
+                - text: Verified
+              - generic [ref=e399]: Used 760 times
+          - button "Get Deal" [ref=e401]:
+            - text: Get Deal
+            - img [ref=e402]
+        - article [ref=e406]:
+          - generic [ref=e408]: A
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - generic [ref=e411]: DEAL
+              - link "Amazon" [ref=e412] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/amazon
+            - heading "Up to 50% Off Electronics" [level=3] [ref=e413]
+            - paragraph [ref=e414]: Daily deals on top electronics.
+            - generic [ref=e415]:
+              - generic [ref=e416]:
+                - img [ref=e417]
+                - text: Verified
+              - generic [ref=e420]: Used 1290 times
+          - button "Get Deal" [ref=e422]:
+            - text: Get Deal
+            - img [ref=e423]
+        - article [ref=e427]:
+          - generic [ref=e429]: A
+          - generic [ref=e430]:
+            - generic [ref=e431]:
+              - generic [ref=e432]: CODE
+              - link "AliExpress" [ref=e433] [cursor=pointer]:
+                - /url: http://127.0.0.1:8799/en/store/aliexpress
+            - heading "800₽ Off Orders Over 5000₽" [level=3] [ref=e434]
+            - paragraph [ref=e435]: Apply the code and get 800 rubles off orders over 5000 rubles.
+            - generic [ref=e436]:
+              - generic [ref=e437]:
+                - img [ref=e438]
+                - text: Verified
+              - generic [ref=e441]:
+                - img [ref=e442]
+                - text: Expires in 4 days
+              - generic [ref=e445]: Used 982 times
+          - generic [ref=e446]:
+            - button "ALIX800" [ref=e447]:
+              - generic [ref=e448]: ALIX800
+              - img [ref=e449]
+            - button "Show code" [ref=e452]:
+              - text: Show code
+              - img [ref=e453]
+    - generic [ref=e457]:
+      - heading "Popular Categories" [level=2] [ref=e458]
+      - generic [ref=e459]:
+        - link "Electronics 3 stores" [ref=e460] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/electronics
+          - img [ref=e462]
+          - generic [ref=e464]: Electronics
+          - generic [ref=e465]: 3 stores
+        - link "Fashion 4 stores" [ref=e466] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/fashion
+          - img [ref=e468]
+          - generic [ref=e470]: Fashion
+          - generic [ref=e471]: 4 stores
+        - link "Home & Garden 3 stores" [ref=e472] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/home-garden
+          - img [ref=e474]
+          - generic [ref=e477]: Home & Garden
+          - generic [ref=e478]: 3 stores
+        - link "Beauty & Health 3 stores" [ref=e479] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/beauty
+          - img [ref=e481]
+          - generic [ref=e484]: Beauty & Health
+          - generic [ref=e485]: 3 stores
+        - link "Travel 1 stores" [ref=e486] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/travel
+          - img [ref=e488]
+          - generic [ref=e490]: Travel
+          - generic [ref=e491]: 1 stores
+        - link "Automotive 1 stores" [ref=e492] [cursor=pointer]:
+          - /url: http://127.0.0.1:8799/en/category/auto
+          - img [ref=e494]
+          - generic [ref=e498]: Automotive
+          - generic [ref=e499]: 1 stores
+    - generic [ref=e502]:
+      - generic [ref=e503]:
+        - img [ref=e505]
+        - generic [ref=e508]:
+          - heading "Never Miss a Deal" [level=2] [ref=e509]
+          - paragraph [ref=e510]: Subscribe to get the best deals and promo codes delivered straight to your inbox.
+      - generic [ref=e511]:
+        - generic [ref=e512]:
+          - textbox "Enter your email" [ref=e513]
+          - button "Subscribe" [ref=e514]
+        - paragraph [ref=e515]: No spam. Unsubscribe anytime.
+  - contentinfo [ref=e516]:
+    - generic [ref=e517]:
+      - generic [ref=e518]:
+        - generic [ref=e519]:
+          - generic [ref=e520]: CouponX
+          - generic [ref=e521]: Deals
+        - paragraph [ref=e522]: Find the best coupons and deals from top stores worldwide. Save more with CouponX Deals.
+        - generic [ref=e523]:
+          - link "X" [ref=e524] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e525]
+          - link "Telegram" [ref=e528] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e529]
+          - link "Chat" [ref=e532] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e533]
+          - link "RSS" [ref=e535] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e536]
+      - generic [ref=e540]:
+        - heading "Company" [level=3] [ref=e541]
+        - list [ref=e542]:
+          - listitem [ref=e543]:
+            - link "About Us" [ref=e544] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e545]:
+            - link "Contact" [ref=e546] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e547]:
+            - link "Privacy Policy" [ref=e548] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e549]:
+            - link "Terms of Service" [ref=e550] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e551]:
+        - heading "Help" [level=3] [ref=e552]
+        - list [ref=e553]:
+          - listitem [ref=e554]:
+            - link "How It Works" [ref=e555] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e556]:
+            - link "FAQ" [ref=e557] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e558]:
+            - link "Blog" [ref=e559] [cursor=pointer]:
+              - /url: /en/blog
+          - listitem [ref=e560]:
+            - link "Sitemap" [ref=e561] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e562]:
+        - heading "Categories" [level=3] [ref=e563]
+        - list [ref=e564]:
+          - listitem [ref=e565]:
+            - link "Electronics" [ref=e566] [cursor=pointer]:
+              - /url: http://127.0.0.1:8799/en/category/electronics
+          - listitem [ref=e567]:
+            - link "Fashion" [ref=e568] [cursor=pointer]:
+              - /url: http://127.0.0.1:8799/en/category/fashion
+          - listitem [ref=e569]:
+            - link "Home & Garden" [ref=e570] [cursor=pointer]:
+              - /url: http://127.0.0.1:8799/en/category/home-garden
+          - listitem [ref=e571]:
+            - link "Beauty & Health" [ref=e572] [cursor=pointer]:
+              - /url: http://127.0.0.1:8799/en/category/beauty
+          - listitem [ref=e573]:
+            - link "Travel" [ref=e574] [cursor=pointer]:
+              - /url: http://127.0.0.1:8799/en/category/travel
+    - generic [ref=e575]: © 2026 CouponX Deals. All rights reserved.
