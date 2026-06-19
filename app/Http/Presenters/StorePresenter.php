@@ -22,7 +22,6 @@ final class StorePresenter
             'logo' => $store->logo ? asset('storage/'.$store->logo) : null,
             'description' => $store->description,
             'rating' => $store->rating,
-            'cashback_value' => $store->cashback_value,
             'coupons_count' => $store->relationLoaded('coupons')
                 ? $store->coupons->count()
                 : ($store->coupons_count ?? null),
@@ -41,9 +40,6 @@ final class StorePresenter
         return array_merge(self::card($store), [
             'about' => $store->about,
             'rating_count' => $store->rating_count,
-            'cashback_type' => $store->cashback_type,
-            'cashback_payout_terms' => $store->cashback_payout_terms,
-            'cashback_terms' => $store->cashback_terms,
             'countries' => $store->countries,
             'meta_title' => $store->meta_title,
             'meta_description' => $store->meta_description,

@@ -5,7 +5,6 @@ export interface StoreCardData {
     logo: string | null;
     description: string | null;
     rating: number | null;
-    cashback_value: string | null;
     coupons_count: number | null;
     url: string;
     go_url: string;
@@ -14,9 +13,6 @@ export interface StoreCardData {
 export interface StoreFullData extends StoreCardData {
     about: string | null;
     rating_count: number;
-    cashback_type: string | null;
-    cashback_payout_terms: string | null;
-    cashback_terms: string | null;
     countries: string[] | null;
     meta_title: string | null;
     meta_description: string | null;

@@ -22,12 +22,6 @@ const { t } = useI18n();
             >
                 {{ store.name }}
             </h3>
-            <p
-                v-if="store.cashback_value"
-                class="text-xs font-medium text-emerald-600"
-            >
-                {{ store.cashback_value }}
-            </p>
         </div>
         <div class="flex items-center gap-3 text-xs text-gray-400">
             <span v-if="store.rating" class="inline-flex items-center gap-1">

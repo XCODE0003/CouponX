@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Resources\Categories\Schemas;
 
 use App\Filament\Support\Translatable;
+use App\Support\CategoryIcons;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -37,8 +38,12 @@ class CategoryForm
                             ->relationship('parent', 'slug')
                             ->searchable()
                             ->preload(),
-                        TextInput::make('icon')->label('Иконка')->maxLength(60)->placeholder('laptop, shirt, home…')
-                            ->helperText('Название иконки Lucide'),
+                        Select::make('icon')->label('Иконка')
+                            ->options(CategoryIcons::options())
+                            ->searchable()
+                            ->native(false)
+                            ->placeholder('Выберите иконку')
+                            ->helperText('Поиск по названию (EN/RU). Предпросмотр иконки — на витрине сайта.'),
                         TextInput::make('position')->label('Позиция')->numeric()->default(0),
                         Toggle::make('is_featured')->label('Рекомендуемый')->inline(false),
                         Toggle::make('is_active')->label('Активен')->default(true)->inline(false),

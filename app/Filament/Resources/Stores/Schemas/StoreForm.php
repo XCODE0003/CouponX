@@ -67,17 +67,11 @@ class StoreForm
                     Textarea::make("about.$locale")
                         ->label('О магазине / SEO-текст')
                         ->rows(5),
-                    Textarea::make("cashback_terms.$locale")
-                        ->label('Условия кэшбэка')
-                        ->rows(2),
                 ]),
 
-                Section::make('Кэшбэк и рейтинг')
+                Section::make('Рейтинг')
                     ->columns(3)
                     ->schema([
-                        TextInput::make('cashback_value')->label('Размер кэшбэка')->maxLength(60)->placeholder('до 5%'),
-                        TextInput::make('cashback_payout_terms')->label('Срок выплаты')->maxLength(60)->placeholder('30-45 дней'),
-                        TextInput::make('cashback_type')->label('Тип кэшбэка')->maxLength(60)->placeholder('процент'),
                         TextInput::make('rating')->label('Рейтинг')->numeric()->minValue(0)->maxValue(5)->step(0.1),
                         TextInput::make('rating_count')->label('Кол-во оценок')->numeric()->default(0),
                         TextInput::make('position')->label('Позиция')->numeric()->default(0),

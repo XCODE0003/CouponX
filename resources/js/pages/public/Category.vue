@@ -243,14 +243,13 @@ function formatDate(iso: string | null): string {
                                 size="lg"
                             />
                             <p
+                                v-if="store.max_discount"
                                 class="mt-3 text-sm font-semibold text-emerald-600"
                             >
                                 {{
-                                    store.max_discount
-                                        ? t('cat.up_to_off', {
-                                              percent: store.max_discount,
-                                          })
-                                        : store.cashback_value
+                                    t('cat.up_to_off', {
+                                        percent: store.max_discount,
+                                    })
                                 }}
                             </p>
                             <p class="text-xs text-gray-400">

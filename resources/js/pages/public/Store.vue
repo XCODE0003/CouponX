@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { ArrowRight, BadgeCheck, ShieldCheck, Star, Wallet } from '@lucide/vue';
+import { ArrowRight, BadgeCheck, ShieldCheck, Star } from '@lucide/vue';
 import { computed, ref } from 'vue';
 import Breadcrumbs from '@/components/public/Breadcrumbs.vue';
 import CouponCard from '@/components/public/CouponCard.vue';
@@ -104,10 +104,6 @@ const visibleCoupons = computed(() =>
                             class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-500"
                         >
                             <span class="inline-flex items-center gap-1.5"
-                                ><Wallet class="h-4 w-4 text-blue-500" />
-                                {{ t('store.feature_cashback') }}</span
-                            >
-                            <span class="inline-flex items-center gap-1.5"
                                 ><BadgeCheck class="h-4 w-4 text-emerald-500" />
                                 {{ t('store.feature_verified') }}</span
                             >
@@ -128,12 +124,6 @@ const visibleCoupons = computed(() =>
                         {{ t('store.go_to_store') }}
                         <ArrowRight class="h-4 w-4" />
                     </a>
-                    <p
-                        v-if="store.cashback_value"
-                        class="mt-2 text-sm font-medium text-blue-600"
-                    >
-                        {{ store.cashback_value }}
-                    </p>
                 </div>
             </div>
         </div>
@@ -213,30 +203,6 @@ const visibleCoupons = computed(() =>
                         {{ t('store.about') }}
                     </h3>
                     <dl class="space-y-3 text-sm">
-                        <div v-if="store.cashback_type">
-                            <dt class="text-gray-400">
-                                {{ t('store.cashback_type') }}
-                            </dt>
-                            <dd class="font-medium text-gray-900">
-                                {{ store.cashback_type }}
-                            </dd>
-                        </div>
-                        <div v-if="store.cashback_value">
-                            <dt class="text-gray-400">
-                                {{ t('store.avg_cashback') }}
-                            </dt>
-                            <dd class="font-medium text-gray-900">
-                                {{ store.cashback_value }}
-                            </dd>
-                        </div>
-                        <div v-if="store.cashback_payout_terms">
-                            <dt class="text-gray-400">
-                                {{ t('store.payout_terms') }}
-                            </dt>
-                            <dd class="font-medium text-gray-900">
-                                {{ store.cashback_payout_terms }}
-                            </dd>
-                        </div>
                         <div v-if="store.countries?.length">
                             <dt class="text-gray-400">
                                 {{ t('store.supported_countries') }}
@@ -303,11 +269,6 @@ const visibleCoupons = computed(() =>
                                     <span
                                         class="block truncate text-sm font-medium text-gray-900"
                                         >{{ s.name }}</span
-                                    >
-                                    <span
-                                        v-if="s.cashback_value"
-                                        class="text-xs text-emerald-600"
-                                        >{{ s.cashback_value }}</span
                                     >
                                 </span>
                             </Link>

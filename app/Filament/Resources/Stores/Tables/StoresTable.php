@@ -25,7 +25,6 @@ class StoresTable
                 TextColumn::make('name')->label('Название')->searchable()->sortable()->weight('bold'),
                 TextColumn::make('slug')->label('URL')->searchable()->toggleable()->color('gray'),
                 TextColumn::make('coupons_count')->counts('coupons')->label('Купоны')->badge(),
-                TextColumn::make('cashback_value')->label('Кэшбэк')->toggleable(),
                 TextColumn::make('rating')->label('Рейтинг')->numeric(1)->sortable(),
                 TextColumn::make('clicks_count')->label('Клики')->numeric()->sortable()->toggleable(),
                 IconColumn::make('is_featured')->label('Рекомендуемый')->boolean()->sortable(),
