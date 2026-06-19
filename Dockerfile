@@ -40,8 +40,9 @@ RUN composer dump-autoload --optimize --no-dev \
  && cp .env.example .env \
  && php artisan key:generate --no-interaction \
  && php artisan package:discover --ansi \
- && php artisan filament:upgrade \
- && php artisan storage:link --relative
+ && php artisan filament:upgrade
+# Note: no `storage:link` — nginx serves /storage directly via `alias` (see docker/nginx),
+# and the `public` disk URL is built by string concatenation, so the symlink is unneeded.
 
 # Compile front-end assets (wayfinder generates TS helpers from artisan routes)
 RUN npm run build
