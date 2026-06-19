@@ -20,7 +20,7 @@ class BlogPostsTable
         return $table
             ->defaultSort('published_at', 'desc')
             ->columns([
-                ImageColumn::make('cover_image')->label('Обложка')->toggleable(),
+                ImageColumn::make('cover_image')->label('Обложка')->disk('public')->toggleable(),
                 TextColumn::make('title')->label('Заголовок')->searchable()->sortable()->weight('bold')->limit(50),
                 TextColumn::make('slug')->label('URL')->color('gray')->toggleable(),
                 TextColumn::make('author.name')->label('Автор')->placeholder('—')->toggleable(),

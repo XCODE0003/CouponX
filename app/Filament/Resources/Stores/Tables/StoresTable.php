@@ -21,7 +21,7 @@ class StoresTable
         return $table
             ->defaultSort('position')
             ->columns([
-                ImageColumn::make('logo')->label('Логотип')->circular()->defaultImageUrl(asset('favicon.ico')),
+                ImageColumn::make('logo')->label('Логотип')->disk('public')->circular()->defaultImageUrl(asset('favicon.ico')),
                 TextColumn::make('name')->label('Название')->searchable()->sortable()->weight('bold'),
                 TextColumn::make('slug')->label('URL')->searchable()->toggleable()->color('gray'),
                 TextColumn::make('coupons_count')->counts('coupons')->label('Купоны')->badge(),
