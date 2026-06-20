@@ -25,7 +25,6 @@ class TopStores extends TableWidget
                 TextColumn::make('name')->label('Название')->weight('bold'),
                 TextColumn::make('clicks_count')->label('Клики')->numeric()->sortable(),
                 TextColumn::make('coupons_count')->label('Купоны')->badge(),
-                TextColumn::make('cashback_value')->label('Кэшбэк')->placeholder('—'),
             ])
             ->paginated(false);
     }

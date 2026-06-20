@@ -1,8 +1,21 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
+import { reactive } from 'vue';
+import { useAppearance } from '@/composables/useAppearance';
 import type { StoreCardData } from '@/types/public';
 
 defineProps<{ stores: StoreCardData[] }>();
+
+const { resolvedAppearance } = useAppearance();
+
+// Track logos that failed to load so we can fall back to the store name.
+const broken = reactive<Record<number, boolean>>({});
+
+function logoFor(store: StoreCardData): string | null {
+    return resolvedAppearance.value === 'dark' && store.logo_dark
+        ? store.logo_dark
+        : store.logo;
+}
 </script>
 
 <template>
@@ -18,15 +31,16 @@ defineProps<{ stores: StoreCardData[] }>();
             :title="store.name"
         >
             <img
-                v-if="store.logo"
-                :src="store.logo"
+                v-if="logoFor(store) && !broken[store.id]"
+                :src="logoFor(store)!"
                 :alt="store.name"
                 class="h-9 w-auto object-contain opacity-60 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
                 loading="lazy"
+                @error="broken[store.id] = true"
             />
             <span
                 v-else
-                class="text-xl font-extrabold tracking-tight text-gray-400 transition duration-300 group-hover:text-gray-900 sm:text-2xl dark:text-gray-500"
+                class="text-xl font-extrabold tracking-tight text-gray-400 transition duration-300 group-hover:text-gray-900 sm:text-2xl dark:text-gray-500 dark:group-hover:text-gray-100"
             >
                 {{ store.name }}
             </span>

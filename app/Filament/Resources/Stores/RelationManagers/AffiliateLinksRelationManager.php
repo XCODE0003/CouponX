@@ -49,7 +49,6 @@ class AffiliateLinksRelationManager extends RelationManager
                     ->required()
                     ->maxLength(2048)
                     ->columnSpanFull(),
-                TextInput::make('cashback_value')->label('Кэшбэк')->maxLength(60)->placeholder('до 5%'),
                 TextInput::make('priority')->label('Приоритет')->numeric()->default(0)->helperText('При нескольких совпадениях побеждает большее значение'),
                 Toggle::make('is_active')->label('Активен')->default(true)->inline(false),
             ]);
@@ -64,7 +63,6 @@ class AffiliateLinksRelationManager extends RelationManager
                 TextColumn::make('country_code')->label('Страна')->badge()->placeholder('по умолчанию'),
                 TextColumn::make('network.name')->label('Сеть')->placeholder('—'),
                 TextColumn::make('affiliate_url')->label('Партнёрская ссылка')->limit(40)->wrap()->color('gray'),
-                TextColumn::make('cashback_value')->label('Кэшбэк')->placeholder('—')->toggleable(),
                 TextColumn::make('priority')->label('Приоритет')->numeric()->sortable(),
                 IconColumn::make('is_active')->label('Активен')->boolean(),
             ])

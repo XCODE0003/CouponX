@@ -21,6 +21,7 @@ const { t } = useI18n();
 
 const items = computed(() => props.coupons.slice(0, 4));
 const copied = reactive<Record<number, boolean>>({});
+const revealed = reactive<Record<number, boolean>>({});
 
 function typeLabel(coupon: CouponData): string {
     return {
@@ -42,6 +43,7 @@ async function activate(coupon: CouponData): Promise<void> {
     window.open(coupon.out_url, '_blank', 'noopener');
 
     if (coupon.has_code && coupon.code) {
+        revealed[coupon.id] = true;
         const ok = await copyToClipboard(coupon.code);
 
         if (ok) {
@@ -79,7 +81,7 @@ async function activate(coupon: CouponData): Promise<void> {
             </div>
 
             <!-- Deals -->
-            <ul class="divide-y divide-gray-100 px-3">
+            <ul class="divide-y divide-gray-100 px-3 dark:divide-gray-800">
                 <li
                     v-for="(coupon, i) in items"
                     :key="coupon.id"
@@ -123,7 +125,11 @@ async function activate(coupon: CouponData): Promise<void> {
                             class="group flex items-center gap-2 rounded-lg border border-dashed border-blue-300 bg-blue-50/40 px-3 py-1.5 text-sm font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300"
                             @click="activate(coupon)"
                         >
-                            <span class="font-mono">{{ coupon.code }}</span>
+                            <span
+                                class="font-mono"
+                                :class="{ 'blur-[3px]': !revealed[coupon.id] }"
+                                >{{ coupon.code }}</span
+                            >
                             <Check
                                 v-if="copied[coupon.id]"
                                 class="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
