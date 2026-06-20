@@ -1,0 +1,497 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "CouponX Deals CouponX" [ref=e6] [cursor=pointer]:
+        - /url: /en
+        - img "CouponX Deals" [ref=e7]
+        - generic [ref=e8]: CouponX
+      - navigation [ref=e9]:
+        - link "Stores" [ref=e10] [cursor=pointer]:
+          - /url: /en/stores
+        - link "Categories" [ref=e11] [cursor=pointer]:
+          - /url: /en/categories
+        - link "Blog" [ref=e12] [cursor=pointer]:
+          - /url: /en/blog
+      - search [ref=e14]:
+        - img
+        - searchbox "Search stores or coupons..." [ref=e15]
+      - generic [ref=e16]:
+        - button "Тёмная тема" [ref=e17]:
+          - img [ref=e18]
+        - button "en" [ref=e21]:
+          - img [ref=e22]
+          - generic [ref=e25]: en
+          - img [ref=e26]
+  - main [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - img [ref=e34]
+            - text: Save more. Every time.
+          - heading "The Best Promo Codes & Deals in One Place" [level=1] [ref=e37]
+          - paragraph [ref=e38]: CouponX Deals helps you find verified promo codes, exclusive discounts, and the best deals at your favorite stores.
+          - generic [ref=e39]:
+            - link "Explore Deals" [ref=e40] [cursor=pointer]:
+              - /url: /en/stores
+              - text: Explore Deals
+              - img [ref=e41]
+            - link "How It Works" [ref=e43] [cursor=pointer]:
+              - /url: /en/categories
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - img [ref=e46]
+              - text: Verified Coupons
+            - generic [ref=e49]:
+              - img [ref=e50]
+              - text: No Registration
+            - generic [ref=e52]:
+              - img [ref=e53]
+              - text: Always Up to Date
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - heading "Hot deals" [level=2] [ref=e61]:
+              - img [ref=e62]
+              - text: Hot deals
+            - link "View all" [ref=e64] [cursor=pointer]:
+              - /url: /en/stores
+          - list [ref=e65]:
+            - listitem [ref=e66]:
+              - generic [ref=e68]: A
+              - generic [ref=e69]:
+                - generic [ref=e70]: SALE
+                - paragraph [ref=e71]: Up to 70% Off Selected Items
+                - paragraph [ref=e72]: Sale on thousands of products. Up to 70% off electronics, clothing, home goods and more.
+              - button "Get Deal" [ref=e74]:
+                - text: Get Deal
+                - img [ref=e75]
+            - listitem [ref=e79]:
+              - generic [ref=e81]: S
+              - generic [ref=e82]:
+                - generic [ref=e83]: CODE
+                - paragraph [ref=e84]: 15% Off Everything
+                - paragraph [ref=e85]: Sitewide 15% off with this code.
+              - generic [ref=e86]:
+                - button "SHEIN15" [ref=e87]:
+                  - generic [ref=e88]: SHEIN15
+                  - img [ref=e89]
+                - button "Show code" [ref=e92]:
+                  - text: Show code
+                  - img [ref=e93]
+            - listitem [ref=e97]:
+              - generic [ref=e99]: "N"
+              - generic [ref=e100]:
+                - generic [ref=e101]: CODE
+                - paragraph [ref=e102]: Extra 20% Off Select Styles
+                - paragraph [ref=e103]: Use this code at checkout to get extra 20% off on select styles.
+              - generic [ref=e104]:
+                - button "SAVE20" [ref=e105]:
+                  - generic [ref=e106]: SAVE20
+                  - img [ref=e107]
+                - button "Show code" [ref=e110]:
+                  - text: Show code
+                  - img [ref=e111]
+            - listitem [ref=e115]:
+              - generic [ref=e117]: A
+              - generic [ref=e118]:
+                - generic [ref=e119]: CODE
+                - paragraph [ref=e120]: Free Shipping on Orders $25+
+                - paragraph [ref=e121]: Use this code to get free shipping on all orders over $25.
+              - generic [ref=e122]:
+                - button "FREESHIP" [ref=e123]:
+                  - generic [ref=e124]: FREESHIP
+                  - img [ref=e125]
+                - button "Show code" [ref=e128]:
+                  - text: Show code
+                  - img [ref=e129]
+          - generic [ref=e133]:
+            - img [ref=e135]
+            - generic [ref=e138]:
+              - paragraph [ref=e139]: Don't miss the best deals!
+              - paragraph [ref=e140]: Subscribe and get exclusive promo codes first.
+            - link "Subscribe" [ref=e141] [cursor=pointer]:
+              - /url: "#newsletter"
+      - generic [ref=e142]:
+        - generic [ref=e143]:
+          - paragraph [ref=e144]: Trusted by shoppers worldwide
+          - heading "Our Partners" [level=2] [ref=e145]
+          - paragraph [ref=e146]: We work with the most popular stores so you always get the best deals.
+        - generic [ref=e147]:
+          - link "Amazon" [ref=e148] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/amazon
+            - generic [ref=e149]: Amazon
+          - link "AliExpress" [ref=e150] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/aliexpress
+            - generic [ref=e151]: AliExpress
+          - link "Nike" [ref=e152] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/nike
+            - generic [ref=e153]: Nike
+          - link "eBay" [ref=e154] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/ebay
+            - generic [ref=e155]: eBay
+          - link "iHerb" [ref=e156] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/iherb
+            - generic [ref=e157]: iHerb
+          - link "Booking.com" [ref=e158] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/booking
+            - generic [ref=e159]: Booking.com
+          - link "SHEIN" [ref=e160] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/shein
+            - generic [ref=e161]: SHEIN
+        - link "View all stores" [ref=e163] [cursor=pointer]:
+          - /url: /en/stores
+          - text: View all stores
+          - img [ref=e164]
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - paragraph [ref=e169]: Popular Stores
+            - heading "Browse Top Stores" [level=2] [ref=e170]
+          - link "View all" [ref=e171] [cursor=pointer]:
+            - /url: /en/stores
+        - generic [ref=e172]:
+          - link "A Amazon 4.7 2 coupons" [ref=e173] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/amazon
+            - generic [ref=e175]: A
+            - heading "Amazon" [level=3] [ref=e177]
+            - generic [ref=e178]:
+              - generic [ref=e179]:
+                - img [ref=e180]
+                - text: "4.7"
+              - generic [ref=e182]: 2 coupons
+          - link "A AliExpress 4.6 1 coupons" [ref=e183] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/aliexpress
+            - generic [ref=e185]: A
+            - heading "AliExpress" [level=3] [ref=e187]
+            - generic [ref=e188]:
+              - generic [ref=e189]:
+                - img [ref=e190]
+                - text: "4.6"
+              - generic [ref=e192]: 1 coupons
+          - link "N Nike 4.8 1 coupons" [ref=e193] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/nike
+            - generic [ref=e195]: "N"
+            - heading "Nike" [level=3] [ref=e197]
+            - generic [ref=e198]:
+              - generic [ref=e199]:
+                - img [ref=e200]
+                - text: "4.8"
+              - generic [ref=e202]: 1 coupons
+          - link "E eBay 4.5 1 coupons" [ref=e203] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/ebay
+            - generic [ref=e205]: E
+            - heading "eBay" [level=3] [ref=e207]
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - text: "4.5"
+              - generic [ref=e212]: 1 coupons
+          - link "I iHerb 4.7 1 coupons" [ref=e213] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/iherb
+            - generic [ref=e215]: I
+            - heading "iHerb" [level=3] [ref=e217]
+            - generic [ref=e218]:
+              - generic [ref=e219]:
+                - img [ref=e220]
+                - text: "4.7"
+              - generic [ref=e222]: 1 coupons
+          - link "B Booking.com 4.6 1 coupons" [ref=e223] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/booking
+            - generic [ref=e225]: B
+            - heading "Booking.com" [level=3] [ref=e227]
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - img [ref=e230]
+                - text: "4.6"
+              - generic [ref=e232]: 1 coupons
+          - link "S SHEIN 4.3 1 coupons" [ref=e233] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/store/shein
+            - generic [ref=e235]: S
+            - heading "SHEIN" [level=3] [ref=e237]
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - img [ref=e240]
+                - text: "4.3"
+              - generic [ref=e242]: 1 coupons
+      - generic [ref=e243]:
+        - generic [ref=e245]:
+          - paragraph [ref=e246]: Top Coupons
+          - heading "Today's Best Coupons" [level=2] [ref=e247]
+        - generic [ref=e248]:
+          - article [ref=e249]:
+            - generic [ref=e251]: A
+            - generic [ref=e252]:
+              - generic [ref=e253]:
+                - generic [ref=e254]: SALE
+                - link "AliExpress" [ref=e255] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/aliexpress
+              - heading "Up to 70% Off Selected Items" [level=3] [ref=e256]
+              - paragraph [ref=e257]: Sale on thousands of products. Up to 70% off electronics, clothing, home goods and more.
+              - generic [ref=e258]:
+                - generic [ref=e259]:
+                  - img [ref=e260]
+                  - text: Verified
+                - generic [ref=e263]:
+                  - img [ref=e264]
+                  - text: Expires in 14 days
+                - generic [ref=e267]: Used 3421 times
+            - button "Get Deal" [ref=e269]:
+              - text: Get Deal
+              - img [ref=e270]
+          - article [ref=e274]:
+            - generic [ref=e276]: S
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - generic [ref=e279]: CODE
+                - link "SHEIN" [ref=e280] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/shein
+              - heading "15% Off Everything" [level=3] [ref=e281]
+              - paragraph [ref=e282]: Sitewide 15% off with this code.
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - img [ref=e285]
+                  - text: Verified
+                - generic [ref=e288]:
+                  - img [ref=e289]
+                  - text: Expires in 1 days
+                - generic [ref=e292]: Used 1500 times
+            - generic [ref=e293]:
+              - button "SHEIN15" [ref=e294]:
+                - generic [ref=e295]: SHEIN15
+                - img [ref=e296]
+              - button "Show code" [ref=e299]:
+                - text: Show code
+                - img [ref=e300]
+          - article [ref=e304]:
+            - generic [ref=e306]: "N"
+            - generic [ref=e307]:
+              - generic [ref=e308]:
+                - generic [ref=e309]: CODE
+                - link "Nike" [ref=e310] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/nike
+              - heading "Extra 20% Off Select Styles" [level=3] [ref=e311]
+              - paragraph [ref=e312]: Use this code at checkout to get extra 20% off on select styles.
+              - generic [ref=e313]:
+                - generic [ref=e314]:
+                  - img [ref=e315]
+                  - text: Verified
+                - generic [ref=e318]:
+                  - img [ref=e319]
+                  - text: Expires in 4 days
+                - generic [ref=e322]: Used 1254 times
+            - generic [ref=e323]:
+              - button "SAVE20" [ref=e324]:
+                - generic [ref=e325]: SAVE20
+                - img [ref=e326]
+              - button "Show code" [ref=e329]:
+                - text: Show code
+                - img [ref=e330]
+          - article [ref=e334]:
+            - generic [ref=e336]: A
+            - generic [ref=e337]:
+              - generic [ref=e338]:
+                - generic [ref=e339]: CODE
+                - link "Amazon" [ref=e340] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/amazon
+              - heading "Free Shipping on Orders $25+" [level=3] [ref=e341]
+              - paragraph [ref=e342]: Use this code to get free shipping on all orders over $25.
+              - generic [ref=e343]:
+                - generic [ref=e344]:
+                  - img [ref=e345]
+                  - text: Verified
+                - generic [ref=e348]: Used 842 times
+            - generic [ref=e349]:
+              - button "FREESHIP" [ref=e350]:
+                - generic [ref=e351]: FREESHIP
+                - img [ref=e352]
+              - button "Show code" [ref=e355]:
+                - text: Show code
+                - img [ref=e356]
+          - article [ref=e360]:
+            - generic [ref=e362]: B
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e365]: DEAL
+                - link "Booking.com" [ref=e366] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/booking
+              - heading "Up to 40% Off Stays" [level=3] [ref=e367]
+              - paragraph [ref=e368]: Save on hotels with limited-time deals.
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - img [ref=e371]
+                  - text: Verified
+                - generic [ref=e374]: Used 760 times
+            - button "Get Deal" [ref=e376]:
+              - text: Get Deal
+              - img [ref=e377]
+          - article [ref=e381]:
+            - generic [ref=e383]: A
+            - generic [ref=e384]:
+              - generic [ref=e385]:
+                - generic [ref=e386]: DEAL
+                - link "Amazon" [ref=e387] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/amazon
+              - heading "Up to 50% Off Electronics" [level=3] [ref=e388]
+              - paragraph [ref=e389]: Daily deals on top electronics.
+              - generic [ref=e390]:
+                - generic [ref=e391]:
+                  - img [ref=e392]
+                  - text: Verified
+                - generic [ref=e395]: Used 1290 times
+            - button "Get Deal" [ref=e397]:
+              - text: Get Deal
+              - img [ref=e398]
+          - article [ref=e402]:
+            - generic [ref=e404]: E
+            - generic [ref=e405]:
+              - generic [ref=e406]:
+                - generic [ref=e407]: DEAL
+                - link "eBay" [ref=e408] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/ebay
+              - heading "Up to 60% Off Daily Deals" [level=3] [ref=e409]
+              - paragraph [ref=e410]: Shop daily deals across all categories.
+              - generic [ref=e411]:
+                - generic [ref=e412]:
+                  - img [ref=e413]
+                  - text: Verified
+                - generic [ref=e416]: Used 540 times
+            - button "Get Deal" [ref=e418]:
+              - text: Get Deal
+              - img [ref=e419]
+          - article [ref=e423]:
+            - generic [ref=e425]: I
+            - generic [ref=e426]:
+              - generic [ref=e427]:
+                - generic [ref=e428]: CODE
+                - link "iHerb" [ref=e429] [cursor=pointer]:
+                  - /url: http://127.0.0.1:8123/en/store/iherb
+              - heading "10% Off First Order" [level=3] [ref=e430]
+              - paragraph [ref=e431]: New customers get 10% off the first order.
+              - generic [ref=e432]:
+                - generic [ref=e433]:
+                  - img [ref=e434]
+                  - text: Verified
+                - generic [ref=e437]:
+                  - img [ref=e438]
+                  - text: Expires in 8 days
+                - generic [ref=e441]: Used 320 times
+            - generic [ref=e442]:
+              - button "IHERB10" [ref=e443]:
+                - generic [ref=e444]: IHERB10
+                - img [ref=e445]
+              - button "Show code" [ref=e448]:
+                - text: Show code
+                - img [ref=e449]
+      - generic [ref=e453]:
+        - heading "Popular Categories" [level=2] [ref=e454]
+        - generic [ref=e455]:
+          - link "Electronics 3 stores" [ref=e456] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/electronics
+            - img [ref=e458]
+            - generic [ref=e460]: Electronics
+            - generic [ref=e461]: 3 stores
+          - link "Fashion 4 stores" [ref=e462] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/fashion
+            - img [ref=e464]
+            - generic [ref=e466]: Fashion
+            - generic [ref=e467]: 4 stores
+          - link "Home & Garden 3 stores" [ref=e468] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/home-garden
+            - img [ref=e470]
+            - generic [ref=e473]: Home & Garden
+            - generic [ref=e474]: 3 stores
+          - link "Beauty & Health 3 stores" [ref=e475] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/beauty
+            - img [ref=e477]
+            - generic [ref=e480]: Beauty & Health
+            - generic [ref=e481]: 3 stores
+          - link "Travel 1 stores" [ref=e482] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/travel
+            - img [ref=e484]
+            - generic [ref=e486]: Travel
+            - generic [ref=e487]: 1 stores
+          - link "Automotive 1 stores" [ref=e488] [cursor=pointer]:
+            - /url: http://127.0.0.1:8123/en/category/auto
+            - img [ref=e490]
+            - generic [ref=e494]: Automotive
+            - generic [ref=e495]: 1 stores
+      - generic [ref=e498]:
+        - generic [ref=e499]:
+          - img [ref=e501]
+          - generic [ref=e504]:
+            - heading "Never Miss a Deal" [level=2] [ref=e505]
+            - paragraph [ref=e506]: Subscribe to get the best deals and promo codes delivered straight to your inbox.
+        - generic [ref=e507]:
+          - generic [ref=e508]:
+            - textbox "Enter your email" [ref=e509]
+            - button "Subscribe" [ref=e510]
+          - paragraph [ref=e511]: No spam. Unsubscribe anytime.
+  - contentinfo [ref=e512]:
+    - generic [ref=e513]:
+      - generic [ref=e514]:
+        - generic [ref=e515]:
+          - img "CouponX Deals" [ref=e516]
+          - generic [ref=e517]: CouponX
+        - paragraph [ref=e518]: Find the best coupons and deals from top stores worldwide. Save more with CouponX Deals.
+        - generic [ref=e519]:
+          - link "X" [ref=e520] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e521]
+          - link "Telegram" [ref=e524] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e525]
+          - link "Chat" [ref=e528] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e529]
+          - link "RSS" [ref=e531] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e532]
+      - generic [ref=e536]:
+        - heading "Company" [level=3] [ref=e537]
+        - list [ref=e538]:
+          - listitem [ref=e539]:
+            - link "About Us" [ref=e540] [cursor=pointer]:
+              - /url: /en/about
+          - listitem [ref=e541]:
+            - link "Contact" [ref=e542] [cursor=pointer]:
+              - /url: /en/contact
+          - listitem [ref=e543]:
+            - link "Privacy Policy" [ref=e544] [cursor=pointer]:
+              - /url: /en/privacy
+          - listitem [ref=e545]:
+            - link "Terms of Service" [ref=e546] [cursor=pointer]:
+              - /url: /en/terms
+      - generic [ref=e547]:
+        - heading "Help" [level=3] [ref=e548]
+        - list [ref=e549]:
+          - listitem [ref=e550]:
+            - link "How It Works" [ref=e551] [cursor=pointer]:
+              - /url: /en/how-it-works
+          - listitem [ref=e552]:
+            - link "FAQ" [ref=e553] [cursor=pointer]:
+              - /url: /en/faq
+          - listitem [ref=e554]:
+            - link "Search" [ref=e555] [cursor=pointer]:
+              - /url: /en/search
+          - listitem [ref=e556]:
+            - link "Sitemap" [ref=e557] [cursor=pointer]:
+              - /url: /en/sitemap
+      - generic [ref=e558]:
+        - heading "Categories" [level=3] [ref=e559]
+        - list [ref=e560]:
+          - listitem [ref=e561]:
+            - link "Electronics" [ref=e562] [cursor=pointer]:
+              - /url: http://127.0.0.1:8123/en/category/electronics
+          - listitem [ref=e563]:
+            - link "Fashion" [ref=e564] [cursor=pointer]:
+              - /url: http://127.0.0.1:8123/en/category/fashion
+          - listitem [ref=e565]:
+            - link "Home & Garden" [ref=e566] [cursor=pointer]:
+              - /url: http://127.0.0.1:8123/en/category/home-garden
+          - listitem [ref=e567]:
+            - link "Beauty & Health" [ref=e568] [cursor=pointer]:
+              - /url: http://127.0.0.1:8123/en/category/beauty
+          - listitem [ref=e569]:
+            - link "Travel" [ref=e570] [cursor=pointer]:
+              - /url: http://127.0.0.1:8123/en/category/travel
+    - generic [ref=e571]: © 2026 CouponX Deals. All rights reserved.
