@@ -21,6 +21,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string $slug
  * @property string $name
  * @property string|null $logo
+ * @property string|null $logo_dark
  * @property string|null $website_url
  * @property float|null $rating
  * @property string|null $cashback_value

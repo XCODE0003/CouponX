@@ -40,7 +40,7 @@ const staticPages = computed(() => [
     <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
         <Breadcrumbs :items="[{ label: content.title }]" class="mb-5" />
         <h1
-            class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+            class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
         >
             {{ content.title }}
         </h1>
@@ -48,7 +48,7 @@ const staticPages = computed(() => [
         <div class="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <Reveal>
                 <h2
-                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase"
+                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase dark:text-gray-100"
                 >
                     {{ content.pages }}
                 </h2>
@@ -56,7 +56,7 @@ const staticPages = computed(() => [
                     <li v-for="p in staticPages" :key="p.href">
                         <Link
                             :href="p.href"
-                            class="text-gray-600 hover:text-blue-600"
+                            class="text-gray-600 hover:text-blue-600 dark:text-gray-300"
                             >{{ p.label }}</Link
                         >
                     </li>
@@ -65,7 +65,7 @@ const staticPages = computed(() => [
 
             <Reveal :delay="80">
                 <h2
-                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase"
+                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase dark:text-gray-100"
                 >
                     {{ content.categories }}
                 </h2>
@@ -73,7 +73,7 @@ const staticPages = computed(() => [
                     <li v-for="c in categories" :key="c.id">
                         <Link
                             :href="c.url"
-                            class="text-gray-600 hover:text-blue-600"
+                            class="text-gray-600 hover:text-blue-600 dark:text-gray-300"
                             >{{ c.name }}</Link
                         >
                     </li>
@@ -82,7 +82,7 @@ const staticPages = computed(() => [
 
             <Reveal :delay="160" class="lg:col-span-2">
                 <h2
-                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase"
+                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase dark:text-gray-100"
                 >
                     {{ content.stores }}
                 </h2>
@@ -90,7 +90,7 @@ const staticPages = computed(() => [
                     <li v-for="s in stores" :key="s.id">
                         <Link
                             :href="s.url"
-                            class="text-gray-600 hover:text-blue-600"
+                            class="text-gray-600 hover:text-blue-600 dark:text-gray-300"
                             >{{ s.name }}</Link
                         >
                     </li>
@@ -99,7 +99,7 @@ const staticPages = computed(() => [
 
             <Reveal v-if="posts.length" :delay="160" class="lg:col-span-4">
                 <h2
-                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase"
+                    class="mb-3 text-sm font-bold tracking-wide text-gray-900 uppercase dark:text-gray-100"
                 >
                     {{ content.blog }}
                 </h2>
@@ -109,7 +109,7 @@ const staticPages = computed(() => [
                     <li v-for="post in posts" :key="post.id">
                         <Link
                             :href="post.url"
-                            class="text-gray-600 hover:text-blue-600"
+                            class="text-gray-600 hover:text-blue-600 dark:text-gray-300"
                             >{{ post.title }}</Link
                         >
                     </li>

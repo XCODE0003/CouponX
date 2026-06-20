@@ -27,19 +27,25 @@ defineProps<{ content: PageContent }>();
 
         <Reveal>
             <h1
-                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
             >
                 {{ content.title }}
             </h1>
-            <p v-if="content.updated" class="mt-2 text-sm text-gray-400">
+            <p
+                v-if="content.updated"
+                class="mt-2 text-sm text-gray-400 dark:text-gray-500"
+            >
                 {{ content.updated }}: 2026
             </p>
-            <p v-if="content.intro" class="mt-4 text-lg text-gray-500">
+            <p
+                v-if="content.intro"
+                class="mt-4 text-lg text-gray-500 dark:text-gray-400"
+            >
                 {{ content.intro }}
             </p>
         </Reveal>
 
-        <div class="mt-6 space-y-4 text-gray-600">
+        <div class="mt-6 space-y-4 text-gray-600 dark:text-gray-300">
             <Reveal
                 v-for="(paragraph, i) in content.body ?? []"
                 :key="`b-${i}`"
@@ -52,7 +58,9 @@ defineProps<{ content: PageContent }>();
                 :key="`s-${i}`"
                 class="pt-2"
             >
-                <h2 class="text-lg font-bold text-gray-900">{{ section.h }}</h2>
+                <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">
+                    {{ section.h }}
+                </h2>
                 <p class="mt-1 leading-relaxed">{{ section.p }}</p>
             </Reveal>
         </div>

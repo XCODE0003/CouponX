@@ -3,6 +3,7 @@ export interface StoreCardData {
     name: string;
     slug: string;
     logo: string | null;
+    logo_dark: string | null;
     description: string | null;
     rating: number | null;
     coupons_count: number | null;
@@ -41,6 +42,7 @@ export interface CouponData {
         name: string;
         slug: string;
         logo: string | null;
+        logo_dark: string | null;
         url: string;
     };
 }

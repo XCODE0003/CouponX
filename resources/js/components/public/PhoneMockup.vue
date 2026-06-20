@@ -26,7 +26,12 @@ withDefaults(
     },
 );
 
-const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
+const storeTints = [
+    'bg-amber-50 dark:bg-amber-950/40',
+    'bg-orange-50',
+    'bg-gray-100 dark:bg-gray-800',
+    'bg-blue-50 dark:bg-blue-950/40',
+];
 </script>
 
 <template>
@@ -47,11 +52,11 @@ const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
 
             <!-- Screen -->
             <div
-                class="overflow-hidden rounded-[1.9rem] bg-gradient-to-b from-white to-blue-50/50 px-4 pt-3 pb-6"
+                class="overflow-hidden rounded-[1.9rem] bg-gradient-to-b from-white to-blue-50/50 px-4 pt-3 pb-6 dark:from-gray-950"
             >
                 <!-- Status bar -->
                 <div
-                    class="flex items-center justify-between text-[10px] font-semibold text-gray-900"
+                    class="flex items-center justify-between text-[10px] font-semibold text-gray-900 dark:text-gray-100"
                 >
                     <span>9:41</span>
                     <div class="flex items-center gap-1">
@@ -83,11 +88,13 @@ const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
                 <!-- Greeting -->
                 <div class="mt-4 flex items-start justify-between">
                     <div>
-                        <p class="text-sm font-bold text-gray-900">
+                        <p
+                            class="text-sm font-bold text-gray-900 dark:text-gray-100"
+                        >
                             {{ greeting }}
                         </p>
                         <p
-                            class="mt-0.5 text-[11px] leading-tight text-gray-500"
+                            class="mt-0.5 text-[11px] leading-tight text-gray-500 dark:text-gray-400"
                         >
                             {{ subtitle }}
                         </p>
@@ -99,39 +106,44 @@ const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
 
                 <!-- Search -->
                 <div
-                    class="phone-pop mt-3 flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-sm"
+                    class="phone-pop mt-3 flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-sm dark:bg-gray-900"
                     style="animation-delay: 0.1s"
                 >
-                    <Search class="h-3.5 w-3.5 text-gray-300" />
-                    <span class="truncate text-[11px] text-gray-300">{{
-                        searchPlaceholder
-                    }}</span>
+                    <Search
+                        class="h-3.5 w-3.5 text-gray-300 dark:text-gray-600"
+                    />
+                    <span
+                        class="truncate text-[11px] text-gray-300 dark:text-gray-600"
+                        >{{ searchPlaceholder }}</span
+                    >
                 </div>
 
                 <!-- Top stores -->
                 <div class="mt-4 flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-gray-900">{{
-                        topStoresLabel
-                    }}</span>
-                    <span class="text-[10px] font-semibold text-blue-600">{{
-                        viewAllLabel
-                    }}</span>
+                    <span
+                        class="text-[11px] font-bold text-gray-900 dark:text-gray-100"
+                        >{{ topStoresLabel }}</span
+                    >
+                    <span
+                        class="text-[10px] font-semibold text-blue-600 dark:text-blue-400"
+                        >{{ viewAllLabel }}</span
+                    >
                 </div>
                 <div class="mt-2 grid grid-cols-4 gap-2">
                     <div
                         v-for="(store, i) in stores.slice(0, 4)"
                         :key="store.id"
-                        class="phone-pop rounded-xl bg-white p-1.5 text-center shadow-sm"
+                        class="phone-pop rounded-xl bg-white p-1.5 text-center shadow-sm dark:bg-gray-900"
                         :style="{ animationDelay: `${0.2 + i * 0.08}s` }"
                     >
                         <div
-                            class="mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold text-gray-700"
+                            class="mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold text-gray-700 dark:text-gray-200"
                             :class="storeTints[i % storeTints.length]"
                         >
                             {{ store.name.charAt(0) }}
                         </div>
                         <span
-                            class="mt-1 block truncate text-[8px] text-gray-500"
+                            class="mt-1 block truncate text-[8px] text-gray-500 dark:text-gray-400"
                             >{{ store.name }}</span
                         >
                     </div>
@@ -139,22 +151,24 @@ const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
 
                 <!-- Top categories -->
                 <div class="mt-4 flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-gray-900">{{
-                        topCategoriesLabel
-                    }}</span>
-                    <span class="text-[10px] font-semibold text-blue-600">{{
-                        viewAllLabel
-                    }}</span>
+                    <span
+                        class="text-[11px] font-bold text-gray-900 dark:text-gray-100"
+                        >{{ topCategoriesLabel }}</span
+                    >
+                    <span
+                        class="text-[10px] font-semibold text-blue-600 dark:text-blue-400"
+                        >{{ viewAllLabel }}</span
+                    >
                 </div>
                 <div class="mt-2 grid grid-cols-4 gap-2">
                     <div
                         v-for="(category, i) in categories.slice(0, 4)"
                         :key="category.id"
-                        class="phone-pop rounded-xl bg-white p-1.5 text-center shadow-sm"
+                        class="phone-pop rounded-xl bg-white p-1.5 text-center shadow-sm dark:bg-gray-900"
                         :style="{ animationDelay: `${0.5 + i * 0.08}s` }"
                     >
                         <span
-                            class="mx-auto flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600"
+                            class="mx-auto flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
                         >
                             <CategoryIcon
                                 :name="category.icon"
@@ -162,7 +176,7 @@ const storeTints = ['bg-amber-50', 'bg-orange-50', 'bg-gray-100', 'bg-blue-50'];
                             />
                         </span>
                         <span
-                            class="mt-1 block truncate text-[8px] text-gray-500"
+                            class="mt-1 block truncate text-[8px] text-gray-500 dark:text-gray-400"
                             >{{ category.name }}</span
                         >
                     </div>

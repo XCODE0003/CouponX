@@ -30,11 +30,13 @@ const { t, locale } = useI18n();
 
         <Reveal class="text-center">
             <h1
-                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
             >
                 {{ content.title }}
             </h1>
-            <p class="mt-3 text-lg text-gray-500">{{ content.subtitle }}</p>
+            <p class="mt-3 text-lg text-gray-500 dark:text-gray-400">
+                {{ content.subtitle }}
+            </p>
         </Reveal>
 
         <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -44,17 +46,21 @@ const { t, locale } = useI18n();
                 :delay="i * 120"
             >
                 <div
-                    class="relative h-full rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm"
+                    class="relative h-full rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 >
                     <span
                         class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-lg font-bold text-white"
                     >
                         {{ i + 1 }}
                     </span>
-                    <h2 class="mt-4 font-semibold text-gray-900">
+                    <h2
+                        class="mt-4 font-semibold text-gray-900 dark:text-gray-100"
+                    >
                         {{ step.t }}
                     </h2>
-                    <p class="mt-2 text-sm text-gray-500">{{ step.d }}</p>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                        {{ step.d }}
+                    </p>
                 </div>
             </Reveal>
         </div>

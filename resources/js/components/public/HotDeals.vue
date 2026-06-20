@@ -32,8 +32,8 @@ function typeLabel(coupon: CouponData): string {
 
 function typeClasses(coupon: CouponData): string {
     return {
-        code: 'bg-emerald-50 text-emerald-700',
-        deal: 'bg-blue-50 text-blue-700',
+        code: 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400',
+        deal: 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
         sale: 'bg-rose-50 text-rose-700',
     }[coupon.type];
 }
@@ -60,19 +60,19 @@ async function activate(coupon: CouponData): Promise<void> {
         ></div>
 
         <div
-            class="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl"
+            class="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-900"
         >
             <!-- Header -->
             <div class="flex items-center justify-between px-6 pt-6 pb-2">
                 <h2
-                    class="flex items-center gap-2 text-lg font-bold text-gray-900"
+                    class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-gray-100"
                 >
                     <Flame class="h-5 w-5 text-orange-500" />
                     {{ t('hot.title') }}
                 </h2>
                 <Link
                     :href="viewAllUrl"
-                    class="text-sm font-semibold text-blue-600 hover:underline"
+                    class="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                 >
                     {{ t('hot.view_all') }}
                 </Link>
@@ -83,13 +83,14 @@ async function activate(coupon: CouponData): Promise<void> {
                 <li
                     v-for="(coupon, i) in items"
                     :key="coupon.id"
-                    class="hotdeals-row flex items-center gap-3 rounded-2xl px-3 py-4 transition hover:bg-gray-50/80 sm:gap-4"
+                    class="hotdeals-row flex items-center gap-3 rounded-2xl px-3 py-4 transition hover:bg-gray-50/80 sm:gap-4 dark:hover:bg-gray-800/50"
                     :style="{ animationDelay: `${0.15 + i * 0.1}s` }"
                 >
                     <StoreLogo
                         v-if="coupon.store"
                         :name="coupon.store.name"
                         :logo="coupon.store.logo"
+                        :logo-dark="coupon.store.logo_dark"
                         size="md"
                     />
 
@@ -100,12 +101,14 @@ async function activate(coupon: CouponData): Promise<void> {
                         >
                             {{ typeLabel(coupon) }}
                         </span>
-                        <p class="truncate font-semibold text-gray-900">
+                        <p
+                            class="truncate font-semibold text-gray-900 dark:text-gray-100"
+                        >
                             {{ coupon.title }}
                         </p>
                         <p
                             v-if="coupon.description"
-                            class="truncate text-sm text-gray-400"
+                            class="truncate text-sm text-gray-400 dark:text-gray-500"
                         >
                             {{ coupon.description }}
                         </p>
@@ -117,13 +120,13 @@ async function activate(coupon: CouponData): Promise<void> {
                         <button
                             v-if="coupon.has_code"
                             type="button"
-                            class="group flex items-center gap-2 rounded-lg border border-dashed border-blue-300 bg-blue-50/40 px-3 py-1.5 text-sm font-semibold text-blue-700"
+                            class="group flex items-center gap-2 rounded-lg border border-dashed border-blue-300 bg-blue-50/40 px-3 py-1.5 text-sm font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300"
                             @click="activate(coupon)"
                         >
                             <span class="font-mono">{{ coupon.code }}</span>
                             <Check
                                 v-if="copied[coupon.id]"
-                                class="h-3.5 w-3.5 text-emerald-600"
+                                class="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
                             />
                             <Copy
                                 v-else
@@ -132,7 +135,7 @@ async function activate(coupon: CouponData): Promise<void> {
                         </button>
                         <button
                             type="button"
-                            class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline"
+                            class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                             @click="activate(coupon)"
                         >
                             {{
@@ -161,18 +164,20 @@ async function activate(coupon: CouponData): Promise<void> {
 
             <!-- Newsletter CTA -->
             <div
-                class="m-3 flex items-center gap-4 rounded-2xl bg-blue-50/70 p-4"
+                class="m-3 flex items-center gap-4 rounded-2xl bg-blue-50/70 p-4 dark:bg-blue-950/20"
             >
                 <span
-                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600"
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
                 >
                     <Bell class="h-5 w-5" />
                 </span>
                 <div class="min-w-0 flex-1">
-                    <p class="font-semibold text-gray-900">
+                    <p class="font-semibold text-gray-900 dark:text-gray-100">
                         {{ t('hot.cta_title') }}
                     </p>
-                    <p class="text-sm text-gray-500">{{ t('hot.cta_text') }}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        {{ t('hot.cta_text') }}
+                    </p>
                 </div>
                 <a
                     :href="newsletterAnchor"

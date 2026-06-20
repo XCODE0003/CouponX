@@ -25,14 +25,14 @@ function formatDate(iso: string | null): string {
             class="mb-5"
         />
 
-        <p class="text-sm text-gray-400">
+        <p class="text-sm text-gray-400 dark:text-gray-500">
             {{
                 t('blog.published_on', { date: formatDate(post.published_at) })
             }}
             <span v-if="post.author"> · {{ post.author }}</span>
         </p>
         <h1
-            class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+            class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
         >
             {{ post.title }}
         </h1>
@@ -50,22 +50,22 @@ function formatDate(iso: string | null): string {
           designated trusted HTML path for the site.
         -->
         <div
-            class="prose prose-blue mt-8 max-w-none text-gray-700"
+            class="prose prose-blue mt-8 max-w-none text-gray-700 dark:text-gray-200"
             v-html="post.body"
         ></div>
 
         <section
             v-if="related.length"
-            class="mt-12 border-t border-gray-100 pt-8"
+            class="mt-12 border-t border-gray-100 pt-8 dark:border-gray-800"
         >
-            <h2 class="mb-4 text-lg font-bold text-gray-900">
+            <h2 class="mb-4 text-lg font-bold text-gray-900 dark:text-gray-100">
                 {{ t('blog.related') }}
             </h2>
             <ul class="space-y-3">
                 <li v-for="r in related" :key="r.id">
                     <Link
                         :href="r.url"
-                        class="text-sm font-medium text-blue-600 hover:underline"
+                        class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
                         >{{ r.title }}</Link
                     >
                 </li>

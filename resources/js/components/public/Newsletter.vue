@@ -19,7 +19,9 @@ function submit(): void {
 </script>
 
 <template>
-    <section class="rounded-3xl bg-blue-50/70 px-6 py-8 sm:px-10">
+    <section
+        class="rounded-3xl bg-blue-50/70 px-6 py-8 sm:px-10 dark:bg-blue-950/20"
+    >
         <div
             class="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between"
         >
@@ -30,10 +32,14 @@ function submit(): void {
                     <Mail class="h-6 w-6" />
                 </span>
                 <div>
-                    <h2 class="text-xl font-bold text-gray-900">
+                    <h2
+                        class="text-xl font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {{ t('newsletter.title') }}
                     </h2>
-                    <p class="mt-1 max-w-md text-sm text-gray-500">
+                    <p
+                        class="mt-1 max-w-md text-sm text-gray-500 dark:text-gray-400"
+                    >
                         {{ t('newsletter.subtitle') }}
                     </p>
                 </div>
@@ -45,7 +51,7 @@ function submit(): void {
                         type="email"
                         required
                         :placeholder="t('newsletter.placeholder')"
-                        class="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                        class="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100"
                     />
                     <button
                         type="submit"
@@ -58,7 +64,7 @@ function submit(): void {
                 <p v-if="form.errors.email" class="mt-1 text-xs text-rose-600">
                     {{ form.errors.email }}
                 </p>
-                <p class="mt-2 text-xs text-gray-400">
+                <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">
                     {{ t('newsletter.nospam') }}
                 </p>
             </form>

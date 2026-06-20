@@ -65,7 +65,9 @@ const visibleCoupons = computed(() =>
         />
 
         <!-- Store header -->
-        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+        <div
+            class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+        >
             <div
                 class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
             >
@@ -73,38 +75,43 @@ const visibleCoupons = computed(() =>
                     <StoreLogo
                         :name="store.name"
                         :logo="store.logo"
+                        :logo-dark="store.logo_dark"
                         size="lg"
                     />
                     <div>
                         <div class="flex items-center gap-3">
-                            <h1 class="text-2xl font-bold text-gray-900">
+                            <h1
+                                class="text-2xl font-bold text-gray-900 dark:text-gray-100"
+                            >
                                 {{ store.name }}
                             </h1>
                             <span
                                 v-if="store.rating"
-                                class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-sm font-semibold text-emerald-700"
+                                class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-sm font-semibold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
                             >
                                 <Star
-                                    class="h-3.5 w-3.5 fill-emerald-500 text-emerald-500"
+                                    class="h-3.5 w-3.5 fill-emerald-500 text-emerald-500 dark:text-emerald-400"
                                 />{{ store.rating.toFixed(1) }}
                             </span>
                             <span
                                 v-if="store.rating"
-                                class="text-sm text-gray-400"
+                                class="text-sm text-gray-400 dark:text-gray-500"
                                 >{{ t('store.rating_excellent') }}</span
                             >
                         </div>
                         <p
                             v-if="store.description"
-                            class="mt-2 max-w-xl text-sm text-gray-500"
+                            class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400"
                         >
                             {{ store.description }}
                         </p>
                         <div
-                            class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-500"
+                            class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-500 dark:text-gray-400"
                         >
                             <span class="inline-flex items-center gap-1.5"
-                                ><BadgeCheck class="h-4 w-4 text-emerald-500" />
+                                ><BadgeCheck
+                                    class="h-4 w-4 text-emerald-500 dark:text-emerald-400"
+                                />
                                 {{ t('store.feature_verified') }}</span
                             >
                             <span class="inline-flex items-center gap-1.5"
@@ -132,7 +139,7 @@ const visibleCoupons = computed(() =>
             <!-- Coupons column -->
             <div class="lg:col-span-2">
                 <div
-                    class="mb-4 flex flex-wrap gap-2 rounded-xl border border-gray-100 bg-white p-1.5"
+                    class="mb-4 flex flex-wrap gap-2 rounded-xl border border-gray-100 bg-white p-1.5 dark:border-gray-800 dark:bg-gray-900"
                 >
                     <button
                         v-for="tab in tabs"
@@ -142,7 +149,7 @@ const visibleCoupons = computed(() =>
                         :class="
                             activeTab === tab.key
                                 ? 'bg-blue-600 text-white'
-                                : 'text-gray-600 hover:bg-gray-50'
+                                : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800'
                         "
                         @click="activeTab = tab.key"
                     >
@@ -152,17 +159,19 @@ const visibleCoupons = computed(() =>
                             :class="
                                 activeTab === tab.key
                                     ? 'bg-white/20'
-                                    : 'bg-gray-100 text-gray-500'
+                                    : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'
                             "
                             >{{ tab.count }}</span
                         >
                     </button>
                 </div>
 
-                <h2 class="mb-1 text-lg font-bold text-gray-900">
+                <h2
+                    class="mb-1 text-lg font-bold text-gray-900 dark:text-gray-100"
+                >
                     {{ t('store.best_codes', { store: store.name }) }}
                 </h2>
-                <p class="mb-4 text-sm text-gray-500">
+                <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">
                     {{ t('store.best_codes_sub') }}
                 </p>
 
@@ -175,7 +184,7 @@ const visibleCoupons = computed(() =>
                 </div>
                 <p
                     v-else
-                    class="rounded-2xl border border-dashed border-gray-200 bg-white p-8 text-center text-sm text-gray-400"
+                    class="rounded-2xl border border-dashed border-gray-200 bg-white p-8 text-center text-sm text-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-500"
                 >
                     {{ t('store.no_coupons') }}
                 </p>
@@ -183,12 +192,16 @@ const visibleCoupons = computed(() =>
                 <!-- SEO text -->
                 <div
                     v-if="store.about"
-                    class="mt-8 rounded-2xl border border-gray-100 bg-white p-6"
+                    class="mt-8 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-800 dark:bg-gray-900"
                 >
-                    <h2 class="text-base font-semibold text-gray-900">
+                    <h2
+                        class="text-base font-semibold text-gray-900 dark:text-gray-100"
+                    >
                         {{ store.name }}
                     </h2>
-                    <p class="mt-2 text-sm leading-relaxed text-gray-500">
+                    <p
+                        class="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
                         {{ store.about }}
                     </p>
                 </div>
@@ -197,17 +210,21 @@ const visibleCoupons = computed(() =>
             <!-- Sidebar -->
             <aside class="space-y-6">
                 <div
-                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 >
-                    <h3 class="mb-4 text-base font-bold text-gray-900">
+                    <h3
+                        class="mb-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {{ t('store.about') }}
                     </h3>
                     <dl class="space-y-3 text-sm">
                         <div v-if="store.countries?.length">
-                            <dt class="text-gray-400">
+                            <dt class="text-gray-400 dark:text-gray-500">
                                 {{ t('store.supported_countries') }}
                             </dt>
-                            <dd class="font-medium text-gray-900">
+                            <dd
+                                class="font-medium text-gray-900 dark:text-gray-100"
+                            >
                                 {{ store.countries.join(', ') }}
                             </dd>
                         </div>
@@ -216,7 +233,7 @@ const visibleCoupons = computed(() =>
                         :href="store.go_url"
                         target="_blank"
                         rel="nofollow noopener sponsored"
-                        class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
+                        class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300"
                     >
                         {{ t('store.go_to_store') }}
                         <ArrowRight class="h-4 w-4" />
@@ -225,21 +242,23 @@ const visibleCoupons = computed(() =>
 
                 <div
                     v-if="storeCategories.length"
-                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 >
-                    <h3 class="mb-4 text-base font-bold text-gray-900">
+                    <h3
+                        class="mb-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {{ t('store.categories') }}
                     </h3>
                     <ul class="space-y-2">
                         <li v-for="cat in storeCategories" :key="cat.id">
                             <Link
                                 :href="cat.url"
-                                class="flex items-center justify-between text-sm text-gray-600 hover:text-blue-600"
+                                class="flex items-center justify-between text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300"
                             >
                                 <span>{{ cat.name }}</span>
                                 <span
                                     v-if="cat.stores_count !== null"
-                                    class="text-xs text-gray-400"
+                                    class="text-xs text-gray-400 dark:text-gray-500"
                                     >{{ cat.stores_count }}</span
                                 >
                             </Link>
@@ -249,9 +268,11 @@ const visibleCoupons = computed(() =>
 
                 <div
                     v-if="similar.length"
-                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+                    class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 >
-                    <h3 class="mb-4 text-base font-bold text-gray-900">
+                    <h3
+                        class="mb-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {{ t('store.similar') }}
                     </h3>
                     <ul class="space-y-3">
@@ -263,11 +284,12 @@ const visibleCoupons = computed(() =>
                                 <StoreLogo
                                     :name="s.name"
                                     :logo="s.logo"
+                                    :logo-dark="s.logo_dark"
                                     size="sm"
                                 />
                                 <span class="min-w-0">
                                     <span
-                                        class="block truncate text-sm font-medium text-gray-900"
+                                        class="block truncate text-sm font-medium text-gray-900 dark:text-gray-100"
                                         >{{ s.name }}</span
                                     >
                                 </span>

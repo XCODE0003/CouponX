@@ -37,6 +37,7 @@ final class CouponPresenter
                 'name' => $coupon->store->name,
                 'slug' => $coupon->store->slug,
                 'logo' => $coupon->store->logo ? asset('storage/'.$coupon->store->logo) : null,
+                'logo_dark' => $coupon->store->logo_dark ? asset('storage/'.$coupon->store->logo_dark) : null,
                 'url' => route('stores.show', $coupon->store->slug),
             ];
         }

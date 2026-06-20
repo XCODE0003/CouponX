@@ -113,31 +113,33 @@ function formatDate(iso: string | null): string {
         <!-- Hero header -->
         <Reveal>
             <div
-                class="overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-r from-blue-50/70 to-white p-6 shadow-sm sm:p-8"
+                class="overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-r from-blue-50/70 to-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:to-gray-950"
             >
                 <div class="flex flex-col gap-5 sm:flex-row sm:items-center">
                     <span
-                        class="flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm"
+                        class="flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm dark:bg-gray-900 dark:text-blue-400"
                     >
                         <CategoryIcon :name="category.icon" class="h-12 w-12" />
                     </span>
                     <div class="flex-1">
                         <h1
-                            class="text-3xl font-extrabold tracking-tight text-gray-900"
+                            class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100"
                         >
                             {{ category.name }}
                         </h1>
                         <p
                             v-if="category.description"
-                            class="mt-2 max-w-2xl text-sm text-gray-500"
+                            class="mt-2 max-w-2xl text-sm text-gray-500 dark:text-gray-400"
                         >
                             {{ category.description }}
                         </p>
                         <div
-                            class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600"
+                            class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-300"
                         >
                             <span class="inline-flex items-center gap-1.5">
-                                <Store class="h-4 w-4 text-blue-500" />
+                                <Store
+                                    class="h-4 w-4 text-blue-500 dark:text-blue-400"
+                                />
                                 {{
                                     t('cat.stat_stores', {
                                         count: counts.stores,
@@ -156,7 +158,9 @@ function formatDate(iso: string | null): string {
                                 v-if="category.max_discount"
                                 class="inline-flex items-center gap-1.5"
                             >
-                                <Percent class="h-4 w-4 text-emerald-500" />
+                                <Percent
+                                    class="h-4 w-4 text-emerald-500 dark:text-emerald-400"
+                                />
                                 {{
                                     t('cat.stat_discount', {
                                         percent: category.max_discount,
@@ -170,7 +174,9 @@ function formatDate(iso: string | null): string {
         </Reveal>
 
         <!-- Tabs -->
-        <div class="mt-6 flex flex-wrap gap-1 border-b border-gray-100">
+        <div
+            class="mt-6 flex flex-wrap gap-1 border-b border-gray-100 dark:border-gray-800"
+        >
             <button
                 v-for="item in tabs"
                 :key="item.key"
@@ -178,13 +184,15 @@ function formatDate(iso: string | null): string {
                 class="-mb-px border-b-2 px-4 py-3 text-sm font-medium transition"
                 :class="
                     tab === item.key
-                        ? 'border-blue-600 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-900'
+                        ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                        : 'border-transparent text-gray-500 hover:text-gray-900 dark:text-gray-400'
                 "
                 @click="tab = item.key"
             >
                 {{ item.label }}
-                <span class="ml-1 text-xs text-gray-400">{{ item.count }}</span>
+                <span class="ml-1 text-xs text-gray-400 dark:text-gray-500">{{
+                    item.count
+                }}</span>
             </button>
         </div>
 
@@ -207,7 +215,9 @@ function formatDate(iso: string | null): string {
                     class="mb-8"
                 >
                     <div class="mb-4 flex items-center justify-between">
-                        <h2 class="text-xl font-bold text-gray-900">
+                        <h2
+                            class="text-xl font-bold text-gray-900 dark:text-gray-100"
+                        >
                             {{
                                 t('cat.popular_stores', {
                                     category: category.name,
@@ -217,13 +227,13 @@ function formatDate(iso: string | null): string {
                         <div class="flex items-center gap-3">
                             <Link
                                 :href="`/${locale}/stores?category=${category.slug}`"
-                                class="text-sm font-semibold text-blue-600 hover:underline"
+                                class="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                             >
                                 {{ t('cat.see_all') }}
                             </Link>
                             <button
                                 type="button"
-                                class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:bg-gray-50"
+                                class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800"
                                 @click="scrollRight"
                             >
                                 <ChevronRight class="h-4 w-4" />
@@ -235,16 +245,17 @@ function formatDate(iso: string | null): string {
                             v-for="store in stores"
                             :key="store.id"
                             :href="store.url"
-                            class="group flex w-44 shrink-0 flex-col items-center rounded-2xl border border-gray-100 bg-white p-4 text-center shadow-sm transition hover:shadow-md"
+                            class="group flex w-44 shrink-0 flex-col items-center rounded-2xl border border-gray-100 bg-white p-4 text-center shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
                         >
                             <StoreLogo
                                 :name="store.name"
                                 :logo="store.logo"
+                                :logo-dark="store.logo_dark"
                                 size="lg"
                             />
                             <p
                                 v-if="store.max_discount"
-                                class="mt-3 text-sm font-semibold text-emerald-600"
+                                class="mt-3 text-sm font-semibold text-emerald-600 dark:text-emerald-400"
                             >
                                 {{
                                     t('cat.up_to_off', {
@@ -252,7 +263,7 @@ function formatDate(iso: string | null): string {
                                     })
                                 }}
                             </p>
-                            <p class="text-xs text-gray-400">
+                            <p class="text-xs text-gray-400 dark:text-gray-500">
                                 {{
                                     t('cat.coupons_n', {
                                         count: store.coupons_count ?? 0,
@@ -260,7 +271,7 @@ function formatDate(iso: string | null): string {
                                 }}
                             </p>
                             <span
-                                class="mt-3 w-full rounded-lg bg-blue-50 px-4 py-1.5 text-sm font-semibold text-blue-600 transition group-hover:bg-blue-100"
+                                class="mt-3 w-full rounded-lg bg-blue-50 px-4 py-1.5 text-sm font-semibold text-blue-600 transition group-hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-400"
                             >
                                 {{ t('cat.view') }}
                             </span>
@@ -270,7 +281,9 @@ function formatDate(iso: string | null): string {
 
                 <!-- Coupons view -->
                 <section v-if="tab === 'coupons'">
-                    <h2 class="mb-4 text-xl font-bold text-gray-900">
+                    <h2
+                        class="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {{ t('cat.best_coupons', { category: category.name }) }}
                     </h2>
                     <div v-if="visibleCoupons.length" class="space-y-3">
@@ -283,7 +296,7 @@ function formatDate(iso: string | null): string {
                     </div>
                     <p
                         v-else
-                        class="rounded-2xl border border-dashed border-gray-200 bg-white p-8 text-center text-sm text-gray-400"
+                        class="rounded-2xl border border-dashed border-gray-200 bg-white p-8 text-center text-sm text-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-500"
                     >
                         {{ t('cat.no_results') }}
                     </p>
@@ -293,7 +306,7 @@ function formatDate(iso: string | null): string {
                     >
                         <button
                             type="button"
-                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
                             @click="visibleCount += 5"
                         >
                             {{ t('cat.load_more') }}
@@ -314,7 +327,10 @@ function formatDate(iso: string | null): string {
                             :store="store"
                         />
                     </div>
-                    <p v-else class="text-center text-gray-400">
+                    <p
+                        v-else
+                        class="text-center text-gray-400 dark:text-gray-500"
+                    >
                         {{ t('cat.no_stores') }}
                     </p>
                 </section>
@@ -329,25 +345,28 @@ function formatDate(iso: string | null): string {
                             v-for="post in posts"
                             :key="post.id"
                             :href="post.url"
-                            class="group rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:shadow-md"
+                            class="group rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
                         >
-                            <p class="text-xs text-gray-400">
+                            <p class="text-xs text-gray-400 dark:text-gray-500">
                                 {{ formatDate(post.published_at) }}
                             </p>
                             <h3
-                                class="mt-1 font-semibold text-gray-900 group-hover:text-blue-600"
+                                class="mt-1 font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100"
                             >
                                 {{ post.title }}
                             </h3>
                             <p
                                 v-if="post.excerpt"
-                                class="mt-2 line-clamp-2 text-sm text-gray-500"
+                                class="mt-2 line-clamp-2 text-sm text-gray-500 dark:text-gray-400"
                             >
                                 {{ post.excerpt }}
                             </p>
                         </Link>
                     </div>
-                    <p v-else class="text-center text-gray-400">
+                    <p
+                        v-else
+                        class="text-center text-gray-400 dark:text-gray-500"
+                    >
                         {{ t('cat.no_articles') }}
                     </p>
                 </section>

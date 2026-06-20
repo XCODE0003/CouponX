@@ -33,8 +33,8 @@ const typeLabel = computed(() => {
 
 const typeClasses = computed(() => {
     return {
-        code: 'bg-emerald-50 text-emerald-700',
-        deal: 'bg-blue-50 text-blue-700',
+        code: 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400',
+        deal: 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
         sale: 'bg-rose-50 text-rose-700',
     }[props.coupon.type];
 });
@@ -74,13 +74,14 @@ async function activate(): Promise<void> {
 
 <template>
     <article
-        class="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md sm:flex-row sm:items-center sm:p-5"
+        class="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md sm:flex-row sm:items-center sm:p-5 dark:border-gray-800 dark:bg-gray-900"
     >
         <!-- Leading icon / store logo -->
         <StoreLogo
             v-if="showStore && coupon.store"
             :name="coupon.store.name"
             :logo="coupon.store.logo"
+            :logo-dark="coupon.store.logo_dark"
             size="md"
         />
         <div
@@ -107,35 +108,37 @@ async function activate(): Promise<void> {
                 </span>
                 <span
                     v-if="coupon.is_exclusive"
-                    class="inline-flex items-center gap-1 rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700"
+                    class="inline-flex items-center gap-1 rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-950/40 dark:text-amber-300"
                 >
                     <Sparkles class="h-3 w-3" /> {{ t('coupon.exclusive') }}
                 </span>
                 <Link
                     v-if="showStore && coupon.store"
                     :href="coupon.store.url"
-                    class="text-xs font-medium text-blue-600 hover:underline"
+                    class="text-xs font-medium text-blue-600 hover:underline dark:text-blue-400"
                 >
                     {{ coupon.store.name }}
                 </Link>
             </div>
 
-            <h3 class="truncate text-base font-semibold text-gray-900">
+            <h3
+                class="truncate text-base font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ coupon.title }}
             </h3>
             <p
                 v-if="coupon.description"
-                class="mt-0.5 line-clamp-2 text-sm text-gray-500"
+                class="mt-0.5 line-clamp-2 text-sm text-gray-500 dark:text-gray-400"
             >
                 {{ coupon.description }}
             </p>
 
             <div
-                class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400"
+                class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 dark:text-gray-500"
             >
                 <span
                     v-if="coupon.is_verified"
-                    class="inline-flex items-center gap-1 text-emerald-600"
+                    class="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400"
                 >
                     <BadgeCheck class="h-3.5 w-3.5" />
                     {{ t('coupon.verified') }}
@@ -154,7 +157,7 @@ async function activate(): Promise<void> {
             <button
                 v-if="coupon.has_code"
                 type="button"
-                class="group relative flex items-center justify-between gap-2 overflow-hidden rounded-lg border border-dashed border-blue-300 bg-blue-50/50 px-3 py-2 text-sm font-semibold text-blue-700"
+                class="group relative flex items-center justify-between gap-2 overflow-hidden rounded-lg border border-dashed border-blue-300 bg-blue-50/50 px-3 py-2 text-sm font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300"
                 @click="activate"
             >
                 <span class="truncate" :class="{ 'blur-[3px]': !revealed }">{{
@@ -162,7 +165,7 @@ async function activate(): Promise<void> {
                 }}</span>
                 <Check
                     v-if="copied"
-                    class="h-4 w-4 shrink-0 text-emerald-600"
+                    class="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400"
                 />
                 <Copy
                     v-else

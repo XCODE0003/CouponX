@@ -15,7 +15,7 @@ const { t, locale } = useI18n();
 
 <template>
     <nav
-        class="flex flex-wrap items-center gap-1 text-sm text-gray-400"
+        class="flex flex-wrap items-center gap-1 text-sm text-gray-400 dark:text-gray-500"
         aria-label="Breadcrumb"
     >
         <Link :href="`/${locale}`" class="hover:text-blue-600">{{
@@ -29,7 +29,7 @@ const { t, locale } = useI18n();
                 class="hover:text-blue-600"
                 >{{ crumb.label }}</Link
             >
-            <span v-else class="font-medium text-gray-600">{{
+            <span v-else class="font-medium text-gray-600 dark:text-gray-300">{{
                 crumb.label
             }}</span>
         </template>

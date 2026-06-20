@@ -47,15 +47,23 @@ class StoreForm
                             ->maxLength(2048)
                             ->columnSpanFull(),
                         FileUpload::make('logo')
-                            ->label('Логотип')
+                            ->label('Логотип (светлая тема)')
                             ->image()
                             ->disk('public')
                             ->directory('stores')
                             ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                             ->maxSize(2048)
-                            ->helperText('PNG, JPEG или WebP. При загрузке конвертируется в оптимизированный WebP.')
-                            ->saveUploadedFileUsing(fn (TemporaryUploadedFile $file): ?string => ImageOptimizer::storeAsWebp($file, 'stores', 512))
-                            ->columnSpanFull(),
+                            ->helperText('Для светлого фона (обычно тёмный логотип). PNG, JPEG или WebP — конвертируется в оптимизированный WebP.')
+                            ->saveUploadedFileUsing(fn (TemporaryUploadedFile $file): ?string => ImageOptimizer::storeAsWebp($file, 'stores', 512)),
+                        FileUpload::make('logo_dark')
+                            ->label('Логотип для тёмной темы')
+                            ->image()
+                            ->disk('public')
+                            ->directory('stores')
+                            ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
+                            ->maxSize(2048)
+                            ->helperText('Необязательно. Светлый/белый логотип для тёмного фона. Если пусто — на тёмной теме показывается основной логотип.')
+                            ->saveUploadedFileUsing(fn (TemporaryUploadedFile $file): ?string => ImageOptimizer::storeAsWebp($file, 'stores', 512)),
                     ]),
 
                 Translatable::tabs(fn (string $locale, bool $isDefault): array => [

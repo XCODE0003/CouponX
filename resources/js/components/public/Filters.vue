@@ -114,15 +114,17 @@ const hasActive = () =>
 </script>
 
 <template>
-    <aside class="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+    <aside
+        class="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+    >
         <div class="mb-4 flex items-center justify-between">
-            <h2 class="text-lg font-bold text-gray-900">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">
                 {{ t('filters.title') }}
             </h2>
             <button
                 v-if="hasActive()"
                 type="button"
-                class="text-sm font-semibold text-blue-600 hover:underline"
+                class="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                 @click="reset"
             >
                 {{ t('filters.reset') }}
@@ -131,12 +133,14 @@ const hasActive = () =>
 
         <!-- Sort -->
         <div class="mb-5">
-            <p class="mb-2 text-sm font-semibold text-gray-900">
+            <p
+                class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ t('filters.sort') }}
             </p>
             <select
                 v-model="sort"
-                class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200"
                 @change="apply"
             >
                 <option value="popular">{{ t('filters.sort_popular') }}</option>
@@ -149,24 +153,27 @@ const hasActive = () =>
 
         <!-- Discount -->
         <div class="mb-5">
-            <p class="mb-2 text-sm font-semibold text-gray-900">
+            <p
+                class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ t('filters.discount') }}
             </p>
             <ul class="space-y-1.5">
                 <li v-for="bucket in facets.discounts" :key="bucket.value">
                     <label
-                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600"
+                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
                     >
                         <input
                             type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400"
+                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400 dark:border-gray-700 dark:text-blue-400"
                             :checked="discount === bucket.value"
                             @change="setDiscount(bucket.value)"
                         />
                         <span>{{
                             t('filters.from_and_up', { percent: bucket.value })
                         }}</span>
-                        <span class="ml-auto text-xs text-gray-400"
+                        <span
+                            class="ml-auto text-xs text-gray-400 dark:text-gray-500"
                             >({{ bucket.count }})</span
                         >
                     </label>
@@ -176,22 +183,25 @@ const hasActive = () =>
 
         <!-- Offer type -->
         <div class="mb-5">
-            <p class="mb-2 text-sm font-semibold text-gray-900">
+            <p
+                class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ t('filters.offer_type') }}
             </p>
             <ul class="space-y-1.5">
                 <li v-for="type in facets.types" :key="type.key">
                     <label
-                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600"
+                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
                     >
                         <input
                             type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400"
+                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400 dark:border-gray-700 dark:text-blue-400"
                             :checked="types.includes(type.key)"
                             @change="toggle('type', type.key)"
                         />
                         <span>{{ type.label }}</span>
-                        <span class="ml-auto text-xs text-gray-400"
+                        <span
+                            class="ml-auto text-xs text-gray-400 dark:text-gray-500"
                             >({{ type.count }})</span
                         >
                     </label>
@@ -201,19 +211,21 @@ const hasActive = () =>
 
         <!-- Subcategories -->
         <div v-if="subcategories.length" class="mb-5">
-            <p class="mb-2 text-sm font-semibold text-gray-900">
+            <p
+                class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ t('filters.subcategories') }}
             </p>
             <ul class="space-y-1.5">
                 <li v-for="sub in subcategories" :key="sub.id">
                     <Link
                         :href="sub.url"
-                        class="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600"
+                        class="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300"
                     >
                         <span>{{ sub.name }}</span>
                         <span
                             v-if="sub.stores_count !== null"
-                            class="ml-auto text-xs text-gray-400"
+                            class="ml-auto text-xs text-gray-400 dark:text-gray-500"
                             >({{ sub.stores_count }})</span
                         >
                     </Link>
@@ -223,7 +235,9 @@ const hasActive = () =>
 
         <!-- Delivery -->
         <div>
-            <p class="mb-2 text-sm font-semibold text-gray-900">
+            <p
+                class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
+            >
                 {{ t('filters.delivery') }}
             </p>
             <ul class="space-y-1.5">
@@ -233,16 +247,17 @@ const hasActive = () =>
                     :key="country.code"
                 >
                     <label
-                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600"
+                        class="flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
                     >
                         <input
                             type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400"
+                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-400 dark:border-gray-700 dark:text-blue-400"
                             :checked="deliveries.includes(country.code)"
                             @change="toggle('delivery', country.code)"
                         />
                         <span>{{ country.label }}</span>
-                        <span class="ml-auto text-xs text-gray-400"
+                        <span
+                            class="ml-auto text-xs text-gray-400 dark:text-gray-500"
                             >({{ country.count }})</span
                         >
                     </label>
@@ -251,7 +266,7 @@ const hasActive = () =>
             <button
                 v-if="facets.deliveries.length > 4"
                 type="button"
-                class="mt-2 text-sm font-semibold text-blue-600 hover:underline"
+                class="mt-2 text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                 @click="showAllDeliveries = !showAllDeliveries"
             >
                 {{ t('filters.show_all') }}

@@ -26,7 +26,7 @@ defineProps<{ stores: StoreCardData[] }>();
             />
             <span
                 v-else
-                class="text-xl font-extrabold tracking-tight text-gray-400 transition duration-300 group-hover:text-gray-900 sm:text-2xl"
+                class="text-xl font-extrabold tracking-tight text-gray-400 transition duration-300 group-hover:text-gray-900 sm:text-2xl dark:text-gray-500"
             >
                 {{ store.name }}
             </span>

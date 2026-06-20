@@ -40,13 +40,13 @@ function submit(): void {
 <template>
     <form class="relative w-full" role="search" @submit.prevent="submit">
         <Search
-            class="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400"
+            class="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
         />
         <input
             v-model="query"
             type="search"
             :placeholder="t('nav.search_placeholder')"
-            class="w-full rounded-full border border-gray-200 bg-gray-50 py-2 pr-4 pl-9 text-sm text-gray-900 transition outline-none focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100"
+            class="w-full rounded-full border border-gray-200 bg-gray-50 py-2 pr-4 pl-9 text-sm text-gray-900 transition outline-none focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-blue-100 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100"
         />
     </form>
 </template>

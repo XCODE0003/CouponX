@@ -33,20 +33,31 @@ const hasResults = computed(
             <SearchBar :initial="term" />
         </div>
 
-        <h1 v-if="term" class="mt-8 text-2xl font-bold text-gray-900">
+        <h1
+            v-if="term"
+            class="mt-8 text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
             {{ t('search.results_for', { term }) }}
         </h1>
 
-        <p v-if="!term" class="mt-10 text-center text-gray-400">
+        <p
+            v-if="!term"
+            class="mt-10 text-center text-gray-400 dark:text-gray-500"
+        >
             {{ t('search.prompt') }}
         </p>
-        <p v-else-if="!hasResults" class="mt-10 text-center text-gray-400">
+        <p
+            v-else-if="!hasResults"
+            class="mt-10 text-center text-gray-400 dark:text-gray-500"
+        >
             {{ t('search.empty') }}
         </p>
 
         <div v-else :key="term" class="search-results">
             <section v-if="stores.length" class="mt-8">
-                <h2 class="mb-4 text-lg font-bold text-gray-900">
+                <h2
+                    class="mb-4 text-lg font-bold text-gray-900 dark:text-gray-100"
+                >
                     {{ t('search.stores') }}
                 </h2>
                 <div
@@ -61,7 +72,9 @@ const hasResults = computed(
             </section>
 
             <section v-if="categories.length" class="mt-8">
-                <h2 class="mb-4 text-lg font-bold text-gray-900">
+                <h2
+                    class="mb-4 text-lg font-bold text-gray-900 dark:text-gray-100"
+                >
                     {{ t('search.categories') }}
                 </h2>
                 <div
@@ -76,7 +89,9 @@ const hasResults = computed(
             </section>
 
             <section v-if="coupons.length" class="mt-8">
-                <h2 class="mb-4 text-lg font-bold text-gray-900">
+                <h2
+                    class="mb-4 text-lg font-bold text-gray-900 dark:text-gray-100"
+                >
                     {{ t('search.coupons') }}
                 </h2>
                 <div class="space-y-3">

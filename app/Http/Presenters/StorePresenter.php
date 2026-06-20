@@ -20,6 +20,7 @@ final class StorePresenter
             'name' => $store->name,
             'slug' => $store->slug,
             'logo' => $store->logo ? asset('storage/'.$store->logo) : null,
+            'logo_dark' => $store->logo_dark ? asset('storage/'.$store->logo_dark) : null,
             'description' => $store->description,
             'rating' => $store->rating,
             'coupons_count' => $store->relationLoaded('coupons')

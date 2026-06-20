@@ -32,7 +32,7 @@ function toggle(i: number): void {
 
         <Reveal>
             <h1
-                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
             >
                 {{ content.title }}
             </h1>
@@ -41,7 +41,7 @@ function toggle(i: number): void {
         <div class="mt-8 space-y-3">
             <Reveal v-for="(item, i) in content.items" :key="i" :delay="i * 80">
                 <div
-                    class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm"
+                    class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 >
                     <button
                         type="button"
@@ -49,11 +49,12 @@ function toggle(i: number): void {
                         :aria-expanded="open === i"
                         @click="toggle(i)"
                     >
-                        <span class="font-semibold text-gray-900">{{
-                            item.q
-                        }}</span>
+                        <span
+                            class="font-semibold text-gray-900 dark:text-gray-100"
+                            >{{ item.q }}</span
+                        >
                         <ChevronDown
-                            class="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300"
+                            class="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300 dark:text-gray-500"
                             :class="{ 'rotate-180': open === i }"
                         />
                     </button>
@@ -67,7 +68,7 @@ function toggle(i: number): void {
                     >
                         <div class="overflow-hidden">
                             <p
-                                class="px-5 pb-4 text-sm leading-relaxed text-gray-500"
+                                class="px-5 pb-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400"
                             >
                                 {{ item.a }}
                             </p>

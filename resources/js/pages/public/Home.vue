@@ -24,24 +24,28 @@ const { t, locale } = useI18n();
 
     <!-- Hero -->
     <section
-        class="relative overflow-hidden bg-gradient-to-b from-blue-50/60 to-white"
+        class="relative overflow-hidden bg-gradient-to-b from-blue-50/60 to-white dark:from-blue-950/20 dark:to-gray-950"
     >
         <div
             class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24"
         >
             <div>
                 <span
-                    class="inline-flex items-center gap-1.5 rounded-full bg-blue-100/70 px-3 py-1 text-xs font-medium text-blue-700"
+                    class="inline-flex items-center gap-1.5 rounded-full bg-blue-100/70 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
                 >
                     <Sparkles class="h-3.5 w-3.5" /> {{ t('hero.badge') }}
                 </span>
                 <h1
-                    class="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+                    class="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-gray-100"
                 >
                     {{ t('hero.title_1') }}
-                    <span class="text-blue-600">{{ t('hero.title_2') }}</span>
+                    <span class="text-blue-600 dark:text-blue-400">{{
+                        t('hero.title_2')
+                    }}</span>
                 </h1>
-                <p class="mt-5 max-w-lg text-base text-gray-500">
+                <p
+                    class="mt-5 max-w-lg text-base text-gray-500 dark:text-gray-400"
+                >
                     {{ t('hero.subtitle') }}
                 </p>
                 <div class="mt-7 flex flex-wrap gap-3">
@@ -54,20 +58,24 @@ const { t, locale } = useI18n();
                     </Link>
                     <Link
                         :href="`/${locale}/categories`"
-                        class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                        class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
                     >
                         {{ t('hero.cta_how') }}
                     </Link>
                 </div>
                 <div
-                    class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500"
+                    class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400"
                 >
                     <span class="inline-flex items-center gap-1.5"
-                        ><BadgeCheck class="h-4 w-4 text-emerald-500" />
+                        ><BadgeCheck
+                            class="h-4 w-4 text-emerald-500 dark:text-emerald-400"
+                        />
                         {{ t('hero.feature_verified') }}</span
                     >
                     <span class="inline-flex items-center gap-1.5"
-                        ><Shield class="h-4 w-4 text-blue-500" />
+                        ><Shield
+                            class="h-4 w-4 text-blue-500 dark:text-blue-400"
+                        />
                         {{ t('hero.feature_no_reg') }}</span
                     >
                     <span class="inline-flex items-center gap-1.5"
@@ -91,14 +99,18 @@ const { t, locale } = useI18n();
     <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div class="text-center">
             <p
-                class="text-xs font-semibold tracking-wide text-blue-600 uppercase"
+                class="text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400"
             >
                 {{ t('partners.eyebrow') }}
             </p>
-            <h2 class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h2
+                class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100"
+            >
                 {{ t('partners.title') }}
             </h2>
-            <p class="mx-auto mt-2 max-w-xl text-sm text-gray-500">
+            <p
+                class="mx-auto mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400"
+            >
                 {{ t('partners.subtitle') }}
             </p>
         </div>
@@ -106,7 +118,7 @@ const { t, locale } = useI18n();
         <div class="mt-8 text-center">
             <Link
                 :href="`/${locale}/stores`"
-                class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline"
+                class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
             >
                 {{ t('partners.view_all') }} <ArrowRight class="h-4 w-4" />
             </Link>
@@ -118,17 +130,17 @@ const { t, locale } = useI18n();
         <div class="mb-5 flex items-end justify-between">
             <div>
                 <p
-                    class="text-xs font-semibold tracking-wide text-gray-400 uppercase"
+                    class="text-xs font-semibold tracking-wide text-gray-400 uppercase dark:text-gray-500"
                 >
                     {{ t('sections.popular_stores') }}
                 </p>
-                <h2 class="text-2xl font-bold text-gray-900">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {{ t('sections.browse_top_stores') }}
                 </h2>
             </div>
             <Link
                 :href="`/${locale}/stores`"
-                class="text-sm font-semibold text-blue-600 hover:underline"
+                class="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
                 >{{ t('sections.view_all') }}</Link
             >
         </div>
@@ -146,11 +158,11 @@ const { t, locale } = useI18n();
         <div class="mb-5 flex items-end justify-between">
             <div>
                 <p
-                    class="text-xs font-semibold tracking-wide text-gray-400 uppercase"
+                    class="text-xs font-semibold tracking-wide text-gray-400 uppercase dark:text-gray-500"
                 >
                     {{ t('sections.top_coupons') }}
                 </p>
-                <h2 class="text-2xl font-bold text-gray-900">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {{ t('sections.todays_best') }}
                 </h2>
             </div>
@@ -170,7 +182,7 @@ const { t, locale } = useI18n();
         v-if="categories.length"
         class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"
     >
-        <h2 class="mb-5 text-2xl font-bold text-gray-900">
+        <h2 class="mb-5 text-2xl font-bold text-gray-900 dark:text-gray-100">
             {{ t('sections.popular_categories') }}
         </h2>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">

@@ -37,28 +37,30 @@ function submit(): void {
 
         <Reveal>
             <h1
-                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
             >
                 {{ content.title }}
             </h1>
-            <p class="mt-3 text-gray-500">{{ content.intro }}</p>
+            <p class="mt-3 text-gray-500 dark:text-gray-400">
+                {{ content.intro }}
+            </p>
         </Reveal>
 
         <Reveal class="mt-8">
             <form
-                class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+                class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
                 @submit.prevent="submit"
             >
                 <div>
                     <label
-                        class="mb-1 block text-sm font-medium text-gray-700"
+                        class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200"
                         >{{ content.name_label }}</label
                     >
                     <input
                         v-model="form.name"
                         type="text"
                         required
-                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-800"
                     />
                     <p
                         v-if="form.errors.name"
@@ -69,14 +71,14 @@ function submit(): void {
                 </div>
                 <div>
                     <label
-                        class="mb-1 block text-sm font-medium text-gray-700"
+                        class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200"
                         >{{ content.email_label }}</label
                     >
                     <input
                         v-model="form.email"
                         type="email"
                         required
-                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-800"
                     />
                     <p
                         v-if="form.errors.email"
@@ -87,14 +89,14 @@ function submit(): void {
                 </div>
                 <div>
                     <label
-                        class="mb-1 block text-sm font-medium text-gray-700"
+                        class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200"
                         >{{ content.message_label }}</label
                     >
                     <textarea
                         v-model="form.message"
                         rows="5"
                         required
-                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                        class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:border-gray-800"
                     ></textarea>
                     <p
                         v-if="form.errors.message"
@@ -114,12 +116,12 @@ function submit(): void {
 
             <p
                 v-if="reachEmail"
-                class="mt-4 flex items-center gap-2 text-sm text-gray-500"
+                class="mt-4 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
             >
                 <Mail class="h-4 w-4" /> {{ content.reach_us }}
                 <a
                     :href="`mailto:${reachEmail}`"
-                    class="font-medium text-blue-600 hover:underline"
+                    class="font-medium text-blue-600 hover:underline dark:text-blue-400"
                     >{{ reachEmail }}</a
                 >
             </p>
