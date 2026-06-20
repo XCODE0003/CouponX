@@ -1,5 +1,0 @@
-[   80314ms] [WARNING] [Vue warn]: Extraneous non-props attributes (errors, name, auth, sidebarOpen, locale, locales, alternates, seo, translations, nav, flash, meta) were passed to component but could not be automatically inherited because component renders fragment or text or teleport root nodes. 
-  at <Faq errors= {} name="Laravel" auth= {user: null}  ... > 
-  at <PublicLayout errors= {} name="Laravel" auth= {user: null}  ... > 
-  at <Inertia initialPage= {component: public/pages/Faq, props: Object, url: /ru/faq, version: bd623b0c0825bf149a269a0e7050eb4f, sharedProps: Array(11)} initialComponent= {__name: Faq, props: Object, setup: , __hmrId: 0c9cd04a, render: } resolveComponent=fn<resolveComponent>  ... > 
-  at <App> @ http://[::1]:5173/node_modules/.vite/deps/vue.runtime.esm-bundler-Cb0HG1GX.js?v=8c118239:1763
