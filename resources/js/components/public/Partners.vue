@@ -34,7 +34,7 @@ function logoFor(store: StoreCardData): string | null {
                 v-if="logoFor(store) && !broken[store.id]"
                 :src="logoFor(store)!"
                 :alt="store.name"
-                class="h-9 w-auto object-contain transition duration-300 group-hover:scale-105"
+                class="partner-logo h-9 w-auto object-contain transition duration-300"
                 loading="lazy"
                 @error="broken[store.id] = true"
             />
@@ -49,6 +49,17 @@ function logoFor(store: StoreCardData): string | null {
 </template>
 
 <style scoped>
+/* Render every partner logo as a single flat grey silhouette so the row reads as
+   one uniform colour regardless of the logo's own colours. brightness(0) flattens
+   to black (preserving transparency/shape), invert() lifts it to grey. */
+.partner-logo {
+    filter: brightness(0) invert(0.62);
+}
+
+.group:hover .partner-logo {
+    filter: brightness(0) invert(0.82);
+}
+
 /* Slide-only entrance so logos are never hidden if the animation is interrupted. */
 @keyframes partnerIn {
     from {
