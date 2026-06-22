@@ -34,7 +34,7 @@ function logoFor(store: StoreCardData): string | null {
                 v-if="logoFor(store) && !broken[store.id]"
                 :src="logoFor(store)!"
                 :alt="store.name"
-                class="h-9 w-auto object-contain opacity-60 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                class="h-9 w-auto object-contain transition duration-300 group-hover:scale-105"
                 loading="lazy"
                 @error="broken[store.id] = true"
             />
