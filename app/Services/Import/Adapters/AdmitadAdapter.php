@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Import\Adapters;
 
+use App\Enums\DiscountType;
 use App\Models\AffiliateNetwork;
 use App\Services\Import\Concerns\NormalizesDrafts;
 use App\Services\Import\Contracts\ImportAdapter;
@@ -12,12 +13,16 @@ use Illuminate\Support\Facades\Http;
 
 /**
  * Admitad coupons import.
- * Docs: https://www.admitad.com/en/webmaster/api/ (OAuth2 client_credentials + /coupons/).
+ * Docs: https://www.admitad.com/en/webmaster/api/
+ *
+ * Imports only the publisher's ACCEPTED programs ("My affiliate programs"):
+ *   1. /advcampaigns/website/{website_id}/ → campaigns, kept where connection_status = active.
+ *   2. /coupons/website/{website_id}/      → coupons (with promocode + goto_link),
+ *      grouped onto a store per campaign.
  *
  * network.config = {
  *   "client_id": "...", "client_secret": "...",
- *   "scope": "coupons",            // optional, default "coupons"
- *   "website_id": 123              // optional filter
+ *   "website_id": 123   // REQUIRED — the website-scoped endpoints need it.
  * }
  */
 class AdmitadAdapter implements ImportAdapter
@@ -26,9 +31,11 @@ class AdmitadAdapter implements ImportAdapter
 
     private const BASE = 'https://api.admitad.com';
 
+    private const SCOPE = 'coupons_for_website advcampaigns_for_website';
+
     private const PAGE = 100;
 
-    private const MAX_PAGES = 50;
+    private const MAX_PAGES = 200;
 
     public function key(): string
     {
@@ -40,22 +47,75 @@ class AdmitadAdapter implements ImportAdapter
         $config = $network->config ?? [];
         $clientId = $this->stringOrNull($config['client_id'] ?? null);
         $clientSecret = $this->stringOrNull($config['client_secret'] ?? null);
+        $websiteId = $this->stringOrNull($config['website_id'] ?? null);
 
-        if ($clientId === null || $clientSecret === null) {
-            return; // not configured yet → safe no-op
+        // website_id is required: the public /coupons/ endpoint exposes neither the
+        // promo code nor the affiliate goto_link, so we must use website-scoped ones.
+        if ($clientId === null || $clientSecret === null || $websiteId === null) {
+            return;
         }
 
-        $token = $this->accessToken($clientId, $clientSecret, $this->stringOrNull($config['scope'] ?? null) ?? 'coupons');
+        $token = $this->accessToken($clientId, $clientSecret);
 
-        $query = [];
-        if (isset($config['website_id'])) {
-            $query['website'] = $config['website_id'];
+        // Only import coupons belonging to programs we are actually accepted into.
+        $active = $this->activeCampaigns($token, $websiteId);
+        if ($active === []) {
+            return;
         }
 
+        foreach ($this->paginate($token, self::BASE."/coupons/website/{$websiteId}/") as $row) {
+            $campaignId = data_get($row, 'campaign.id');
+            if ($campaignId === null || ! isset($active[(int) $campaignId])) {
+                continue; // pending / not-accepted program → skip
+            }
+
+            yield $this->toDraft($row, $active[(int) $campaignId]);
+        }
+    }
+
+    /**
+     * Campaigns the publisher is accepted into: id => ['name' => ..., 'site_url' => ...].
+     *
+     * @return array<int, array{name: string, site_url: ?string}>
+     */
+    private function activeCampaigns(string $token, string $websiteId): array
+    {
+        $campaigns = [];
+
+        foreach ($this->paginate($token, self::BASE."/advcampaigns/website/{$websiteId}/") as $row) {
+            $status = $this->stringOrNull(data_get($row, 'connection_status'));
+            $connected = data_get($row, 'connected');
+
+            if ($status !== 'active' && $connected !== true) {
+                continue;
+            }
+
+            $id = data_get($row, 'id');
+            $name = $this->stringOrNull(data_get($row, 'name'));
+            if ($id === null || $name === null) {
+                continue;
+            }
+
+            $campaigns[(int) $id] = [
+                'name' => $name,
+                'site_url' => $this->stringOrNull(data_get($row, 'site_url')),
+            ];
+        }
+
+        return $campaigns;
+    }
+
+    /**
+     * Offset-paginate an Admitad list endpoint, yielding each result row.
+     *
+     * @return iterable<int, array<string, mixed>>
+     */
+    private function paginate(string $token, string $url): iterable
+    {
         for ($offset = 0, $page = 0; $page < self::MAX_PAGES; $offset += self::PAGE, $page++) {
             $response = Http::withToken($token)
                 ->acceptJson()
-                ->get(self::BASE.'/coupons/', $query + ['limit' => self::PAGE, 'offset' => $offset])
+                ->get($url, ['limit' => self::PAGE, 'offset' => $offset])
                 ->throw();
 
             $rows = $response->json('results');
@@ -65,7 +125,7 @@ class AdmitadAdapter implements ImportAdapter
 
             foreach ($rows as $row) {
                 if (is_array($row)) {
-                    yield $this->toDraft($row);
+                    yield $row;
                 }
             }
 
@@ -76,7 +136,7 @@ class AdmitadAdapter implements ImportAdapter
         }
     }
 
-    private function accessToken(string $clientId, string $clientSecret, string $scope): string
+    private function accessToken(string $clientId, string $clientSecret): string
     {
         $response = Http::asForm()
             ->withBasicAuth($clientId, $clientSecret)
@@ -84,7 +144,7 @@ class AdmitadAdapter implements ImportAdapter
             ->post(self::BASE.'/token/', [
                 'grant_type' => 'client_credentials',
                 'client_id' => $clientId,
-                'scope' => $scope,
+                'scope' => self::SCOPE,
             ])
             ->throw();
 
@@ -93,33 +153,62 @@ class AdmitadAdapter implements ImportAdapter
 
     /**
      * @param  array<string, mixed>  $row
+     * @param  array{name: string, site_url: ?string}  $campaign
      */
-    private function toDraft(array $row): CouponDraft
+    private function toDraft(array $row, array $campaign): CouponDraft
     {
-        $code = $this->stringOrNull($row['promocode'] ?? null);
+        $code = $this->normalizeCode($this->stringOrNull($row['promocode'] ?? null));
 
         return new CouponDraft(
-            storeName: $this->stringOrNull(data_get($row, 'advcampaign.name')) ?? 'Admitad merchant',
-            storeWebsite: $this->stringOrNull(data_get($row, 'advcampaign.site_url')),
+            storeName: $campaign['name'],
+            storeWebsite: $campaign['site_url'],
             externalId: (string) ($row['id'] ?? md5((string) json_encode($row))),
-            type: $this->typeFromCode($code, $this->stringOrNull(data_get($row, 'types.0.name'))),
-            title: $this->localized($this->stringOrNull($row['name'] ?? null) ?? 'Coupon'),
+            // A real promo code → Code; otherwise it's a no-code deal (redirect button).
+            type: $this->typeFromCode($code),
+            title: $this->localized($this->stringOrNull($row['name'] ?? null) ?? ($this->stringOrNull($row['short_name'] ?? null) ?? 'Coupon')),
             description: $this->localizedNullable($this->stringOrNull($row['description'] ?? null)),
             code: $code,
-            affiliateUrl: $this->stringOrNull($row['goto_link'] ?? $row['short_link'] ?? null),
-            discountType: $this->discountType($this->discountKind($row)),
+            affiliateUrl: $this->stringOrNull($row['goto_link'] ?? null),
+            discountType: $this->discountKind($this->stringOrNull($row['discount'] ?? null)),
             discountValue: $this->numberFrom($row['discount'] ?? null),
             expiresAt: $this->parseDate($row['date_end'] ?? null),
         );
     }
 
     /**
-     * @param  array<string, mixed>  $row
+     * Admitad uses placeholders like "НЕ НУЖЕН"/"no code needed" for deals without
+     * a real code — treat those (and blanks) as no code.
      */
-    private function discountKind(array $row): ?string
+    private function normalizeCode(?string $code): ?string
     {
-        $discount = $row['discount'] ?? null;
+        if ($code === null) {
+            return null;
+        }
 
-        return is_string($discount) && str_contains($discount, '%') ? 'percentage' : null;
+        $code = trim($code);
+        if ($code === '') {
+            return null;
+        }
+
+        if (preg_match('/^(не\s*нужен|no\s*code|not\s*needed|без\s*кода)/iu', $code) === 1) {
+            return null;
+        }
+
+        return $code;
+    }
+
+    private function discountKind(?string $discount): ?DiscountType
+    {
+        if ($discount === null) {
+            return null;
+        }
+
+        if (str_contains($discount, '%')) {
+            return $this->discountType('percentage');
+        }
+
+        return $this->numberFrom($discount) !== null
+            ? $this->discountType('fixed')
+            : null;
     }
 }

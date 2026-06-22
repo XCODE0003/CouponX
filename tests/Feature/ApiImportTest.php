@@ -20,7 +20,17 @@ class ApiImportTest extends TestCase
     {
         Http::fake([
             'api.admitad.com/token/' => Http::response(['access_token' => 'tok', 'expires_in' => 3600]),
-            'api.admitad.com/coupons*' => Http::response([
+            'api.admitad.com/advcampaigns/*' => Http::response([
+                'results' => [[
+                    'id' => 50,
+                    'name' => 'AdmStore',
+                    'site_url' => 'https://admstore.com',
+                    'connection_status' => 'active',
+                    'connected' => true,
+                ]],
+                '_meta' => ['count' => 1, 'limit' => 100, 'offset' => 0],
+            ]),
+            'api.admitad.com/coupons/*' => Http::response([
                 'results' => [[
                     'id' => 901,
                     'name' => '20% off everything',
@@ -29,7 +39,7 @@ class ApiImportTest extends TestCase
                     'discount' => '20%',
                     'date_end' => '2030-01-01',
                     'goto_link' => 'https://ad.admitad.com/g/abc',
-                    'advcampaign' => ['name' => 'AdmStore', 'site_url' => 'https://admstore.com'],
+                    'campaign' => ['id' => 50, 'name' => 'AdmStore', 'site_url' => 'https://admstore.com'],
                 ]],
                 '_meta' => ['count' => 1, 'limit' => 100, 'offset' => 0],
             ]),
@@ -38,7 +48,7 @@ class ApiImportTest extends TestCase
         $network = AffiliateNetwork::factory()->create([
             'integration' => 'admitad',
             'is_active' => true,
-            'config' => ['client_id' => 'id', 'client_secret' => 'sec', 'scope' => 'coupons'],
+            'config' => ['client_id' => 'id', 'client_secret' => 'sec', 'website_id' => 123],
         ]);
 
         $result = app(CouponImporter::class)->import($network);
@@ -48,8 +58,10 @@ class ApiImportTest extends TestCase
             'source' => $network->slug,
             'external_id' => '901',
             'code' => 'ADM20',
+            'type' => 'code',
             'discount_type' => 'percentage',
             'discount_value' => 20,
+            'destination_url' => 'https://ad.admitad.com/g/abc',
         ]);
         $this->assertDatabaseHas('stores', ['name' => 'AdmStore']);
     }
