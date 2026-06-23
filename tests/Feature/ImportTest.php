@@ -74,10 +74,10 @@ class ImportTest extends TestCase
 
         $this->assertSame(1, $result->created);
         $this->assertDatabaseHas('coupons', ['source' => $network->slug, 'external_id' => 'ext-1', 'code' => 'SAVE10']);
-        // New stores are created inactive, pending review.
+        // New stores are created active and visible immediately (product decision 2026-06-22).
         $store = Store::query()->where('name', 'Brand New Store')->first();
         $this->assertNotNull($store);
-        $this->assertFalse($store->is_active);
+        $this->assertTrue($store->is_active);
         $this->assertDatabaseHas('store_aliases', ['store_id' => $store->id, 'normalized' => 'brand new store']);
         $this->assertNotNull($network->fresh()->last_imported_at);
     }

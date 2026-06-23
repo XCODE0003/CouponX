@@ -8,7 +8,9 @@ use App\Enums\DiscountType;
 use App\Models\AffiliateNetwork;
 use App\Services\Import\Concerns\NormalizesDrafts;
 use App\Services\Import\Contracts\ImportAdapter;
+use App\Services\Import\Contracts\ProvidesPrograms;
 use App\Services\Import\DTO\CouponDraft;
+use App\Services\Import\DTO\ProgramDraft;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -25,7 +27,7 @@ use Illuminate\Support\Facades\Http;
  *   "website_id": 123   // REQUIRED — the website-scoped endpoints need it.
  * }
  */
-class AdmitadAdapter implements ImportAdapter
+class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
 {
     use NormalizesDrafts;
 
@@ -37,9 +39,39 @@ class AdmitadAdapter implements ImportAdapter
 
     private const MAX_PAGES = 200;
 
+    /** @var array<string, array<int, array{name: string, site_url: ?string, gotolink: ?string}>> */
+    private array $campaignCache = [];
+
     public function key(): string
     {
         return 'admitad';
+    }
+
+    /**
+     * Accepted programs become stores (with their affiliate link) even without
+     * coupons — e.g. Aviasales.
+     */
+    public function programs(AffiliateNetwork $network): iterable
+    {
+        $config = $network->config ?? [];
+        $clientId = $this->stringOrNull($config['client_id'] ?? null);
+        $clientSecret = $this->stringOrNull($config['client_secret'] ?? null);
+        $websiteId = $this->stringOrNull($config['website_id'] ?? null);
+
+        if ($clientId === null || $clientSecret === null || $websiteId === null) {
+            return;
+        }
+
+        $token = $this->accessToken($clientId, $clientSecret);
+
+        foreach ($this->activeCampaigns($token, $websiteId) as $id => $campaign) {
+            yield new ProgramDraft(
+                name: $campaign['name'],
+                website: $campaign['site_url'],
+                affiliateUrl: $campaign['gotolink'],
+                externalId: (string) $id,
+            );
+        }
     }
 
     public function fetch(AffiliateNetwork $network): iterable
@@ -74,12 +106,17 @@ class AdmitadAdapter implements ImportAdapter
     }
 
     /**
-     * Campaigns the publisher is accepted into: id => ['name' => ..., 'site_url' => ...].
+     * Campaigns the publisher is accepted into, keyed by id. Memoised per website
+     * so programs() and fetch() share a single advcampaigns scan within an import.
      *
-     * @return array<int, array{name: string, site_url: ?string}>
+     * @return array<int, array{name: string, site_url: ?string, gotolink: ?string}>
      */
     private function activeCampaigns(string $token, string $websiteId): array
     {
+        if (isset($this->campaignCache[$websiteId])) {
+            return $this->campaignCache[$websiteId];
+        }
+
         $campaigns = [];
 
         foreach ($this->paginate($token, self::BASE."/advcampaigns/website/{$websiteId}/") as $row) {
@@ -99,10 +136,11 @@ class AdmitadAdapter implements ImportAdapter
             $campaigns[(int) $id] = [
                 'name' => $name,
                 'site_url' => $this->stringOrNull(data_get($row, 'site_url')),
+                'gotolink' => $this->stringOrNull(data_get($row, 'gotolink')),
             ];
         }
 
-        return $campaigns;
+        return $this->campaignCache[$websiteId] = $campaigns;
     }
 
     /**
@@ -153,7 +191,7 @@ class AdmitadAdapter implements ImportAdapter
 
     /**
      * @param  array<string, mixed>  $row
-     * @param  array{name: string, site_url: ?string}  $campaign
+     * @param  array{name: string, site_url: ?string, gotolink: ?string}  $campaign
      */
     private function toDraft(array $row, array $campaign): CouponDraft
     {

@@ -6,7 +6,9 @@ namespace Tests\Feature;
 
 use App\Models\AffiliateNetwork;
 use App\Models\Coupon;
+use App\Models\Store;
 use App\Services\Import\CouponImporter;
+use App\Services\Import\StoreResolver;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -27,6 +29,7 @@ class ApiImportTest extends TestCase
                     'site_url' => 'https://admstore.com',
                     'connection_status' => 'active',
                     'connected' => true,
+                    'gotolink' => 'https://ad.admitad.com/g/admstore-base/',
                 ]],
                 '_meta' => ['count' => 1, 'limit' => 100, 'offset' => 0],
             ]),
@@ -63,7 +66,36 @@ class ApiImportTest extends TestCase
             'discount_value' => 20,
             'destination_url' => 'https://ad.admitad.com/g/abc',
         ]);
-        $this->assertDatabaseHas('stores', ['name' => 'AdmStore']);
+        $this->assertDatabaseHas('stores', ['name' => 'AdmStore', 'domain' => 'admstore.com']);
+        // Accepted program → store gets its default affiliate link (works coupon-less too).
+        $this->assertDatabaseHas('store_affiliate_links', [
+            'affiliate_url' => 'https://ad.admitad.com/g/admstore-base/',
+        ]);
+    }
+
+    public function test_import_dedupes_by_domain_and_keeps_manual_name(): void
+    {
+        $store = Store::factory()->create([
+            'name' => 'My Custom Nike',
+            'slug' => 'my-custom-nike',
+            'website_url' => 'https://www.nike.com',
+            'domain' => 'nike.com',
+        ]);
+
+        $resolved = app(StoreResolver::class)
+            ->resolve('Nike WW CPS', 'https://nike.com/sale', 'admitad');
+
+        $this->assertSame($store->id, $resolved->id);              // matched by domain
+        $this->assertSame('My Custom Nike', $resolved->fresh()->name); // manual name preserved
+        $this->assertSame(1, Store::query()->count());     // no duplicate
+    }
+
+    public function test_import_cleans_program_name_when_creating_store(): void
+    {
+        app(StoreResolver::class)
+            ->resolve('GSASS CPL UA+KZ', 'https://www.gostudy.cz/', 'admitad');
+
+        $this->assertDatabaseHas('stores', ['name' => 'GSASS', 'domain' => 'gostudy.cz']);
     }
 
     public function test_awin_adapter_imports_vouchers(): void

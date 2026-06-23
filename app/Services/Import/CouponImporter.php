@@ -8,8 +8,10 @@ use App\Enums\CouponStatus;
 use App\Models\AffiliateNetwork;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Services\Import\Contracts\ProvidesPrograms;
 use App\Services\Import\DTO\CouponDraft;
 use App\Services\Import\DTO\ImportResult;
+use App\Services\Import\DTO\ProgramDraft;
 use Illuminate\Support\Str;
 use RuntimeException;
 use Throwable;
@@ -31,6 +33,19 @@ class CouponImporter
 
         $result = new ImportResult;
 
+        // Accepted programs first: ensures every merchant (even coupon-less ones
+        // like Aviasales) has a store + affiliate link, and that coupons below
+        // attach to the same domain-resolved store.
+        if ($adapter instanceof ProvidesPrograms) {
+            foreach ($adapter->programs($network) as $program) {
+                try {
+                    $this->importProgram($network, $program);
+                } catch (Throwable $e) {
+                    $result->addError('program '.$program->externalId.': '.$e->getMessage());
+                }
+            }
+        }
+
         foreach ($adapter->fetch($network) as $draft) {
             try {
                 $this->importDraft($network, $draft, $result);
@@ -42,6 +57,24 @@ class CouponImporter
         $network->forceFill(['last_imported_at' => now()])->save();
 
         return $result;
+    }
+
+    private function importProgram(AffiliateNetwork $network, ProgramDraft $program): void
+    {
+        $store = $this->resolver->resolve($program->name, $program->website, $network->slug);
+
+        if ($store->default_affiliate_network_id === null) {
+            $store->forceFill(['default_affiliate_network_id' => $network->id])->save();
+        }
+
+        // Import-owned default affiliate link (no country) — keeps /go/{store} and
+        // coupon-less merchants monetized. Manual store fields are untouched.
+        if ($program->affiliateUrl !== null) {
+            $store->affiliateLinks()->updateOrCreate(
+                ['affiliate_network_id' => $network->id, 'country_code' => null],
+                ['affiliate_url' => $program->affiliateUrl, 'is_active' => true],
+            );
+        }
     }
 
     private function importDraft(AffiliateNetwork $network, CouponDraft $draft, ImportResult $result): void

@@ -23,6 +23,8 @@ use Spatie\Translatable\HasTranslations;
  * @property string|null $logo
  * @property string|null $logo_dark
  * @property string|null $website_url
+ * @property string|null $domain
+ * @property int|null $default_affiliate_network_id
  * @property float|null $rating
  * @property string|null $cashback_value
  * @property bool $is_featured
