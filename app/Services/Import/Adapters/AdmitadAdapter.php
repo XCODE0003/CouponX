@@ -152,6 +152,8 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
     {
         for ($offset = 0, $page = 0; $page < self::MAX_PAGES; $offset += self::PAGE, $page++) {
             $response = Http::withToken($token)
+                ->timeout(120)            // advcampaigns pages can be large/slow
+                ->retry(2, 3000)          // ride out transient API timeouts
                 ->acceptJson()
                 ->get($url, ['limit' => self::PAGE, 'offset' => $offset])
                 ->throw();
@@ -177,6 +179,8 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
     private function accessToken(string $clientId, string $clientSecret): string
     {
         $response = Http::asForm()
+            ->timeout(30)
+            ->retry(2, 2000)
             ->withBasicAuth($clientId, $clientSecret)
             ->acceptJson()
             ->post(self::BASE.'/token/', [
