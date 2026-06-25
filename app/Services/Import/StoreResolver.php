@@ -30,6 +30,15 @@ class StoreResolver
             ? Store::query()->where('domain', $domain)->first()
             : null;
 
+        // A merged store records its old domain as an alias → route back to canonical
+        // instead of re-creating the duplicate on the next import.
+        if ($store === null && $domain !== null) {
+            $domainAliasId = StoreAlias::query()->where('normalized', $domain)->value('store_id');
+            if ($domainAliasId !== null) {
+                $store = Store::query()->find((int) $domainAliasId);
+            }
+        }
+
         if ($store === null) {
             $normalized = StoreAlias::normalize($name);
             $aliasStoreId = StoreAlias::query()->where('normalized', $normalized)->value('store_id');
