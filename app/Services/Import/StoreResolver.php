@@ -45,8 +45,8 @@ class StoreResolver
                 'slug' => $this->uniqueSlug($clean),
                 'website_url' => $website,
                 'domain' => $domain,
-                // Imported stores are visible immediately (product decision 2026-06-22).
-                'is_active' => true,
+                // Imported stores stay inactive until reviewed (product decision 2026-06-25).
+                'is_active' => false,
             ]);
         } else {
             // Backfill only empty fields — never clobber manually edited data.

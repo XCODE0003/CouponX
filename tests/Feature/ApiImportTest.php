@@ -23,15 +23,26 @@ class ApiImportTest extends TestCase
         Http::fake([
             'api.admitad.com/token/' => Http::response(['access_token' => 'tok', 'expires_in' => 3600]),
             'api.admitad.com/advcampaigns/*' => Http::response([
-                'results' => [[
-                    'id' => 50,
-                    'name' => 'AdmStore',
-                    'site_url' => 'https://admstore.com',
-                    'connection_status' => 'active',
-                    'connected' => true,
-                    'gotolink' => 'https://ad.admitad.com/g/admstore-base/',
-                ]],
-                '_meta' => ['count' => 1, 'limit' => 100, 'offset' => 0],
+                'results' => [
+                    [
+                        'id' => 50,
+                        'name' => 'AdmStore',
+                        'site_url' => 'https://admstore.com',
+                        'connection_status' => 'active',
+                        'connected' => true,
+                        'gotolink' => 'https://ad.admitad.com/g/admstore-base/',
+                    ],
+                    [
+                        // Under moderation — must be skipped (only "Joined" imported).
+                        'id' => 77,
+                        'name' => 'PendingStore',
+                        'site_url' => 'https://pendingstore.com',
+                        'connection_status' => 'pending',
+                        'connected' => true,
+                        'gotolink' => 'https://ad.admitad.com/g/pending-base/',
+                    ],
+                ],
+                '_meta' => ['count' => 2, 'limit' => 100, 'offset' => 0],
             ]),
             'api.admitad.com/coupons/*' => Http::response([
                 'results' => [[
@@ -66,11 +77,13 @@ class ApiImportTest extends TestCase
             'discount_value' => 20,
             'destination_url' => 'https://ad.admitad.com/g/abc',
         ]);
-        $this->assertDatabaseHas('stores', ['name' => 'AdmStore', 'domain' => 'admstore.com']);
-        // Accepted program → store gets its default affiliate link (works coupon-less too).
+        // Joined program → inactive store (pending review) with its affiliate link.
+        $this->assertDatabaseHas('stores', ['name' => 'AdmStore', 'domain' => 'admstore.com', 'is_active' => false]);
         $this->assertDatabaseHas('store_affiliate_links', [
             'affiliate_url' => 'https://ad.admitad.com/g/admstore-base/',
         ]);
+        // Under-moderation program must NOT be imported.
+        $this->assertDatabaseMissing('stores', ['domain' => 'pendingstore.com']);
     }
 
     public function test_import_dedupes_by_domain_and_keeps_manual_name(): void

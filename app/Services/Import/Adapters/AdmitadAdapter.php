@@ -120,10 +120,9 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
         $campaigns = [];
 
         foreach ($this->paginate($token, self::BASE."/advcampaigns/website/{$websiteId}/") as $row) {
-            $status = $this->stringOrNull(data_get($row, 'connection_status'));
-            $connected = data_get($row, 'connected');
-
-            if ($status !== 'active' && $connected !== true) {
+            // Only "Joined" programs (connection_status = active). Pending / under
+            // moderation / declined / not-joined-yet are skipped.
+            if ($this->stringOrNull(data_get($row, 'connection_status')) !== 'active') {
                 continue;
             }
 
