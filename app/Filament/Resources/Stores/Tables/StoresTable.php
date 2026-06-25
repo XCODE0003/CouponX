@@ -15,6 +15,7 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
@@ -58,7 +59,7 @@ class StoresTable
                         ->schema([
                             Select::make('target_id')
                                 ->label('Главный магазин (остальные присоединятся к нему)')
-                                ->options(fn (Collection $records): array => $records->pluck('name', 'id')->all())
+                                ->options(fn (HasTable $livewire): array => $livewire->getSelectedTableRecords()->pluck('name', 'id')->all())
                                 ->required()
                                 ->native(false),
                         ])
