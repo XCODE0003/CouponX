@@ -48,13 +48,6 @@ final class StoreName
                 continue;
             }
 
-            // Skip lone separators (e.g. the "/" in "TVC Mall / CPS") so they
-            // don't dangle once the technical suffix is dropped. "&" is kept so
-            // brand names like "Charles & Keith" / "H&M" survive.
-            if (preg_match('/^[\/|,.\-–—]+$/u', $token) === 1) {
-                continue;
-            }
-
             $upper = mb_strtoupper($token, 'UTF-8');
 
             // A commission model marker ends the meaningful name immediately.
@@ -70,7 +63,13 @@ final class StoreName
             $kept[] = $token;
         }
 
-        $result = trim(implode(' ', $kept), " \t\n\r/|,.-–—");
+        // Strip separators left dangling at the edges once the technical suffix
+        // is dropped ("TVC Mall /" → "TVC Mall"). MUST be a Unicode-aware (/u)
+        // regex: a byte-based trim() charlist containing the multibyte dashes
+        // "–"/"—" corrupts Cyrillic tails (e.g. "р" D1 80 → the 0x80 byte is
+        // shared with "—"). "&" is intentionally absent so "H&M" survives.
+        $result = implode(' ', $kept);
+        $result = preg_replace('/^[\s\/|,.\x{2013}\x{2014}-]+|[\s\/|,.\x{2013}\x{2014}-]+$/u', '', $result) ?? $result;
 
         return $result !== '' ? $result : $name;
     }

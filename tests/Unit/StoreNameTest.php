@@ -28,8 +28,19 @@ class StoreNameTest extends TestCase
             ['Charles & Keith - CPS', 'Charles & Keith'],
             ['Airpaz /', 'Airpaz'],
             ['Ticombo -', 'Ticombo'],
+            ['Sasa -', 'Sasa'],
+            ['hollyshop.', 'hollyshop'],
             ['Geekmall [CPS] IT', 'Geekmall'],
             ['Korston', 'Korston'],
+            // Cyrillic must survive intact — a byte-based trim() with multibyte
+            // dashes in its charlist used to chew off the last letter.
+            ['Аквафор', 'Аквафор'],
+            ['РЕДМОНД', 'РЕДМОНД'],
+            ['Купер', 'Купер'],
+            ['Тари Тур', 'Тари Тур'],
+            // Separators inside the real name are kept; only edge ones are trimmed.
+            ['Camp David | Soccx', 'Camp David | Soccx'],
+            ['Meshnology - Оборудование', 'Meshnology - Оборудование'],
         ];
     }
 }
