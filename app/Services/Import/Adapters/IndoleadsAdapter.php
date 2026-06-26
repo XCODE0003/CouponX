@@ -184,8 +184,16 @@ class IndoleadsAdapter implements ImportAdapter, ProvidesPrograms
         }
 
         $code = trim($code);
+        if ($code === '') {
+            return null;
+        }
 
-        return $code === '' ? null : $code;
+        // Placeholders that actually mean "no code" → treat as a deal.
+        if (preg_match('/^(no\s*code|not\s*needed|не\s*нужен|без\s*кода|нет\s*кода)/iu', $code) === 1) {
+            return null;
+        }
+
+        return $code;
     }
 
     private function discountKind(?string $type): ?DiscountType
