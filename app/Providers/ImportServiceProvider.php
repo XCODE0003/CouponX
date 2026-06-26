@@ -8,6 +8,7 @@ use App\Services\Import\AdapterRegistry;
 use App\Services\Import\Adapters\AdmitadAdapter;
 use App\Services\Import\Adapters\AwinAdapter;
 use App\Services\Import\Adapters\CjAdapter;
+use App\Services\Import\Adapters\IndoleadsAdapter;
 use App\Services\Import\Adapters\JsonFeedAdapter;
 use App\Services\Import\Adapters\ManualAdapter;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,7 @@ class ImportServiceProvider extends ServiceProvider
             $registry->register(new AdmitadAdapter);
             $registry->register(new CjAdapter);
             $registry->register(new AwinAdapter);
+            $registry->register(new IndoleadsAdapter);
 
             return $registry;
         });

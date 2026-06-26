@@ -111,6 +111,73 @@ class ApiImportTest extends TestCase
         $this->assertDatabaseHas('stores', ['name' => 'GSASS', 'domain' => 'gostudy.cz']);
     }
 
+    public function test_indoleads_imports_joined_offers_and_coupons(): void
+    {
+        Http::fake([
+            'app.indoleads.com/api/getOffers*' => Http::response([
+                'status' => 'success',
+                'totalPages' => 1,
+                'page' => 1,
+                'data' => [
+                    [
+                        'id' => 700,
+                        'title' => 'Joom WW',
+                        'website_url' => 'https://www.joom.com',
+                        'status' => 'active',
+                        'tracking_link' => 'https://app.indoleads.com/r/joom-700',
+                    ],
+                    [
+                        // Not joined → tracking_link is an error string → must be skipped.
+                        'id' => 701,
+                        'title' => 'Locked Offer',
+                        'website_url' => 'https://locked.com',
+                        'status' => 'active',
+                        'tracking_link' => 'error: please apply to the offer to get tracking link',
+                    ],
+                ],
+            ]),
+            'app.indoleads.com/api/getCoupons*' => Http::response([
+                'status' => true,
+                'count' => 1,
+                'data' => [[
+                    'id' => 555,
+                    'short_description' => '10% off everything',
+                    'description' => 'Use at checkout',
+                    'discount' => 10,
+                    'discount_type' => 'percent',
+                    'code' => 'JOOM10',
+                    'end_duration' => '2030-01-01',
+                    'tracking_link' => 'https://app.indoleads.com/r/joom-cpn-555',
+                    'offer' => ['id' => 700, 'title' => 'Joom WW'],
+                ]],
+            ]),
+        ]);
+
+        $network = AffiliateNetwork::factory()->create([
+            'integration' => 'indoleads',
+            'is_active' => true,
+            'config' => ['token' => 'tok', 'source_id' => 1234],
+        ]);
+
+        $result = app(CouponImporter::class)->import($network);
+
+        $this->assertSame(1, $result->created);
+        // Joined offer → inactive store (cleaned name + domain) with its affiliate link.
+        $this->assertDatabaseHas('stores', ['name' => 'Joom', 'domain' => 'joom.com', 'is_active' => false]);
+        $this->assertDatabaseHas('store_affiliate_links', ['affiliate_url' => 'https://app.indoleads.com/r/joom-700']);
+        // Offer without a usable tracking link must be skipped.
+        $this->assertDatabaseMissing('stores', ['domain' => 'locked.com']);
+        // Coupon resolves onto the same store and keeps its tracking link.
+        $this->assertDatabaseHas('coupons', [
+            'source' => $network->slug,
+            'external_id' => '555',
+            'code' => 'JOOM10',
+            'type' => 'code',
+            'discount_type' => 'percentage',
+            'destination_url' => 'https://app.indoleads.com/r/joom-cpn-555',
+        ]);
+    }
+
     public function test_awin_adapter_imports_vouchers(): void
     {
         Http::fake([
@@ -182,7 +249,7 @@ XML;
     {
         Http::fake(); // any call would be recorded; we assert none happen
 
-        foreach (['admitad', 'cj', 'awin'] as $integration) {
+        foreach (['admitad', 'indoleads', 'cj', 'awin'] as $integration) {
             $network = AffiliateNetwork::factory()->create([
                 'integration' => $integration,
                 'is_active' => true,

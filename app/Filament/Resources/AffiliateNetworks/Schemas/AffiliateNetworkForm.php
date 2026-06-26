@@ -39,6 +39,7 @@ class AffiliateNetworkForm
                                 'manual' => 'Вручную (ручной ввод)',
                                 'json_feed' => 'JSON-фид',
                                 'admitad' => 'Admitad (API)',
+                                'indoleads' => 'Indoleads (API)',
                                 'cj' => 'CJ Affiliate (API)',
                                 'awin' => 'Awin (API)',
                             ])
@@ -90,6 +91,14 @@ class AffiliateNetworkForm
                             ->visible(fn (Get $get): bool => $get('integration') === 'awin'),
                         TextInput::make('config.awin_publisher_id')->label('Publisher ID')
                             ->visible(fn (Get $get): bool => $get('integration') === 'awin'),
+
+                        // Indoleads
+                        TextInput::make('config.token')->label('API-токен')->password()->revealable()
+                            ->helperText('Account → Api Settings')
+                            ->visible(fn (Get $get): bool => $get('integration') === 'indoleads'),
+                        TextInput::make('config.source_id')->label('Source ID')
+                            ->helperText('ID источника из раздела Sources')
+                            ->visible(fn (Get $get): bool => $get('integration') === 'indoleads'),
                     ]),
 
                 Section::make('Значения по умолчанию')
