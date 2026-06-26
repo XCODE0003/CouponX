@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1.7
-
 ###############################################################################
 # Stage 1 — builder
 # PHP + Composer + Node together: the Vite build invokes `php artisan
