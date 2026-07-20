@@ -233,8 +233,9 @@ const hasActive = () =>
             </ul>
         </div>
 
-        <!-- Delivery -->
-        <div>
+        <!-- Delivery — hidden entirely until stores actually carry geo data,
+             otherwise the section shows a heading over an empty list. -->
+        <div v-if="facets.deliveries.length">
             <p
                 class="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100"
             >

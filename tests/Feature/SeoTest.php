@@ -39,6 +39,10 @@ class SeoTest extends TestCase
         $this->assertStringContainsString('"@type":"BreadcrumbList"', (string) $html);
         $this->assertStringContainsString('"@type":"Store"', (string) $html);
         $this->assertStringContainsString('"@type":"Offer"', (string) $html);
+
+        // Google forbids AggregateRating without real, user-visible reviews.
+        $this->assertStringNotContainsString('AggregateRating', (string) $html);
+        $this->assertStringNotContainsString('ratingValue', (string) $html);
     }
 
     public function test_meta_title_and_description_are_localized(): void
@@ -59,10 +63,16 @@ class SeoTest extends TestCase
 
         $xml = (string) $response->getContent();
         $this->assertStringContainsString('<urlset', $xml);
-        $this->assertStringContainsString('/en/store/aliexpress', $xml);
-        $this->assertStringContainsString('/ru/store/aliexpress', $xml);
         $this->assertStringContainsString('xhtml:link', $xml);
         $this->assertStringContainsString('hreflang="ru-RU"', $xml);
+        $this->assertStringContainsString('hreflang="x-default"', $xml);
+
+        // Every locale must be submitted as its own <loc>, not merely referenced
+        // from an xhtml:link alternate — asserting on the bare URL would pass even
+        // when only /en is listed, which is exactly how this bug slipped through.
+        $this->assertMatchesRegularExpression('#<loc>[^<]+/en/store/aliexpress</loc>#', $xml);
+        $this->assertMatchesRegularExpression('#<loc>[^<]+/ru/store/aliexpress</loc>#', $xml);
+        $this->assertMatchesRegularExpression('#<loc>[^<]+/ru</loc>#', $xml);
     }
 
     public function test_robots_txt_references_sitemap(): void

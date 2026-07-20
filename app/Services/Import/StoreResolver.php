@@ -22,7 +22,11 @@ use App\Support\StoreName;
  */
 class StoreResolver
 {
-    public function resolve(string $name, ?string $website, string $source): Store
+    /**
+     * @param  array<int, string>  $countries  ISO-2 geo from the network, applied
+     *                                         only when the store has none yet.
+     */
+    public function resolve(string $name, ?string $website, string $source, array $countries = []): Store
     {
         $domain = Domain::fromUrl($website);
 
@@ -54,6 +58,7 @@ class StoreResolver
                 'slug' => $this->uniqueSlug($clean),
                 'website_url' => $website,
                 'domain' => $domain,
+                'countries' => $countries !== [] ? $countries : null,
                 // Imported stores stay inactive until reviewed (product decision 2026-06-25).
                 'is_active' => false,
             ]);
@@ -65,6 +70,9 @@ class StoreResolver
             }
             if ($website !== null && ($store->website_url === null || $store->website_url === '')) {
                 $fill['website_url'] = $website;
+            }
+            if ($countries !== [] && ($store->countries === null || $store->countries === [])) {
+                $fill['countries'] = $countries;
             }
             if ($fill !== []) {
                 $store->forceFill($fill)->save();

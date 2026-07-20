@@ -28,9 +28,7 @@ class StoreController extends Controller
             ->when(is_string($categorySlug) && $categorySlug !== '', function ($q) use ($categorySlug): void {
                 $q->whereHas('categories', fn ($c) => $c->where('slug', $categorySlug));
             })
-            ->orderByDesc('is_featured')
-            ->orderBy('position')
-            ->orderBy('name')
+            ->orderedByPosition()
             ->paginate(24)
             ->withQueryString();
 
@@ -64,13 +62,24 @@ class StoreController extends Controller
 
         $store->load('categories');
 
+        $storeCountries = array_map('strtoupper', (array) ($store->countries ?? []));
+
         $similar = Store::query()
             ->where('is_active', true)
             ->where('id', '!=', $store->id)
             ->whereHas('categories', fn ($q) => $q->whereIn('categories.id', $store->categories->pluck('id')))
             ->withCount(['coupons' => fn ($q) => $q->public()])
-            ->limit(4)
-            ->get();
+            ->limit(24)
+            ->get()
+            // Prefer merchants shipping to the same countries. JSON array overlap
+            // is not portable between MySQL and SQLite, so rank a small candidate
+            // set in PHP instead; sorting is stable, so ties keep DB order.
+            ->sortByDesc(fn (Store $candidate): int => count(array_intersect(
+                $storeCountries,
+                array_map('strtoupper', (array) ($candidate->countries ?? [])),
+            )))
+            ->take(4)
+            ->values();
 
         $byType = $coupons->groupBy(fn (Coupon $c): string => $c->type->value);
 
@@ -104,8 +113,6 @@ class StoreController extends Controller
                     $store->name,
                     route('stores.show', $store->slug),
                     $store->logo ? asset('storage/'.$store->logo) : null,
-                    $store->rating,
-                    (int) $store->rating_count,
                     $offers,
                 ),
             ],

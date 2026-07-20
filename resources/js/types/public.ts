@@ -5,7 +5,6 @@ export interface StoreCardData {
     logo: string | null;
     logo_dark: string | null;
     description: string | null;
-    rating: number | null;
     coupons_count: number | null;
     url: string;
     go_url: string;
@@ -13,7 +12,6 @@ export interface StoreCardData {
 
 export interface StoreFullData extends StoreCardData {
     about: string | null;
-    rating_count: number;
     countries: string[] | null;
     meta_title: string | null;
     meta_description: string | null;

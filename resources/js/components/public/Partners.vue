@@ -49,15 +49,19 @@ function logoFor(store: StoreCardData): string | null {
 </template>
 
 <style scoped>
-/* Render every partner logo as a single flat grey silhouette so the row reads as
-   one uniform colour regardless of the logo's own colours. brightness(0) flattens
-   to black (preserving transparency/shape), invert() lifts it to grey. */
+/* Mute the logos so the row reads as one calm strip, then restore full colour on
+   hover. NOTE: do NOT use `brightness(0) invert(...)` here — that silhouette trick
+   only works on images with an alpha channel; any JPEG or opaque PNG keeps its
+   full rectangle and paints as a solid grey square/circle. grayscale+opacity
+   degrades gracefully on opaque logos. */
 .partner-logo {
-    filter: brightness(0) invert(0.62);
+    filter: grayscale(1);
+    opacity: 0.65;
 }
 
 .group:hover .partner-logo {
-    filter: brightness(0) invert(0.82);
+    filter: none;
+    opacity: 1;
 }
 
 /* Slide-only entrance so logos are never hidden if the animation is interrupted. */

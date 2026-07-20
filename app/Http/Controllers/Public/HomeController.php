@@ -22,8 +22,7 @@ class HomeController extends Controller
         $topStores = Store::query()
             ->where('is_active', true)
             ->withCount(['coupons' => fn ($q) => $q->public()])
-            ->orderByDesc('is_featured')
-            ->orderBy('position')
+            ->orderedByPosition()
             ->limit(12)
             ->get();
 

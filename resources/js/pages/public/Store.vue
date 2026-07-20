@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { ArrowRight, BadgeCheck, ShieldCheck, Star } from '@lucide/vue';
+import { ArrowRight, BadgeCheck, ShieldCheck } from '@lucide/vue';
 import { computed, ref } from 'vue';
 import Breadcrumbs from '@/components/public/Breadcrumbs.vue';
 import CouponCard from '@/components/public/CouponCard.vue';
@@ -21,6 +21,10 @@ const { t, locale } = useI18n();
 
 type Tab = 'all' | 'code' | 'deal' | 'sale';
 const activeTab = ref<Tab>('all');
+
+// The "about" copy is SEO body text with no length cap, so it is clamped inside
+// the narrow sidebar. CSS clamping (not v-if) keeps it crawlable.
+const aboutExpanded = ref(false);
 
 const tabs = computed(() =>
     (
@@ -85,19 +89,6 @@ const visibleCoupons = computed(() =>
                             >
                                 {{ store.name }}
                             </h1>
-                            <span
-                                v-if="store.rating"
-                                class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-sm font-semibold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
-                            >
-                                <Star
-                                    class="h-3.5 w-3.5 fill-emerald-500 text-emerald-500 dark:text-emerald-400"
-                                />{{ store.rating.toFixed(1) }}
-                            </span>
-                            <span
-                                v-if="store.rating"
-                                class="text-sm text-gray-400 dark:text-gray-500"
-                                >{{ t('store.rating_excellent') }}</span
-                            >
                         </div>
                         <p
                             v-if="store.description"
@@ -188,23 +179,6 @@ const visibleCoupons = computed(() =>
                 >
                     {{ t('store.no_coupons') }}
                 </p>
-
-                <!-- SEO text -->
-                <div
-                    v-if="store.about"
-                    class="mt-8 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-800 dark:bg-gray-900"
-                >
-                    <h2
-                        class="text-base font-semibold text-gray-900 dark:text-gray-100"
-                    >
-                        {{ store.name }}
-                    </h2>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400"
-                    >
-                        {{ store.about }}
-                    </p>
-                </div>
             </div>
 
             <!-- Sidebar -->
@@ -229,6 +203,25 @@ const visibleCoupons = computed(() =>
                             </dd>
                         </div>
                     </dl>
+                    <p
+                        v-if="store.about"
+                        class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300"
+                        :class="{ 'line-clamp-6': !aboutExpanded }"
+                    >
+                        {{ store.about }}
+                    </p>
+                    <button
+                        v-if="store.about && store.about.length > 260"
+                        type="button"
+                        class="mt-1 text-xs font-medium text-blue-600 hover:underline dark:text-blue-400"
+                        @click="aboutExpanded = !aboutExpanded"
+                    >
+                        {{
+                            aboutExpanded
+                                ? t('store.about_less')
+                                : t('store.about_more')
+                        }}
+                    </button>
                     <a
                         :href="store.go_url"
                         target="_blank"

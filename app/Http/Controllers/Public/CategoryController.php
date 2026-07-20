@@ -15,6 +15,7 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Store;
+use App\Support\Countries;
 use App\Support\Seo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -26,8 +27,8 @@ class CategoryController extends Controller
     /** Discount thresholds offered as filters. */
     private const DISCOUNT_BUCKETS = [10, 20, 30, 50];
 
-    /** Delivery countries offered as filters. */
-    private const DELIVERY_COUNTRIES = ['RU', 'UA', 'BY', 'KZ'];
+    /** Cap on how many delivery-country options the filter sidebar offers. */
+    private const MAX_DELIVERY_FACETS = 8;
 
     public function index(): Response
     {
@@ -149,7 +150,10 @@ class CategoryController extends Controller
             $maxDiscount = (int) $storeCoupons->where('discount_type', DiscountType::Percentage)->max('discount_value');
 
             return array_merge(StorePresenter::card($store), [
-                'coupons_count' => $storeCoupons->count(),
+                // Coupons linked to THIS category via the pivot, falling back to
+                // the store-wide public count — the pivot is empty for most
+                // categories, which made every card read "0 промокодов".
+                'coupons_count' => $storeCoupons->count() ?: (int) $store->coupons_count,
                 'max_discount' => $maxDiscount ?: null,
             ]);
         })->all();
@@ -188,13 +192,24 @@ class CategoryController extends Controller
      */
     private function deliveryFacet(Collection $stores): array
     {
+        // Built from the geo actually present in the result set, so the filter can
+        // never advertise countries nobody ships to. A hardcoded list showed four
+        // permanently-empty "(0)" options while the column was unpopulated.
+        $counts = [];
+
+        foreach ($stores as $store) {
+            foreach (array_unique(array_map('strtoupper', (array) ($store->countries ?? []))) as $code) {
+                $counts[$code] = ($counts[$code] ?? 0) + 1;
+            }
+        }
+
+        arsort($counts);
+
         return array_map(fn (string $code): array => [
             'code' => $code,
-            'label' => (string) __('messages.countries.'.$code),
-            'count' => $stores->filter(
-                fn ($s): bool => in_array($code, array_map('strtoupper', (array) ($s->countries ?? [])), true)
-            )->count(),
-        ], self::DELIVERY_COUNTRIES);
+            'label' => Countries::label($code),
+            'count' => $counts[$code],
+        ], array_slice(array_keys($counts), 0, self::MAX_DELIVERY_FACETS));
     }
 
     /**

@@ -94,8 +94,11 @@ final class Seo
      * @param  array<int, array<string, mixed>>  $offers
      * @return array<string, mixed>
      */
-    public static function storeWithOffers(string $name, string $url, ?string $logo, ?float $rating, int $ratingCount, array $offers): array
+    public static function storeWithOffers(string $name, string $url, ?string $logo, array $offers): array
     {
+        // NOTE: deliberately no aggregateRating. Google only permits it when the
+        // ratings are real and visible to users; ours were seeded/manual numbers
+        // with zero reviews behind them, which is a structured-data violation.
         $data = [
             '@context' => 'https://schema.org',
             '@type' => 'Store',
@@ -105,14 +108,6 @@ final class Seo
 
         if ($logo !== null) {
             $data['logo'] = $logo;
-        }
-        if ($rating !== null && $ratingCount > 0) {
-            $data['aggregateRating'] = [
-                '@type' => 'AggregateRating',
-                'ratingValue' => $rating,
-                'reviewCount' => $ratingCount,
-                'bestRating' => 5,
-            ];
         }
         if ($offers !== []) {
             $data['makesOffer'] = $offers;

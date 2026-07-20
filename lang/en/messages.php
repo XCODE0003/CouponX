@@ -79,6 +79,8 @@ return [
         'verified' => 'Verified',
         'exclusive' => 'Exclusive',
         'reveal_hint' => 'Click to reveal & copy the code, then complete your purchase at the store.',
+        'expand' => 'Show more',
+        'collapse' => 'Show less',
     ],
 
     'store' => [
@@ -90,6 +92,8 @@ return [
         'best_codes_sub' => 'Pick the best coupon and save on your purchases.',
         'go_to_store' => 'Go to store',
         'about' => 'About the store',
+        'about_more' => 'Show full text',
+        'about_less' => 'Show less',
         'supported_countries' => 'Supported countries',
         'categories' => 'Store categories',
         'all_categories' => 'All categories',

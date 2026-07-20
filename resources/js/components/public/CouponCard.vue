@@ -22,6 +22,13 @@ const { t } = useI18n();
 
 const revealed = ref(false);
 const copied = ref(false);
+const expanded = ref(false);
+
+// Only offer the toggle when the text is actually long enough to be clamped,
+// otherwise every short coupon grows a pointless "Развернуть" link.
+const isClampable = computed(
+    () => (props.coupon.description?.length ?? 0) > 90,
+);
 
 const typeLabel = computed(() => {
     return {
@@ -121,17 +128,28 @@ async function activate(): Promise<void> {
                 </Link>
             </div>
 
+            <!-- The title carries the offer value ("Скидка 3 000 рублей…"), so it
+                 wraps instead of being cut off with an ellipsis. -->
             <h3
-                class="truncate text-base font-semibold text-gray-900 dark:text-gray-100"
+                class="text-base font-semibold text-gray-900 dark:text-gray-100"
             >
                 {{ coupon.title }}
             </h3>
             <p
                 v-if="coupon.description"
-                class="mt-0.5 line-clamp-2 text-sm text-gray-500 dark:text-gray-400"
+                class="mt-0.5 text-sm text-gray-500 dark:text-gray-400"
+                :class="{ 'line-clamp-2': isClampable && !expanded }"
             >
                 {{ coupon.description }}
             </p>
+            <button
+                v-if="isClampable"
+                type="button"
+                class="mt-1 text-xs font-medium text-blue-600 hover:underline dark:text-blue-400"
+                @click="expanded = !expanded"
+            >
+                {{ expanded ? t('coupon.collapse') : t('coupon.expand') }}
+            </button>
 
             <div
                 class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 dark:text-gray-500"

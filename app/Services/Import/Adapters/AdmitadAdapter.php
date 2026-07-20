@@ -11,6 +11,7 @@ use App\Services\Import\Contracts\ImportAdapter;
 use App\Services\Import\Contracts\ProvidesPrograms;
 use App\Services\Import\DTO\CouponDraft;
 use App\Services\Import\DTO\ProgramDraft;
+use App\Support\Countries;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -39,7 +40,7 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
 
     private const MAX_PAGES = 200;
 
-    /** @var array<string, array<int, array{name: string, site_url: ?string, gotolink: ?string}>> */
+    /** @var array<string, array<int, array{name: string, site_url: ?string, gotolink: ?string, countries: array<int, string>}>> */
     private array $campaignCache = [];
 
     public function key(): string
@@ -70,6 +71,7 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
                 website: $campaign['site_url'],
                 affiliateUrl: $campaign['gotolink'],
                 externalId: (string) $id,
+                countries: $campaign['countries'],
             );
         }
     }
@@ -109,7 +111,7 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
      * Campaigns the publisher is accepted into, keyed by id. Memoised per website
      * so programs() and fetch() share a single advcampaigns scan within an import.
      *
-     * @return array<int, array{name: string, site_url: ?string, gotolink: ?string}>
+     * @return array<int, array{name: string, site_url: ?string, gotolink: ?string, countries: array<int, string>}>
      */
     private function activeCampaigns(string $token, string $websiteId): array
     {
@@ -136,6 +138,8 @@ class AdmitadAdapter implements ImportAdapter, ProvidesPrograms
                 'name' => $name,
                 'site_url' => $this->stringOrNull(data_get($row, 'site_url')),
                 'gotolink' => $this->stringOrNull(data_get($row, 'gotolink')),
+                // Admitad ships geo as [{"region": "RU"}, ...].
+                'countries' => Countries::normalize(data_get($row, 'regions')),
             ];
         }
 

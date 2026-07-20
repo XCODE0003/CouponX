@@ -40,11 +40,14 @@ class CouponsTable
                         CouponType::Sale => 'warning',
                     }),
                 TextColumn::make('code')->label('Промокод')->badge()->color('gray')->copyable()->placeholder('—'),
+                // The public site hides expired coupons via scopePublic(), but nothing
+                // rewrites `status` when the date passes — so reflect expiry here
+                // instead of showing a stale "Активен".
                 TextColumn::make('status')
                     ->label('Статус')
                     ->badge()
-                    ->formatStateUsing(fn (CouponStatus $state): string => $state->label())
-                    ->color(fn (CouponStatus $state): string => $state === CouponStatus::Active ? 'success' : 'gray'),
+                    ->formatStateUsing(fn (CouponStatus $state, Coupon $record): string => $record->isExpired() ? CouponStatus::Expired->label() : $state->label())
+                    ->color(fn (CouponStatus $state, Coupon $record): string => $state === CouponStatus::Active && ! $record->isExpired() ? 'success' : 'gray'),
                 TextColumn::make('used_count')->label('Использовано')->numeric()->sortable()->toggleable(),
                 IconColumn::make('is_featured')->label('Рекомендуемый')->boolean()->sortable()->toggleable(),
                 TextColumn::make('expires_at')->label('Истекает')->dateTime()->sortable()->placeholder('—')->toggleable(),

@@ -77,6 +77,8 @@ export default defineConfigWithVueTs(
             'vendor',
             'node_modules',
             'public',
+            // Gitignored local scratch scripts — never shipped, never linted.
+            'scripts',
             'bootstrap/ssr',
             'tailwind.config.js',
             'vite.config.ts',

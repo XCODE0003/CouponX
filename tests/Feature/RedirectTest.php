@@ -98,6 +98,7 @@ class RedirectTest extends TestCase
             'type' => CouponType::Code,
             'status' => CouponStatus::Active,
             'destination_url' => 'https://www.nike.com/sale',
+            'used_count' => 5,
         ]);
 
         $response = $this->get('/out/'.$coupon->id);
@@ -110,6 +111,10 @@ class RedirectTest extends TestCase
         $this->assertSame(1, Click::query()->where('coupon_id', $coupon->id)->count());
         $this->assertSame(1, $store->fresh()->clicks_count);
         $this->assertSame(1, $coupon->fresh()->clicks_count);
+
+        // "Использовали N раз" must track real redirects, on top of any manual
+        // baseline entered in the admin.
+        $this->assertSame(6, $coupon->fresh()->used_count);
     }
 
     public function test_click_stores_hashed_ip_not_raw(): void

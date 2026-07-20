@@ -10,10 +10,14 @@ namespace App\Services\Import\DTO;
  */
 final readonly class ProgramDraft
 {
+    /**
+     * @param  array<int, string>  $countries  ISO-2 geo the program ships to.
+     */
     public function __construct(
         public string $name,
         public ?string $website,
         public ?string $affiliateUrl,
         public string $externalId,
+        public array $countries = [],
     ) {}
 }

@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Models\Concerns\BustsCatalogCache;
 use App\Models\Concerns\RecordsActivity;
 use Database\Factories\StoreFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -72,6 +73,25 @@ class Store extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    /**
+     * Catalog ordering driven by the admin "Позиция" field.
+     *
+     * `position` is the primary key of the sort so editing it actually moves a
+     * store. 0 means "unset" (the default for every imported store), so those
+     * are pushed to the end instead of monopolising the front — otherwise
+     * setting position=1 would rank a store BELOW the hundreds still at 0.
+     * Featured, then name, only break ties among unpositioned stores.
+     *
+     * @param  Builder<Store>  $query
+     */
+    public function scopeOrderedByPosition(Builder $query): void
+    {
+        $query->orderByRaw('CASE WHEN position = 0 THEN 1 ELSE 0 END')
+            ->orderBy('position')
+            ->orderByDesc('is_featured')
+            ->orderBy('name');
     }
 
     /** @return BelongsTo<AffiliateNetwork, $this> */

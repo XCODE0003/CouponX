@@ -61,7 +61,7 @@ class CouponImporter
 
     private function importProgram(AffiliateNetwork $network, ProgramDraft $program): void
     {
-        $store = $this->resolver->resolve($program->name, $program->website, $network->slug);
+        $store = $this->resolver->resolve($program->name, $program->website, $network->slug, $program->countries);
 
         if ($store->default_affiliate_network_id === null) {
             $store->forceFill(['default_affiliate_network_id' => $network->id])->save();

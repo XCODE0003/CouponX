@@ -19,22 +19,22 @@ class SitemapController extends Controller
 
         // Static index pages.
         foreach (['home', 'stores.index', 'categories.index', 'blog.index'] as $name) {
-            $entries[] = $this->entry($name, []);
+            array_push($entries, ...$this->entries($name, []));
         }
 
         Store::query()->where('is_active', true)->orderBy('id')
             ->each(function (Store $store) use (&$entries): void {
-                $entries[] = $this->entry('stores.show', ['store' => $store->slug]);
+                array_push($entries, ...$this->entries('stores.show', ['store' => $store->slug]));
             });
 
         Category::query()->where('is_active', true)->orderBy('id')
             ->each(function (Category $category) use (&$entries): void {
-                $entries[] = $this->entry('categories.show', ['category' => $category->slug]);
+                array_push($entries, ...$this->entries('categories.show', ['category' => $category->slug]));
             });
 
         BlogPost::query()->published()->orderBy('id')
             ->each(function (BlogPost $post) use (&$entries): void {
-                $entries[] = $this->entry('blog.show', ['post' => $post->slug]);
+                array_push($entries, ...$this->entries('blog.show', ['post' => $post->slug]));
             });
 
         $xml = view('sitemap', ['entries' => $entries])->render();
@@ -43,19 +43,25 @@ class SitemapController extends Controller
     }
 
     /**
+     * One <url> per locale, all sharing the same hreflang alternate set.
+     *
+     * Emitting only the default locale as <loc> (with the others living solely
+     * inside xhtml:link) is not enough — Google requires alternates to be
+     * reciprocal, so every localised URL must be submitted in its own right.
+     *
      * @param  array<string, string>  $params
-     * @return array{loc: string, alternates: array<string, string>}
+     * @return array<int, array{loc: string, alternates: array<string, string>}>
      */
-    private function entry(string $routeName, array $params): array
+    private function entries(string $routeName, array $params): array
     {
         $alternates = [];
         foreach (Locales::codes() as $code) {
             $alternates[$code] = route($routeName, array_merge(['locale' => $code], $params));
         }
 
-        return [
-            'loc' => $alternates[Locales::DEFAULT],
-            'alternates' => $alternates,
-        ];
+        return array_map(
+            fn (string $loc): array => ['loc' => $loc, 'alternates' => $alternates],
+            array_values($alternates),
+        );
     }
 }

@@ -22,7 +22,6 @@ final class StorePresenter
             'logo' => $store->logo ? asset('storage/'.$store->logo) : null,
             'logo_dark' => $store->logo_dark ? asset('storage/'.$store->logo_dark) : null,
             'description' => $store->description,
-            'rating' => $store->rating,
             'coupons_count' => $store->relationLoaded('coupons')
                 ? $store->coupons->count()
                 : ($store->coupons_count ?? null),
@@ -40,7 +39,6 @@ final class StorePresenter
     {
         return array_merge(self::card($store), [
             'about' => $store->about,
-            'rating_count' => $store->rating_count,
             'countries' => $store->countries,
             'meta_title' => $store->meta_title,
             'meta_description' => $store->meta_description,

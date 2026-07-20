@@ -6,6 +6,7 @@
         @foreach ($entry['alternates'] as $code => $href)
             <xhtml:link rel="alternate" hreflang="{{ \App\Support\Locales::hreflang($code) }}" href="{{ $href }}" />
         @endforeach
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ $entry['alternates'][\App\Support\Locales::DEFAULT] }}" />
     </url>
 @endforeach
 </urlset>

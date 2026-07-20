@@ -40,7 +40,10 @@ class LogClick implements ShouldQueue
         }
 
         if ($this->context->couponId !== null) {
-            Coupon::query()->whereKey($this->context->couponId)->increment('clicks_count');
+            // used_count backs the public "Использовали N раз" label, so it has to
+            // track real redirects; it keeps any manual baseline set in the admin.
+            Coupon::query()->whereKey($this->context->couponId)
+                ->incrementEach(['clicks_count' => 1, 'used_count' => 1]);
         }
     }
 }

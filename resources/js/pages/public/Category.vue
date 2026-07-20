@@ -113,7 +113,7 @@ function formatDate(iso: string | null): string {
         <!-- Hero header -->
         <Reveal>
             <div
-                class="overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-r from-blue-50/70 to-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:to-gray-950"
+                class="overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-r from-blue-50/70 to-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:from-blue-950/20 dark:to-gray-950"
             >
                 <div class="flex flex-col gap-5 sm:flex-row sm:items-center">
                     <span
@@ -129,7 +129,7 @@ function formatDate(iso: string | null): string {
                         </h1>
                         <p
                             v-if="category.description"
-                            class="mt-2 max-w-2xl text-sm text-gray-500 dark:text-gray-400"
+                            class="mt-2 max-w-2xl text-sm text-gray-600 dark:text-gray-300"
                         >
                             {{ category.description }}
                         </p>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { Star } from '@lucide/vue';
 import { useI18n } from '@/composables/useI18n';
 import type { StoreCardData } from '@/types/public';
 import StoreLogo from './StoreLogo.vue';
@@ -21,7 +20,10 @@ const { t } = useI18n();
             :logo-dark="store.logo_dark"
             size="lg"
         />
-        <div class="min-w-0">
+        <!-- w-full is required: the card is `items-center`, so without it this
+             wrapper is sized to its own content and `truncate` never engages,
+             letting long store names spill outside the card. -->
+        <div class="w-full min-w-0">
             <h3
                 class="truncate font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100"
             >
@@ -31,11 +33,6 @@ const { t } = useI18n();
         <div
             class="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500"
         >
-            <span v-if="store.rating" class="inline-flex items-center gap-1">
-                <Star class="h-3.5 w-3.5 fill-amber-400 text-amber-400" />{{
-                    store.rating.toFixed(1)
-                }}
-            </span>
             <span v-if="store.coupons_count !== null">{{
                 t('stores.coupons_count', { count: store.coupons_count })
             }}</span>

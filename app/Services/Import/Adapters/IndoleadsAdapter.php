@@ -11,6 +11,7 @@ use App\Services\Import\Contracts\ImportAdapter;
 use App\Services\Import\Contracts\ProvidesPrograms;
 use App\Services\Import\DTO\CouponDraft;
 use App\Services\Import\DTO\ProgramDraft;
+use App\Support\Countries;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
@@ -79,6 +80,7 @@ class IndoleadsAdapter implements ImportAdapter, ProvidesPrograms
                     website: $this->stringOrNull($row['website_url'] ?? null),
                     affiliateUrl: $tracking,
                     externalId: (string) ($row['id'] ?? ''),
+                    countries: Countries::normalize($row['countries'] ?? $row['country'] ?? null),
                 );
             }
 

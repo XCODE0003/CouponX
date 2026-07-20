@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Resources\Stores\Schemas;
 
 use App\Filament\Support\Translatable;
+use App\Models\Store;
+use App\Support\Countries;
 use App\Support\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -46,6 +48,23 @@ class StoreForm
                             ->url()
                             ->maxLength(2048)
                             ->columnSpanFull(),
+                        Select::make('countries')
+                            ->label('Страны доставки')
+                            ->multiple()
+                            ->searchable()
+                            // Options grow on their own: whatever geo the importers
+                            // pull from Admitad/Indoleads becomes selectable here.
+                            ->options(fn (): array => collect(Store::query()->whereNotNull('countries')->pluck('countries'))
+                                ->flatten()
+                                ->merge(array_keys((array) trans('messages.countries')))
+                                ->filter()
+                                ->map(fn ($code): string => mb_strtoupper((string) $code, 'UTF-8'))
+                                ->unique()
+                                ->sort()
+                                ->mapWithKeys(fn (string $code): array => [$code => Countries::label($code).' ('.$code.')'])
+                                ->all())
+                            ->helperText('Коды ISO-2. Заполняется автоматически при импорте из партнёрских сетей; используется в фильтре «Доступна доставка в» и в подборе похожих магазинов.')
+                            ->columnSpanFull(),
                         FileUpload::make('logo')
                             ->label('Логотип (светлая тема)')
                             ->image()
@@ -77,12 +96,15 @@ class StoreForm
                         ->rows(5),
                 ]),
 
-                Section::make('Рейтинг')
-                    ->columns(3)
+                // Ratings were removed: they were unsourced numbers with no real
+                // reviews, which is not allowed in schema.org markup or on screen.
+                Section::make('Сортировка')
                     ->schema([
-                        TextInput::make('rating')->label('Рейтинг')->numeric()->minValue(0)->maxValue(5)->step(0.1),
-                        TextInput::make('rating_count')->label('Кол-во оценок')->numeric()->default(0),
-                        TextInput::make('position')->label('Позиция')->numeric()->default(0),
+                        TextInput::make('position')
+                            ->label('Позиция')
+                            ->numeric()
+                            ->default(0)
+                            ->helperText('Чем меньше число, тем выше магазин в каталоге. 0 — без позиции, такие магазины идут в конце.'),
                     ]),
 
                 Section::make('Связи и статус')

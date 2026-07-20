@@ -33,7 +33,6 @@ class StoresTable
                 TextColumn::make('slug')->label('URL')->searchable()->toggleable()->color('gray'),
                 TextColumn::make('domain')->label('Домен')->searchable()->sortable()->toggleable()->color('gray')->placeholder('—'),
                 TextColumn::make('coupons_count')->counts('coupons')->label('Купоны')->badge(),
-                TextColumn::make('rating')->label('Рейтинг')->numeric(1)->sortable(),
                 TextColumn::make('clicks_count')->label('Клики')->numeric()->sortable()->toggleable(),
                 IconColumn::make('is_featured')->label('Рекомендуемый')->boolean()->sortable(),
                 IconColumn::make('is_active')->label('Активен')->boolean()->sortable(),
